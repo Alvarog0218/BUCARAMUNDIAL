@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucara es Mundial | Neomundo 2026</title>
+    <link rel="icon" type="image/x-icon" href="VS PUBLIC/favicon.ico">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-lime': '#befd00',
+                        'brand-blue': '#0033ad',
+                        'brand-magenta': '#f12d62',
+                        'brand-cyan': '#00f2ff',
+                        'brand-dark': '#001a57',
+                    },
+                    fontFamily: {
+                        'brand': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter con pesos fuertes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .text-outline-white {
+            -webkit-text-stroke: 1px white;
+            color: transparent;
+        }
+        .bg-brand-gradient {
+            background: linear-gradient(135deg, #0033ad 0%, #001a57 100%);
+        }
+        .diagonal-bg {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        /* Filtro para convertir logos a Verde Neón (#befd00) */
+        .neon-filter {
+            filter: brightness(0) saturate(100%) invert(84%) sepia(82%) border-top-style;  hue-rotate:(31deg) brightness(108%) contrast(107%);
+        }
+        /* Versión simplificada y más compatible para Tailwind */
+        .filter-brand-lime {
+            filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(25deg) brightness(1.2);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white antialiased">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 w-full z-50 bg-brand-dark/80 backdrop-blur-md border-b border-brand-lime/10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="VS PUBLIC/LOGO.png" alt="Logo Bucara es Mundial" class="h-12 w-auto">
+                <span class="font-black text-xl tracking-tighter hidden lg:block uppercase italic">
+                    <span class="text-brand-lime font-black">BUCARA</span> ES <span class="text-white">MUNDIAL</span>
+                </span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden md:block text-[10px] font-bold text-brand-cyan tracking-widest uppercase">15 Jun - 19 Jul</span>
+                <a href="#registro" class="bg-brand-lime hover:bg-white text-brand-dark font-black py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(190,253,0,0.3)]">
+                    REGÍSTRATE
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden diagonal-bg">
+        <!-- Fondo Pieza 1 -->
+        <div class="absolute inset-0 z-0">
+            <img src="VS PUBLIC/1. PIEZA GRAFICA.png" alt="Fondo Hero" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-brand-dark/60 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-brand-magenta text-white text-[10px] font-black mb-6 uppercase tracking-widest animate-pulse">
+                <span class="w-2 h-2 bg-white rounded-full"></span> TRANSMISIÓN OFICIAL SELECCIÓN COLOMBIA
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black mb-4 leading-none tracking-tighter italic">
+                <span class="text-brand-lime block">BUCARA</span>
+                <span class="text-white block text-outline-white">MUNDIAL</span>
+            </h1>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <div class="bg-brand-dark/80 backdrop-blur-md px-6 py-2 rounded-lg border border-brand-lime/30">
+                    <p class="text-[10px] uppercase font-bold text-brand-cyan tracking-widest">Lugar</p>
+                    <p class="font-black text-xl italic uppercase">NEOMUNDO</p>
+                </div>
+                <div class="bg-brand-dark/80 backdrop-blur-md px-6 py-2 rounded-lg border border-brand-lime/30">
+                    <p class="text-[10px] uppercase font-bold text-brand-cyan tracking-widest">Fechas</p>
+                    <p class="font-black text-xl italic uppercase">15 JUN - 19 JUL</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#registro" class="bg-brand-lime hover:bg-white text-brand-dark font-black py-5 px-12 rounded-2xl text-xl transition-all shadow-[0_10px_30px_rgba(190,253,0,0.4)] transform hover:-translate-y-1 uppercase italic tracking-tighter">
+                    Asegurar mi entrada
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES / INFO RÁPIDA -->
+    <section class="py-24 relative z-20 overflow-hidden">
+        <!-- Fondo Pieza 2 -->
+        <div class="absolute inset-0 z-0">
+            <img src="VS PUBLIC/2. PIEZA GRAFICA.png" alt="Fondo Features" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-brand-dark/85"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-brand-dark/90 backdrop-blur-sm border-2 border-brand-lime/20 p-8 rounded-3xl hover:border-brand-lime transition-colors group">
+                    <div class="text-brand-lime mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 21h6l-.75-4M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-black italic uppercase mb-2">Más de 10 Pantallas</h3>
+                    <p class="text-gray-400 text-sm">Tecnología 4K para no perderte ni un solo segundo de la acción mundialista.</p>
+                </div>
+                <div class="bg-brand-dark/90 backdrop-blur-sm border-2 border-brand-lime/20 p-8 rounded-3xl hover:border-brand-lime transition-colors group">
+                    <div class="text-brand-lime mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-black italic uppercase mb-2">Horario Extendido</h3>
+                    <p class="text-gray-400 text-sm">Desde las 11:00 AM hasta las 02:00 AM. ¡La fiesta no para en Neomundo!</p>
+                </div>
+                <div class="bg-brand-dark/90 backdrop-blur-sm border-2 border-brand-lime/20 p-8 rounded-3xl hover:border-brand-lime transition-colors group">
+                    <div class="text-brand-lime mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c.533.479.827 1.13.827 1.805 0 1.657-2.367 3-5.287 3-2.92 0-5.287-1.343-5.287-3 0-.674.294-1.326.827-1.805a9.033 9.033 0 014.46-1.196c1.677 0 3.23.435 4.46 1.196zm-9.546-1.196a9.033 9.033 0 01-4.46 1.196c-1.677 0-3.23-.435-4.46-1.196C2.013 14.825 1.72 14.173 1.72 13.5c0-1.657 2.367-3 5.287-3 2.92 0 5.287 1.343 5.287 3 0 .674-.294 1.326-.827 1.805z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-black italic uppercase mb-2">Zonas VIP Platinum</h3>
+                    <p class="text-gray-400 text-sm">Experiencia exclusiva con atención a la mesa y el mejor ambiente de la ciudad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONAS DE EXPERIENCIA -->
+    <section id="zonas" class="py-24 bg-brand-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black italic uppercase mb-4 tracking-tighter">Zonas de Experiencia</h2>
+                <div class="h-2 w-24 bg-brand-lime mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <!-- Card General -->
+                <div class="bg-brand-blue/10 p-10 rounded-3xl border border-white/5 relative overflow-hidden group">
+                    <div class="absolute -right-8 -bottom-8 text-white/5 group-hover:text-white/10 transition-colors">
+                        <svg class="w-40 h-40" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-black italic uppercase mb-2">General</h4>
+                    <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">Fiesta Total</p>
+                    <ul class="space-y-4 mb-10 relative z-10">
+                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Acceso a Neomundo</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Stand de Bebidas</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Pantallas Gigantes</li>
+                    </ul>
+                    <a href="#registro" onclick="setZone('General')" class="block w-full text-center py-4 rounded-xl border-2 border-brand-lime text-brand-lime hover:bg-brand-lime hover:text-brand-dark transition-all font-black uppercase italic">Me interesa</a>
+                </div>
+
+                <!-- Card VIP -->
+                <div class="bg-brand-lime p-1 rounded-3xl transform scale-105 shadow-[0_0_50px_rgba(190,253,0,0.2)]">
+                    <div class="bg-brand-dark p-10 rounded-[1.5rem] h-full">
+                        <div class="inline-block bg-brand-magenta text-white text-[10px] font-black px-3 py-1 rounded-full mb-4 uppercase tracking-widest">EXCLUSIVO</div>
+                        <h4 class="text-3xl font-black italic uppercase mb-2">VIP Platinum</h4>
+                        <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">La mejor vista</p>
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> Lounge Privado</li>
+                            <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> Atención a la Mesa</li>
+                            <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> Kit de Bienvenida</li>
+                        </ul>
+                        <a href="#registro" onclick="setZone('VIP')" class="block w-full text-center py-5 rounded-xl bg-brand-lime text-brand-dark hover:bg-white transition-all font-black uppercase italic shadow-lg">Registrar interés</a>
+                    </div>
+                </div>
+
+                <!-- Card Preferencial -->
+                <div class="bg-brand-blue/10 p-10 rounded-3xl border border-white/5 relative overflow-hidden group">
+                    <h4 class="text-2xl font-black italic uppercase mb-2">Preferencial</h4>
+                    <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">Silletería</p>
+                    <ul class="space-y-4 mb-10 relative z-10">
+                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Silletería Numerada</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Acceso Preferencial</li>
+                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Zona de Comidas</li>
+                    </ul>
+                    <a href="#registro" onclick="setZone('Preferencial')" class="block w-full text-center py-4 rounded-xl border-2 border-brand-lime text-brand-lime hover:bg-brand-lime hover:text-brand-dark transition-all font-black uppercase italic">Me interesa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section id="registro" class="py-24 relative">
+        <!-- Fondo Pieza 3 -->
+        <div class="absolute inset-0 z-0">
+            <img src="VS PUBLIC/3. PIEZA GRAFICA.png" alt="Fondo Registro" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-brand-dark/85"></div>
+        </div>
+
+        <div class="container mx-auto px-6 max-w-2xl relative z-10">
+            <div class="bg-brand-dark/90 backdrop-blur-xl p-8 md:p-16 rounded-[3rem] border-4 border-brand-lime shadow-2xl">
+                <div id="form-content">
+                    <h2 class="text-4xl font-black mb-2 text-center uppercase italic tracking-tighter leading-none text-white">
+                        ¡QUE NO TE LO CUENTEN!
+                    </h2>
+                    <p class="text-brand-lime text-center mb-10 font-black uppercase tracking-widest text-xs">Regístrate para preventa exclusiva</p>
+                    
+                    <form id="lead-form" class="space-y-4">
+                        <input type="text" required class="w-full bg-white/10 border-2 border-white/10 rounded-2xl py-4 px-6 focus:border-brand-lime outline-none transition-all font-bold placeholder:text-gray-400 uppercase text-sm italic text-white" placeholder="Nombre completo">
+                        <input type="tel" required class="w-full bg-white/10 border-2 border-white/10 rounded-2xl py-4 px-6 focus:border-brand-lime outline-none transition-all font-bold placeholder:text-gray-400 uppercase text-sm italic text-white" placeholder="WhatsApp">
+                        <input type="email" required class="w-full bg-white/10 border-2 border-white/10 rounded-2xl py-4 px-6 focus:border-brand-lime outline-none transition-all font-bold placeholder:text-gray-400 uppercase text-sm italic text-white" placeholder="Tu mejor correo">
+                        
+                        <div class="relative">
+                            <select id="zona-select" class="w-full bg-white/10 border-2 border-white/10 rounded-2xl py-4 px-6 focus:border-brand-lime outline-none transition-all font-black uppercase text-sm italic appearance-none cursor-pointer text-white">
+                                <option value="General" class="bg-brand-dark">Zona General</option>
+                                <option value="Preferencial" class="bg-brand-dark">Zona Preferencial</option>
+                                <option value="VIP" selected class="bg-brand-dark">Zona VIP Platinum</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-6 flex items-center pointer-events-none text-brand-lime">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-lime hover:bg-white text-brand-dark font-black py-5 rounded-2xl text-xl transition-all shadow-xl uppercase italic tracking-tighter mt-6">
+                            REGISTRARME AHORA
+                        </button>
+                    </form>
+                </div>
+
+                <!-- ÉXITO -->
+                <div id="success-msg" class="hidden text-center py-10">
+                    <h2 class="text-5xl font-black mb-6 italic text-brand-lime">¡GOLAZO!</h2>
+                    <p class="text-xl font-bold mb-10 text-white">Tu registro ha sido recibido. Te enviaremos el link de compra por WhatsApp.</p>
+                    <button onclick="location.reload()" class="bg-brand-lime text-brand-dark font-black px-8 py-3 rounded-full uppercase italic text-sm">Volver</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-16 bg-brand-dark border-t border-brand-lime/20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-16">
+                <p class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-12">Nuestros Aliados Estratégicos</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16 items-center justify-items-center">
+                    <!-- Logos Patrocinadores -->
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/1.png" alt="Patrocinador 1" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/2.png" alt="Patrocinador 2" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/3.png" alt="Patrocinador 3" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/4.png" alt="Patrocinador 4" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/5.png" alt="Patrocinador 5" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/6.png" alt="Patrocinador 6" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/7.png" alt="Patrocinador 7" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/8.png" alt="Patrocinador 8" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/9.png" alt="Patrocinador 9" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-8 border-t border-white/5">
+                <div class="flex items-center gap-3">
+                    <img src="VS PUBLIC/LOGO.png" alt="Logo" class="h-10 opacity-80">
+                    <p class="text-[10px] font-bold text-gray-600 uppercase tracking-widest text-left">© 2026 BUCARA ES MUNDIAL<br>NEOMUNDO BUCARAMANGA</p>
+                </div>
+                <div class="flex gap-6 text-[10px] font-bold text-gray-600 uppercase tracking-widest">
+                    <a href="#" class="hover:text-brand-lime transition-colors">Aviso de Privacidad</a>
+                    <a href="#" class="hover:text-brand-lime transition-colors">Términos del Evento</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('lead-form');
+        const formContent = document.getElementById('form-content');
+        const successMsg = document.getElementById('success-msg');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerText = 'PROCESANDO...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                formContent.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+                document.getElementById('registro').scrollIntoView({ behavior: 'smooth' });
+            }, 1000);
+        });
+
+        function setZone(zona) {
+            document.getElementById('zona-select').value = zona;
+            document.getElementById('registro').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
