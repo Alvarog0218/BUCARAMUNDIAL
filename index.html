@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bucara es Mundial | Neomundo 2026</title>
+    <title>Bucara Mundial | Neomundo 2026</title>
     <link rel="icon" type="image/x-icon" href="VS PUBLIC/favicon.ico">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,11 +12,11 @@
             theme: {
                 extend: {
                     colors: {
-                        'brand-lime': '#befd00',
-                        'brand-blue': '#0033ad',
-                        'brand-magenta': '#f12d62',
-                        'brand-cyan': '#00f2ff',
-                        'brand-dark': '#001a57',
+                        'brand-lime': '#D4E157',
+                        'brand-blue': '#1A237E',
+                        'brand-magenta': '#C62828',
+                        'brand-cyan': '#0288D1',
+                        'brand-dark': '#0D1B3E',
                     },
                     fontFamily: {
                         'brand': ['Inter', 'sans-serif'],
@@ -34,18 +34,46 @@
             color: transparent;
         }
         .bg-brand-gradient {
-            background: linear-gradient(135deg, #0033ad 0%, #001a57 100%);
+            background: linear-gradient(135deg, #1A237E 0%, #0D1B3E 100%);
         }
         .diagonal-bg {
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
-        /* Filtro para convertir logos a Verde Neón (#befd00) */
+        /* Estilo para logos: Fondo aparece solo al pasar el mouse */
         .neon-filter {
-            filter: brightness(0) saturate(100%) invert(84%) sepia(82%) border-top-style;  hue-rotate:(31deg) brightness(108%) contrast(107%);
+            background-color: transparent;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            filter: grayscale(100%) invert(1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            object-fit: contain;
+        }
+        .neon-filter:hover {
+            background-color: #ffffff;
+            filter: grayscale(0%) invert(0);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
         }
         /* Versión simplificada y más compatible para Tailwind */
         .filter-brand-lime {
             filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(25deg) brightness(1.2);
+        }
+        /* Ocultar scrollbar */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Animación de scroll infinito */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1.5rem)); } /* Ajustado para la mitad del contenido duplicado */
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
         }
     </style>
 </head>
@@ -57,12 +85,12 @@
             <div class="flex items-center gap-3">
                 <img src="VS PUBLIC/LOGO.png" alt="Logo Bucara es Mundial" class="h-12 w-auto">
                 <span class="font-black text-xl tracking-tighter hidden lg:block uppercase italic">
-                    <span class="text-brand-lime font-black">BUCARA</span> ES <span class="text-white">MUNDIAL</span>
+                    <span class="text-brand-lime font-black">BUCARA</span> <span class="text-white">MUNDIAL</span>
                 </span>
             </div>
             <div class="flex items-center gap-4">
                 <span class="hidden md:block text-[10px] font-bold text-brand-cyan tracking-widest uppercase">15 Jun - 19 Jul</span>
-                <a href="#registro" class="bg-brand-lime hover:bg-white text-brand-dark font-black py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(190,253,0,0.3)]">
+                <a href="#registro" class="bg-brand-lime hover:bg-white text-brand-dark font-black py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(212,225,87,0.3)]">
                     REGÍSTRATE
                 </a>
             </div>
@@ -73,7 +101,7 @@
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden diagonal-bg">
         <!-- Fondo Pieza 1 -->
         <div class="absolute inset-0 z-0">
-            <img src="VS PUBLIC/1. PIEZA GRAFICA.png" alt="Fondo Hero" class="w-full h-full object-cover">
+            <img src="VS PUBLIC/2. PIEZA GRAFICA.png" alt="Fondo Hero" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-brand-dark/60 backdrop-blur-[2px]"></div>
         </div>
 
@@ -199,7 +227,7 @@
     <section id="registro" class="py-24 relative">
         <!-- Fondo Pieza 3 -->
         <div class="absolute inset-0 z-0">
-            <img src="VS PUBLIC/3. PIEZA GRAFICA.png" alt="Fondo Registro" class="w-full h-full object-cover">
+            <img src="VS PUBLIC/2. PIEZA GRAFICA.png" alt="Fondo Registro" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-brand-dark/85"></div>
         </div>
 
@@ -247,48 +275,94 @@
     <footer class="py-16 bg-brand-dark border-t border-brand-lime/20">
         <div class="container mx-auto px-6 text-center">
             <div class="mb-16">
-                <p class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-12">Nuestros Aliados Estratégicos</p>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16 items-center justify-items-center">
-                    <!-- Logos Patrocinadores -->
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/1.png" alt="Patrocinador 1" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                <p class="text-2xl md:text-3xl font-black uppercase tracking-[0.2em] text-white mb-16 italic">Nuestros Aliados Estratégicos</p>
+            <div class="relative w-full overflow-hidden">
+                <!-- Máscaras de degradado para los bordes -->
+                <div class="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-brand-dark to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-brand-dark to-transparent z-10 pointer-events-none"></div>
+                
+                <div class="animate-marquee gap-8 md:gap-12 pb-12 pt-4 items-center">
+                    <!-- Primera tanda de logos -->
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/1.png" alt="Patrocinador 1" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/2.png" alt="Patrocinador 2" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/2.png" alt="Patrocinador 2" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/3.png" alt="Patrocinador 3" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/3.png" alt="Patrocinador 3" class="h-48 md:h-64 w-auto object-contain neon-filter">
                     </div>
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/4.png" alt="Patrocinador 4" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/4.png" alt="Patrocinador 4" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/5.png" alt="Patrocinador 5" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/5.png" alt="Patrocinador 5" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/6.png" alt="Patrocinador 6" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/6.png" alt="Patrocinador 6" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/7.png" alt="Patrocinador 7" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/7.png" alt="Patrocinador 7" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/8.png" alt="Patrocinador 8" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/8.png" alt="Patrocinador 8" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
-                    <div class="w-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-                        <img src="VS PUBLIC/Patrocinadores/9.png" alt="Patrocinador 9" class="h-24 md:h-28 w-auto object-contain neon-filter">
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/9.png" alt="Patrocinador 9" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/10.png" alt="Patrocinador 10" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    
+                    <!-- Duplicado para loop infinito -->
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/1.png" alt="Patrocinador 1" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/2.png" alt="Patrocinador 2" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/3.png" alt="Patrocinador 3" class="h-48 md:h-64 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/4.png" alt="Patrocinador 4" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/5.png" alt="Patrocinador 5" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/6.png" alt="Patrocinador 6" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/7.png" alt="Patrocinador 7" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/8.png" alt="Patrocinador 8" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/9.png" alt="Patrocinador 9" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="VS PUBLIC/Patrocinadores/10.png" alt="Patrocinador 10" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
                 </div>
             </div>
+            </div>
             
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-8 border-t border-white/5">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 pt-8 border-t border-white/5">
                 <div class="flex items-center gap-3">
                     <img src="VS PUBLIC/LOGO.png" alt="Logo" class="h-10 opacity-80">
-                    <p class="text-[10px] font-bold text-gray-600 uppercase tracking-widest text-left">© 2026 BUCARA ES MUNDIAL<br>NEOMUNDO BUCARAMANGA</p>
+                    <p class="text-[10px] font-bold text-gray-600 uppercase tracking-widest text-center md:text-left">© 2026 BUCARA ES MUNDIAL<br>NEOMUNDO BUCARAMANGA</p>
                 </div>
-                <div class="flex gap-6 text-[10px] font-bold text-gray-600 uppercase tracking-widest">
-                    <a href="#" class="hover:text-brand-lime transition-colors">Aviso de Privacidad</a>
-                    <a href="#" class="hover:text-brand-lime transition-colors">Términos del Evento</a>
-                </div>
+            </div>
+        </div>
+
+        <!-- Barra Verde de Aviso Legal -->
+        <div class="bg-brand-lime mt-12 py-6">
+            <div class="container mx-auto px-6 flex flex-wrap justify-center gap-12 text-sm font-black text-brand-dark/60 uppercase tracking-widest">
+                <a href="#" class="hover:text-brand-dark transition-colors">Aviso de Privacidad</a>
+                <a href="#" class="hover:text-brand-dark transition-colors">Términos del Evento</a>
+                <a href="#" class="hover:text-brand-dark transition-colors">Tratamiento de Datos</a>
             </div>
         </div>
     </footer>
