@@ -162,62 +162,147 @@
                     <div class="text-brand-lime mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c.533.479.827 1.13.827 1.805 0 1.657-2.367 3-5.287 3-2.92 0-5.287-1.343-5.287-3 0-.674.294-1.326.827-1.805a9.033 9.033 0 014.46-1.196c1.677 0 3.23.435 4.46 1.196zm-9.546-1.196a9.033 9.033 0 01-4.46 1.196c-1.677 0-3.23-.435-4.46-1.196C2.013 14.825 1.72 14.173 1.72 13.5c0-1.657 2.367-3 5.287-3 2.92 0 5.287 1.343 5.287 3 0 .674-.294 1.326-.827 1.805z"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-black italic uppercase mb-2">Zonas VIP Platinum</h3>
+                    <h3 class="text-2xl font-black italic uppercase mb-2">Sala Principal (VIP)</h3>
                     <p class="text-gray-400 text-sm">Experiencia exclusiva con atención a la mesa y el mejor ambiente de la ciudad.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ZONAS DE EXPERIENCIA -->
-    <section id="zonas" class="py-24 bg-brand-dark">
+    <!-- RUTA DE LA EXPERIENCIA -->
+    <section class="py-24 bg-brand-dark/50 border-y border-brand-lime/10">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-black italic uppercase mb-4 tracking-tighter">Zonas de Experiencia</h2>
+                <h2 class="text-4xl font-black italic uppercase mb-4 tracking-tighter">¿Cómo se vive la experiencia?</h2>
+                <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">Abre la puerta y empieza el mundial</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-brand-lime text-brand-dark rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 transform rotate-3">1</div>
+                    <h5 class="text-xl font-black uppercase italic mb-2">Entrar</h5>
+                    <p class="text-gray-400 text-sm">Cruza el <strong>Túnel del Partido</strong>: un recorrido sensorial inmersivo.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-brand-cyan text-brand-dark rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 transform -rotate-3">2</div>
+                    <h5 class="text-xl font-black uppercase italic mb-2">Explorar</h5>
+                    <p class="text-gray-400 text-sm">Recorre la casa: desde la <strong>Cocina</strong> hasta el <strong>Sofá del Gol</strong>.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-brand-magenta text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 transform rotate-6">3</div>
+                    <h5 class="text-xl font-black uppercase italic mb-2">Ver el Partido</h5>
+                    <p class="text-gray-400 text-sm">Vive cada jugada desde el corazón de la casa: la <strong>Sala Principal</strong>.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white text-brand-dark rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 transform -rotate-6">4</div>
+                    <h5 class="text-xl font-black uppercase italic mb-2">Celebrar</h5>
+                    <p class="text-gray-400 text-sm">Brindar y compartir en la <strong>Nevera del Partido</strong> con sorpresas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LA CASA DEL MUNDIAL - ZONAS -->
+    <section id="zonas" class="py-24 bg-brand-dark relative overflow-hidden">
+        <!-- Elementos decorativos de fondo alusivos a la estética (verdes profundos, madera) -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <div class="absolute top-10 left-10 w-64 h-64 bg-green-900 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-yellow-900 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <p class="text-brand-lime font-black uppercase tracking-[0.3em] mb-2">Bienvenidos a</p>
+                <h2 class="text-5xl md:text-7xl font-black italic uppercase mb-4 tracking-tighter">La Casa del Mundial</h2>
                 <div class="h-2 w-24 bg-brand-lime mx-auto"></div>
+                <p class="mt-6 text-gray-400 max-w-2xl mx-auto font-bold uppercase tracking-widest text-[10px]">
+                    La casa no se recorre como un stand: SE VIVE COMO UNA EXPERIENCIA
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <!-- Card General -->
-                <div class="bg-brand-blue/10 p-10 rounded-3xl border border-white/5 relative overflow-hidden group">
-                    <div class="absolute -right-8 -bottom-8 text-white/5 group-hover:text-white/10 transition-colors">
-                        <svg class="w-40 h-40" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path></svg>
+            <!-- MAPA DE DISTRIBUCIÓN -->
+            <div class="mb-20 max-w-5xl mx-auto">
+                <div class="bg-brand-dark/40 border-2 border-brand-lime/20 rounded-[3rem] p-4 md:p-8 backdrop-blur-sm relative group overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 bg-brand-lime/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative z-10 border border-brand-lime/10 rounded-[2rem] overflow-hidden bg-brand-dark/60 aspect-video flex items-center justify-center">
+                        <!-- Imagen de la distribución (Mapa 3D) -->
+                        <img src="VS PUBLIC/BGA MUNDIA [CARTEL OFICIAL].png" alt="Distribución La Casa del Mundial" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all group-hover:scale-105 duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 text-left">
+                            <span class="bg-brand-lime text-brand-dark font-black px-4 py-1 rounded-full text-[10px] uppercase tracking-widest mb-2 inline-block">Mapa Oficial</span>
+                            <h3 class="text-2xl md:text-3xl font-black italic uppercase text-white">Distribución de Estaciones</h3>
+                        </div>
                     </div>
-                    <h4 class="text-2xl font-black italic uppercase mb-2">General</h4>
-                    <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">Fiesta Total</p>
-                    <ul class="space-y-4 mb-10 relative z-10">
-                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Acceso a Neomundo</li>
-                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Stand de Bebidas</li>
-                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Pantallas Gigantes</li>
-                    </ul>
-                    <a href="#registro" onclick="setZone('General')" class="block w-full text-center py-4 rounded-xl border-2 border-brand-lime text-brand-lime hover:bg-brand-lime hover:text-brand-dark transition-all font-black uppercase italic">Me interesa</a>
                 </div>
+                <p class="text-center mt-6 text-gray-500 font-bold uppercase tracking-widest text-[10px] italic">
+                    * La ubicación de las zonas puede variar según la logística del evento
+                </p>
+            </div>
 
-                <!-- Card VIP -->
-                <div class="bg-brand-lime p-1 rounded-3xl transform scale-105 shadow-[0_0_50px_rgba(190,253,0,0.2)]">
-                    <div class="bg-brand-dark p-10 rounded-[1.5rem] h-full">
-                        <div class="inline-block bg-brand-magenta text-white text-[10px] font-black px-3 py-1 rounded-full mb-4 uppercase tracking-widest">EXCLUSIVO</div>
-                        <h4 class="text-3xl font-black italic uppercase mb-2">VIP Platinum</h4>
-                        <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">La mejor vista</p>
-                        <ul class="space-y-4 mb-10">
-                            <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> Lounge Privado</li>
-                            <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> Atención a la Mesa</li>
-                            <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> Kit de Bienvenida</li>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+                <!-- Card General: Patio del Ritmo -->
+                <div class="bg-brand-blue/10 p-10 rounded-3xl border border-white/5 relative overflow-hidden group flex flex-col justify-between hover:border-brand-lime/30 transition-all">
+                    <div>
+                        <div class="absolute -right-8 -bottom-8 text-white/5 group-hover:text-white/10 transition-colors">
+                            <svg class="w-40 h-40" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path></svg>
+                        </div>
+                        <h4 class="text-2xl font-black italic uppercase mb-2">Patio del Ritmo</h4>
+                        <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">Juego Colaborativo</p>
+                        <ul class="space-y-4 mb-10 relative z-10">
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Detrás de la casa</li>
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Balón y Sonido</li>
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Pantallas Gigantes</li>
                         </ul>
-                        <a href="#registro" onclick="setZone('VIP')" class="block w-full text-center py-5 rounded-xl bg-brand-lime text-brand-dark hover:bg-white transition-all font-black uppercase italic shadow-lg">Registrar interés</a>
+                    </div>
+                    <a href="#registro" onclick="setZone('Patio del Ritmo')" class="block w-full text-center py-4 rounded-xl border-2 border-brand-lime text-brand-lime hover:bg-brand-lime hover:text-brand-dark transition-all font-black uppercase italic relative z-10">Me interesa</a>
+                </div>
+
+                <!-- Card VIP: Sala Principal -->
+                <div class="bg-brand-lime p-1 rounded-3xl shadow-[0_0_50px_rgba(190,253,0,0.2)] flex flex-col transform hover:scale-[1.02] transition-transform">
+                    <div class="bg-brand-dark p-10 rounded-[1.5rem] h-full flex flex-col justify-between border border-brand-lime/20">
+                        <div>
+                            <div class="inline-block bg-brand-magenta text-white text-[10px] font-black px-3 py-1 rounded-full mb-4 uppercase tracking-widest">CORAZÓN DEL PARTIDO</div>
+                            <h4 class="text-3xl font-black italic uppercase mb-2">Sala Principal</h4>
+                            <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">Mobiliario Cálido</p>
+                            <ul class="space-y-4 mb-10">
+                                <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> El Sofá del Gol</li>
+                                <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> La Cocina (Punto Venta)</li>
+                                <li class="flex items-center gap-2 text-gray-200 font-bold"><span class="text-brand-lime text-xl">★</span> La Nevera del Partido</li>
+                            </ul>
+                        </div>
+                        <a href="#registro" onclick="setZone('Sala Principal')" class="block w-full text-center py-5 rounded-xl bg-brand-lime text-brand-dark hover:bg-white transition-all font-black uppercase italic shadow-lg">Registrar interés</a>
                     </div>
                 </div>
 
-                <!-- Card Preferencial -->
-                <div class="bg-brand-blue/10 p-10 rounded-3xl border border-white/5 relative overflow-hidden group">
-                    <h4 class="text-2xl font-black italic uppercase mb-2">Preferencial</h4>
-                    <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">Silletería</p>
-                    <ul class="space-y-4 mb-10 relative z-10">
-                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Silletería Numerada</li>
-                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Acceso Preferencial</li>
-                        <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Zona de Comidas</li>
-                    </ul>
-                    <a href="#registro" onclick="setZone('Preferencial')" class="block w-full text-center py-4 rounded-xl border-2 border-brand-lime text-brand-lime hover:bg-brand-lime hover:text-brand-dark transition-all font-black uppercase italic">Me interesa</a>
+                <!-- Card Preferencial: Tribuna de los 11 -->
+                <div class="bg-brand-blue/10 p-10 rounded-3xl border border-white/5 relative overflow-hidden group flex flex-col justify-between hover:border-brand-lime/30 transition-all">
+                    <div>
+                        <h4 class="text-2xl font-black italic uppercase mb-2">Tribuna de los 11</h4>
+                        <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">Activación Colectiva</p>
+                        <ul class="space-y-4 mb-10 relative z-10">
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Spot Híbrido Fotos</li>
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Acceso Preferencial</li>
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-lime">✓</span> Cápsula del Gol</li>
+                        </ul>
+                    </div>
+                    <a href="#registro" onclick="setZone('Tribuna de los 11')" class="block w-full text-center py-4 rounded-xl border-2 border-brand-lime text-brand-lime hover:bg-brand-lime hover:text-brand-dark transition-all font-black uppercase italic">Me interesa</a>
+                </div>
+
+                <!-- Card Niños: Habitación de los Peques -->
+                <div class="bg-brand-cyan/10 p-10 rounded-3xl border border-brand-cyan/20 relative overflow-hidden group flex flex-col justify-between hover:border-brand-cyan/30 transition-all">
+                    <div>
+                        <div class="absolute -right-8 -bottom-8 text-brand-cyan/10 group-hover:text-brand-cyan/20 transition-colors">
+                            <svg class="w-40 h-40" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L4 9V21H20V9L12 3M12 11C13.1 11 14 11.9 14 13C14 14.1 13.1 15 12 15C10.9 15 10 14.1 10 13C10 11.9 10.9 11 12 11Z"></path></svg>
+                        </div>
+                        <h4 class="text-2xl font-black italic uppercase mb-2">Habitación de los Peques</h4>
+                        <p class="text-brand-cyan font-bold mb-6 text-sm uppercase tracking-widest">Diversión Segura</p>
+                        <ul class="space-y-4 mb-10 relative z-10">
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-cyan">✓</span> Juegos Inflables</li>
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-cyan">✓</span> Recreacionistas</li>
+                            <li class="flex items-center gap-2 text-sm text-gray-300 font-bold"><span class="text-brand-cyan">✓</span> Snack Bar Kids</li>
+                        </ul>
+                    </div>
+                    <a href="#registro" onclick="setZone('Habitación de los Peques')" class="block w-full text-center py-4 rounded-xl border-2 border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-brand-dark transition-all font-black uppercase italic">Me interesa</a>
                 </div>
             </div>
         </div>
@@ -246,9 +331,10 @@
                         
                         <div class="relative">
                             <select id="zona-select" class="w-full bg-white/10 border-2 border-white/10 rounded-2xl py-4 px-6 focus:border-brand-lime outline-none transition-all font-black uppercase text-sm italic appearance-none cursor-pointer text-white">
-                                <option value="General" class="bg-brand-dark">Zona General</option>
-                                <option value="Preferencial" class="bg-brand-dark">Zona Preferencial</option>
-                                <option value="VIP" selected class="bg-brand-dark">Zona VIP Platinum</option>
+                                <option value="Patio del Ritmo" class="bg-brand-dark">Patio del Ritmo (General)</option>
+                                <option value="Tribuna de los 11" class="bg-brand-dark">Tribuna de los 11 (Preferencial)</option>
+                                <option value="Sala Principal" selected class="bg-brand-dark">Sala Principal (VIP Platinum)</option>
+                                <option value="Habitación de los Peques" class="bg-brand-dark">Habitación de los Peques (Zona Kids)</option>
                             </select>
                             <div class="absolute inset-y-0 right-6 flex items-center pointer-events-none text-brand-lime">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
