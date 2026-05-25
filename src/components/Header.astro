@@ -1,5 +1,5 @@
 ---
-const logo = "/assets/balon-verde.png";
+const logo = "/assets/26-fifa.png";
 const navItems = [
   { label: "Inicio", href: "#inicio" },
   { label: "Experiencia", href: "#experiencia" },
@@ -8,18 +8,18 @@ const navItems = [
 ];
 ---
 
-<header class="fixed top-0 w-full z-50 bg-transparent">
-  <nav class="container mx-auto px-6 py-4 flex justify-between items-center gap-6">
+<header class="site-header top-0 left-0 w-full bg-transparent">
+  <nav class="container mx-auto px-6 py-6 flex justify-between items-center gap-8 relative">
     <a href="#inicio" class="flex items-center gap-3 shrink-0" aria-label="Bucara Mundial">
-      <img src={logo} alt="Logo Bucara es Mundial" class="h-12 w-12 object-contain" />
+      <img src={logo} alt="Trofeo FIFA World Cup" class="h-16 sm:h-20 w-auto object-contain" />
     </a>
 
-    <div class="hidden md:flex items-center justify-center gap-6 px-6 py-3">
+    <div class="hidden lg:flex items-center justify-center gap-8 px-6 py-3">
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="text-[10px] font-black uppercase tracking-widest text-white hover:text-brand-lime transition-colors"
+            class="text-xs font-black uppercase tracking-widest text-white hover:text-brand-lime transition-colors"
           >
             {item.label}
           </a>
@@ -29,9 +29,37 @@ const navItems = [
 
     <a
       href="#registro"
-      class="bg-brand-lime hover:bg-white text-brand-dark font-black py-2 px-6 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(212,225,87,0.3)] uppercase text-[10px] tracking-widest shrink-0"
+      class="hidden lg:inline-flex bg-brand-lime hover:bg-white text-brand-dark font-black py-3 px-8 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(212,225,87,0.3)] uppercase text-xs tracking-widest shrink-0"
     >
       Entradas
     </a>
+
+    <button
+      type="button"
+      class="mobile-menu-button lg:hidden"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      data-mobile-menu-toggle
+    >
+      <span class="mobile-menu-line"></span>
+      <span class="mobile-menu-line"></span>
+      <span class="mobile-menu-line"></span>
+    </button>
   </nav>
+
+  <div id="mobile-nav" class="container mx-auto px-6 hidden lg:hidden" data-mobile-menu>
+    <div class="mobile-menu-panel">
+      {
+        navItems.map((item) => (
+          <a href={item.href} class="mobile-menu-link" data-mobile-menu-link>
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="#registro" class="mobile-menu-cta" data-mobile-menu-link>
+        Entradas
+      </a>
+    </div>
+  </div>
 </header>

@@ -24,7 +24,7 @@ const zones = [
     <div class="absolute inset-0 bg-[#020617]/55"></div>
   </div>
 
-  <div class="container mx-auto px-6 max-w-5xl relative z-10">
+  <div class="container mx-auto px-6 max-w-3xl relative z-10">
     <div class="bg-brand-dark/90 backdrop-blur-xl p-8 md:p-16 rounded-[3rem] border-4 border-brand-lime shadow-2xl">
       <div id="selection-content">
         <h2 class="text-4xl font-black mb-2 text-center uppercase italic tracking-tighter leading-none text-white">
@@ -34,7 +34,7 @@ const zones = [
           Completa tus datos para continuar con la compra
         </p>
 
-        <form data-ticket-form class="bg-brand-blue/25 border-2 border-brand-cyan/20 rounded-[2.5rem] p-8 md:p-10 shadow-xl max-w-3xl mx-auto">
+        <form data-ticket-form novalidate class="bg-brand-blue/25 border-2 border-brand-cyan/20 rounded-[2.5rem] p-8 md:p-10 shadow-xl max-w-xl mx-auto">
           <div class="flex items-center gap-4 mb-8">
             <div class="bg-brand-lime text-brand-dark w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-md">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,27 +49,65 @@ const zones = [
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <input name="nombre" type="text" required class="w-full bg-brand-dark/70 border border-brand-cyan/20 rounded-xl py-3 px-4 focus:border-brand-lime outline-none transition-all font-bold placeholder:text-gray-500 uppercase text-xs italic text-white" placeholder="Nombre completo" />
-            <input name="whatsapp" type="tel" required class="w-full bg-brand-dark/70 border border-brand-cyan/20 rounded-xl py-3 px-4 focus:border-brand-lime outline-none transition-all font-bold placeholder:text-gray-500 uppercase text-xs italic text-white" placeholder="WhatsApp" />
-            <select name="tipo" required class="ticket-type-select w-full bg-brand-dark/70 border border-brand-cyan/20 rounded-xl py-3 px-4 focus:border-brand-lime outline-none transition-all font-bold uppercase text-xs italic text-white cursor-pointer">
-              <option value="" disabled selected class="bg-brand-dark text-gray-500">Tipo de compra</option>
-              {ticketTypes.map(([value, label]) => (
-                <option value={value} class="bg-brand-dark text-white">{label}</option>
-              ))}
-            </select>
-            <select name="zona" required disabled class="ticket-zone-select w-full bg-brand-dark/70 border border-brand-cyan/20 rounded-xl py-3 px-4 focus:border-brand-lime outline-none transition-all font-bold uppercase text-xs italic text-white cursor-pointer disabled:cursor-not-allowed disabled:opacity-60">
-              <option value="" disabled selected class="bg-brand-dark text-gray-500">Seleccionar zona</option>
-              {zones.map(([value, label, scope]) => (
-                <option value={value} data-ticket-scope={scope} class="bg-brand-dark text-white">{label}</option>
-              ))}
-            </select>
-            <input name="email" type="email" required class="md:col-span-2 w-full bg-brand-dark/70 border border-brand-cyan/20 rounded-xl py-3 px-4 focus:border-brand-lime outline-none transition-all font-bold placeholder:text-gray-500 uppercase text-xs italic text-white" placeholder="Tu mejor correo" />
+          <div class="grid grid-cols-1 gap-4">
+            <div class="ticket-field" data-field-wrap="nombre">
+              <label for="ticket-nombre">Nombre</label>
+              <input id="ticket-nombre" name="nombre" type="text" required class="ticket-control" placeholder="Nombre completo" />
+              <p class="ticket-field-message" data-field-error="nombre"></p>
+            </div>
+
+            <div class="ticket-field" data-field-wrap="whatsapp">
+              <label for="ticket-whatsapp">Telefono</label>
+              <input id="ticket-whatsapp" name="whatsapp" type="tel" required class="ticket-control" placeholder="Telefono" />
+              <p class="ticket-field-message" data-field-error="whatsapp"></p>
+            </div>
+
+            <div class="ticket-field" data-field-wrap="email">
+              <label for="ticket-email">Correo</label>
+              <input id="ticket-email" name="email" type="email" required class="ticket-control" placeholder="Correo" />
+              <p class="ticket-field-message" data-field-error="email"></p>
+            </div>
+
+            <div class="ticket-field" data-field-wrap="tipo">
+              <label for="ticket-tipo">Tipo de compra</label>
+              <div class="ticket-select-wrap">
+                <select id="ticket-tipo" name="tipo" required class="ticket-control ticket-select ticket-type-select">
+                  <option value="" disabled selected>Tipo de compra</option>
+                  {ticketTypes.map(([value, label]) => (
+                    <option value={value}>{label}</option>
+                  ))}
+                </select>
+                <span aria-hidden="true" class="ticket-select-icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <p class="ticket-field-message" data-field-error="tipo"></p>
+            </div>
+
+            <div class="ticket-field" data-field-wrap="zona">
+              <label for="ticket-zona">Zona</label>
+              <div class="ticket-select-wrap">
+                <select id="ticket-zona" name="zona" required disabled class="ticket-control ticket-select ticket-zone-select">
+                  <option value="" disabled selected>Seleccionar zona</option>
+                  {zones.map(([value, label, scope]) => (
+                    <option value={value} data-ticket-scope={scope}>{label}</option>
+                  ))}
+                </select>
+                <span aria-hidden="true" class="ticket-select-icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <p class="ticket-field-message" data-field-error="zona"></p>
+            </div>
           </div>
 
           <button
             type="submit"
-            class="w-full bg-brand-lime hover:bg-brand-cyan text-brand-dark hover:text-white font-black py-4 rounded-xl text-sm transition-all shadow-lg uppercase italic tracking-tighter mt-6"
+            class="w-full bg-brand-lime hover:bg-brand-cyan text-brand-dark hover:text-white font-black py-4 rounded-xl text-sm transition-all shadow-lg uppercase italic tracking-tighter mt-6 disabled:opacity-70 disabled:cursor-not-allowed"
           >
             Ir a comprar
           </button>

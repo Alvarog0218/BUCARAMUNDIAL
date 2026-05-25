@@ -24,6 +24,36 @@ const scrollToRegistration = () => {
   document.getElementById("registro")?.scrollIntoView({ behavior: "smooth" });
 };
 
+const closeMobileMenu = () => {
+  const toggle = document.querySelector("[data-mobile-menu-toggle]");
+  const menu = document.querySelector("[data-mobile-menu]");
+
+  if (!toggle || !menu) {
+    return;
+  }
+
+  toggle.classList.remove("is-open");
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-label", "Abrir menu");
+  menu.classList.add("hidden");
+};
+
+const toggleMobileMenu = () => {
+  const toggle = document.querySelector("[data-mobile-menu-toggle]");
+  const menu = document.querySelector("[data-mobile-menu]");
+
+  if (!toggle || !menu) {
+    return;
+  }
+
+  const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+  toggle.classList.toggle("is-open", !isOpen);
+  toggle.setAttribute("aria-expanded", String(!isOpen));
+  toggle.setAttribute("aria-label", isOpen ? "Abrir menu" : "Cerrar menu");
+  menu.classList.toggle("hidden", isOpen);
+};
+
 const selectZone = (zone) => {
   const form = document.querySelector("[data-ticket-form]");
 
@@ -109,6 +139,68 @@ const updateZoneOptions = (form) => {
   updatePurchaseButton(form);
 };
 
+const getFieldErrorMessage = (field, form) => {
+  if (field.name === "zona" && field.disabled) {
+    return "Selecciona primero el tipo de compra.";
+  }
+
+  if (!field.value.trim()) {
+    return "Este campo es obligatorio.";
+  }
+
+  if (field.type === "email" && !field.validity.valid) {
+    return "Ingresa un correo valido.";
+  }
+
+  if (field.name === "whatsapp" && field.value.trim().length < 7) {
+    return "Ingresa un telefono valido.";
+  }
+
+  if (field.name === "zona" && form.elements.tipo.value === "abono" && field.value === "General") {
+    return "La zona BIO solo aplica para boleta individual.";
+  }
+
+  return "";
+};
+
+const setFieldError = (form, field, message) => {
+  const wrapper = form.querySelector(`[data-field-wrap="${field.name}"]`);
+  const messageElement = form.querySelector(`[data-field-error="${field.name}"]`);
+
+  field.setAttribute("aria-invalid", message ? "true" : "false");
+  wrapper?.classList.toggle("is-invalid", Boolean(message));
+
+  if (messageElement) {
+    messageElement.innerText = message;
+  }
+};
+
+const validateTicketForm = (form) => {
+  const fields = ["nombre", "whatsapp", "email", "tipo", "zona"].map((name) => form.elements[name]);
+  let firstInvalidField = null;
+
+  fields.forEach((field) => {
+    const message = getFieldErrorMessage(field, form);
+    setFieldError(form, field, message);
+
+    if (message && !firstInvalidField) {
+      firstInvalidField = field;
+    }
+  });
+
+  if (firstInvalidField) {
+    firstInvalidField.focus({ preventScroll: true });
+    firstInvalidField.scrollIntoView({ behavior: "smooth", block: "center" });
+    return false;
+  }
+
+  return true;
+};
+
+const clearFieldError = (form, field) => {
+  setFieldError(form, field, "");
+};
+
 const buildFormData = (form) => ({
   nombre: form.elements.nombre.value,
   whatsapp: form.elements.whatsapp.value,
@@ -136,6 +228,11 @@ const handleTicketPurchase = async (event) => {
   event.preventDefault();
 
   const form = event.currentTarget;
+
+  if (!validateTicketForm(form)) {
+    return;
+  }
+
   const ticketType = form.elements.tipo.value;
   const purchaseUrl = purchaseLinks[ticketType];
   const button = form.querySelector("button[type='submit']");
@@ -164,6 +261,9 @@ const handleTicketPurchase = async (event) => {
       form.reset();
       button.disabled = false;
       updateZoneOptions(form);
+      ["nombre", "whatsapp", "email", "tipo", "zona"].forEach((name) => {
+        clearFieldError(form, form.elements[name]);
+      });
     }, 2000);
   }, 500);
 };
@@ -176,6 +276,12 @@ document.querySelectorAll("[data-close-modal]").forEach((button) => {
   button.addEventListener("click", closeModal);
 });
 
+document.querySelector("[data-mobile-menu-toggle]")?.addEventListener("click", toggleMobileMenu);
+
+document.querySelectorAll("[data-mobile-menu-link]").forEach((link) => {
+  link.addEventListener("click", closeMobileMenu);
+});
+
 document.querySelectorAll("[data-zone-select]").forEach((link) => {
   link.addEventListener("click", () => {
     selectZone(link.dataset.zoneSelect);
@@ -185,12 +291,33 @@ document.querySelectorAll("[data-zone-select]").forEach((link) => {
 
 document.querySelectorAll("[data-ticket-form]").forEach((form) => {
   updateZoneOptions(form);
-  form.elements.tipo.addEventListener("change", () => updateZoneOptions(form));
+
+  ["nombre", "whatsapp", "email", "tipo", "zona"].forEach((name) => {
+    const field = form.elements[name];
+
+    field.addEventListener("input", () => clearFieldError(form, field));
+    field.addEventListener("change", () => {
+      clearFieldError(form, field);
+
+      if (field.name === "tipo") {
+        updateZoneOptions(form);
+        clearFieldError(form, form.elements.zona);
+      }
+    });
+  });
+
   form.addEventListener("submit", handleTicketPurchase);
 });
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeModal();
+    closeMobileMenu();
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (window.matchMedia("(min-width: 1024px)").matches) {
+    closeMobileMenu();
   }
 });
