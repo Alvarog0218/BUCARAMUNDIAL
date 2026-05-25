@@ -1,0 +1,46 @@
+---
+const background = "/assets/hero-fondo.jpg";
+const heroLogo = "/assets/logo-bucara.png";
+---
+
+<section id="inicio" class="relative min-h-screen flex items-start justify-center pt-24 pb-16 overflow-hidden diagonal-bg">
+  <div class="absolute inset-0 z-0">
+    <img src={background} alt="Vista aérea de Neomundo Bucaramanga" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-brand-dark/65 backdrop-blur-[1px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-blue/20 to-brand-dark/90"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-brand-magenta text-white text-[10px] font-black mb-4 uppercase tracking-widest animate-pulse">
+      <span class="w-2 h-2 bg-brand-lime rounded-full"></span>
+      TRANSMISIÓN OFICIAL SELECCIÓN COLOMBIA
+    </div>
+
+    <img
+      src={heroLogo}
+      alt="Bucara es Mundial 2026"
+      class="mx-auto mb-5 w-full max-w-[min(84vw,460px)] object-contain"
+      loading="eager"
+    />
+
+    <div class="flex flex-wrap justify-center gap-4 mb-6">
+      <div class="bg-brand-dark/80 backdrop-blur-md px-6 py-2 rounded-lg border border-brand-lime/30">
+        <p class="text-[10px] uppercase font-bold text-brand-cyan tracking-widest">Lugar</p>
+        <p class="font-black text-xl italic uppercase">NEOMUNDO</p>
+      </div>
+      <div class="bg-brand-dark/80 backdrop-blur-md px-6 py-2 rounded-lg border border-brand-lime/30">
+        <p class="text-[10px] uppercase font-bold text-brand-cyan tracking-widest">Fechas</p>
+        <p class="font-black text-xl italic uppercase">17 JUN - 19 JUL</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="#registro"
+        class="bg-brand-lime hover:bg-brand-cyan text-brand-dark hover:text-white font-black py-5 px-12 rounded-2xl text-xl transition-all shadow-[0_10px_30px_rgba(190,253,0,0.4)] transform hover:-translate-y-1 uppercase italic tracking-tighter"
+      >
+        Asegurar mi entrada
+      </a>
+    </div>
+  </div>
+</section>

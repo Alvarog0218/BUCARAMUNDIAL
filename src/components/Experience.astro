@@ -1,0 +1,51 @@
+---
+const steps = [
+  {
+    number: "1",
+    title: "Entrar",
+    color: "bg-brand-lime text-brand-dark rotate-3",
+    description: "Cruza el <strong>Túnel del Partido</strong>: un recorrido sensorial inmersivo."
+  },
+  {
+    number: "2",
+    title: "Explorar",
+    color: "bg-brand-cyan text-brand-dark -rotate-3",
+    description: "Recorre la casa: desde la <strong>Cocina</strong> hasta el <strong>Sofá del Gol</strong>."
+  },
+  {
+    number: "3",
+    title: "Ver el Partido",
+    color: "bg-brand-magenta text-white rotate-6",
+    description: "Vive cada jugada desde el corazón de la casa: la <strong>Sala Principal</strong>."
+  },
+  {
+    number: "4",
+    title: "Celebrar",
+    color: "bg-brand-blue text-white border-2 border-brand-cyan -rotate-6",
+    description: "Brindar y compartir en la <strong>Nevera del Partido</strong> con sorpresas."
+  }
+];
+---
+
+<section id="experiencia" class="py-24 bg-brand-dark/50 border-y border-brand-lime/10">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-black italic uppercase mb-4 tracking-tighter">¿Cómo se vive la experiencia?</h2>
+      <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">Abre la puerta y empieza el mundial</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      {
+        steps.map((step) => (
+          <article class="text-center">
+            <div class={`w-16 h-16 ${step.color} rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 transform`}>
+              {step.number}
+            </div>
+            <h3 class="text-xl font-black uppercase italic mb-2">{step.title}</h3>
+            <p class="text-gray-400 text-sm" set:html={step.description} />
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,25 +1,40 @@
-# Landing Page - Bucara es Mundial 🏟️🇨🇴
+# Bucara Mundial
 
-Este proyecto es una landing page de alta conversión diseñada para capturar leads interesados en asistir al evento oficial de transmisión del Mundial en Bucaramanga.
+Landing page para el evento "Bucara es Mundial" en Neomundo Bucaramanga, reconstruida como proyecto Astro con npm.
 
-## 🚀 Tecnologías utilizadas
-- **HTML5 Semántico**: Para una estructura robusta y SEO-friendly.
-- **Tailwind CSS (CDN)**: Para un diseño rápido, responsivo y moderno sin necesidad de compilación local.
-- **JavaScript Vanila**: Para interactividad básica (smooth scroll, manejo de formulario y selección de zonas).
-- **Google Fonts (Inter)**: Tipografía limpia y profesional.
+## Stack
 
-## 📂 Estructura del Proyecto
-- `index.html`: Único archivo que contiene toda la lógica, estilos y estructura.
-- `VS PUBLIC/`: Carpeta que contiene los activos gráficos originales (logos, piezas gráficas, favicon).
+- Astro como generador estático.
+- Tailwind CSS local con npm y Vite para que los estilos se compilen con Astro.
+- JavaScript cliente modular en `src/scripts/site.js`.
+- Supabase vía CDN para guardar leads cuando se configure la anon key.
 
-## 🛠️ Cómo ejecutar
-Simplemente abre el archivo `index.html` en cualquier navegador web moderno. No requiere servidor local ni instalación de dependencias.
+## Estructura
 
-## 🎨 Características de Diseño
-- **Modo Oscuro**: Estética premium para eventos nocturnos y deportivos.
-- **Jerarquía Visual**: Botones CTA (Call to Action) en amarillo vibrante para maximizar clics.
-- **Mobile First**: Totalmente optimizado para smartphones, donde ocurre el mayor tráfico de eventos masivos.
-- **Efectos Glassmorphism**: Uso de transparencias y desenfoques para un look moderno.
+- `src/pages/index.astro`: página principal.
+- `src/layouts/BaseLayout.astro`: HTML base, metadatos, Tailwind CDN, fuentes y scripts globales.
+- `src/components/`: secciones de la landing separadas por responsabilidad.
+- `src/styles/global.css`: estilos personalizados que no pertenecen a clases Tailwind.
+- `src/scripts/site.js`: modal del mapa, selección de zona, formularios, Supabase y redirección a Quick Ticket.
+- `public/assets/`: assets servidos por Astro con rutas limpias.
+- `.env.example`: variables públicas necesarias para habilitar Supabase.
 
-## 📧 Contacto
-Desarrollado para el evento oficial "Bucara es Mundial".
+## Comandos
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
+
+## Supabase
+
+Para guardar leads, crea un archivo `.env` a partir de `.env.example` y reemplaza:
+
+```bash
+PUBLIC_SUPABASE_URL=https://wiyoiuijzpskryxmdqzo.supabase.co
+PUBLIC_SUPABASE_ANON_KEY=TU_ANON_KEY_REAL
+```
+
+Si la anon key no está configurada, el formulario continúa redirigiendo a Quick Ticket sin bloquear al usuario.

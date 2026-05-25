@@ -1,0 +1,135 @@
+---
+const map = "/assets/zona-vip.png";
+const zones = [
+  {
+    name: "ZONA VIP",
+    label: "CORAZÓN DEL PARTIDO",
+    subtitle: "Mobiliario Cálido",
+    zoneValue: "VIP",
+    featured: true,
+    items: ["El Sofá del Gol", "La Cocina (Punto Venta)", "La Nevera del Partido"]
+  },
+  {
+    name: "ZONA GENERAL",
+    subtitle: "Activación Colectiva",
+    zoneValue: "General",
+    featured: false,
+    color: "lime",
+    items: ["Spot Híbrido Fotos", "Acceso Preferencial", "Cápsula del Gol"]
+  },
+  {
+    name: "ZONA INFANTIL",
+    subtitle: "Diversión Segura",
+    zoneValue: "Infantil",
+    featured: false,
+    color: "cyan",
+    items: ["Juegos Inflables", "Recreacionistas", "Snack Bar Kids"]
+  }
+];
+---
+
+<section id="zonas" class="py-24 bg-brand-dark relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-green-900 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-yellow-900 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <p class="text-brand-lime font-black uppercase tracking-[0.3em] mb-2">Bienvenidos a</p>
+      <h2 class="text-5xl md:text-7xl font-black italic uppercase mb-4 tracking-tighter">La Casa del Mundial</h2>
+      <div class="h-2 w-24 bg-brand-lime mx-auto"></div>
+      <p class="mt-6 text-gray-400 max-w-2xl mx-auto font-bold uppercase tracking-widest text-[10px]">
+        La casa no se recorre como un stand: SE VIVE COMO UNA EXPERIENCIA
+      </p>
+    </div>
+
+    <div class="mb-20 max-w-5xl mx-auto">
+      <div class="bg-brand-dark/40 border-2 border-brand-lime/20 rounded-[3rem] p-4 md:p-8 backdrop-blur-sm relative group shadow-2xl">
+        <div class="text-left mb-6">
+          <span class="bg-brand-lime text-brand-dark font-black px-4 py-1 rounded-full text-[10px] uppercase tracking-widest mb-2 inline-block">Mapa Oficial</span>
+          <h3 class="text-2xl md:text-3xl font-black italic uppercase text-white">Distribución de Estaciones</h3>
+          <p class="text-brand-lime text-[10px] font-bold uppercase tracking-widest mt-2">Haz clic en la imagen para ver completo</p>
+        </div>
+        <div class="absolute inset-0 bg-brand-lime/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[3rem] pointer-events-none"></div>
+        <button
+          type="button"
+          data-open-modal={map}
+          class="relative z-10 rounded-[2rem] overflow-hidden flex items-center justify-center cursor-zoom-in w-full"
+          aria-label="Abrir mapa oficial"
+        >
+          <img src={map} alt="Distribución La Casa del Mundial" class="w-full h-auto block" />
+        </button>
+      </div>
+      <p class="text-center mt-6 text-white font-bold uppercase tracking-widest text-[10px] italic">
+        * La ubicación de las zonas puede variar según la logística del evento
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+      {
+        zones.map((zone) =>
+          zone.featured ? (
+            <article class="bg-brand-lime p-1 rounded-3xl shadow-[0_0_50px_rgba(190,253,0,0.2)] flex flex-col transform hover:scale-[1.02] transition-transform">
+              <div class="bg-brand-dark p-10 rounded-[1.5rem] h-full flex flex-col justify-between border-2 border-brand-lime">
+                <div>
+                  <div class="inline-block bg-brand-magenta text-white text-[10px] font-black px-3 py-1 rounded-full mb-4 uppercase tracking-widest">
+                    {zone.label}
+                  </div>
+                  <h4 class="text-3xl font-black italic uppercase mb-2">{zone.name}</h4>
+                  <p class="text-brand-lime font-bold mb-6 text-sm uppercase tracking-widest">{zone.subtitle}</p>
+                  <ul class="space-y-4 mb-10">
+                    {zone.items.map((item) => (
+                      <li class="flex items-center gap-2 text-gray-200 font-bold">
+                        <span class="text-brand-lime text-xl">★</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <a
+                  href="#registro"
+                  data-zone-select={zone.zoneValue}
+                  class="block w-full text-center py-5 rounded-xl bg-brand-lime text-brand-dark hover:bg-brand-cyan hover:text-white transition-all font-black uppercase italic shadow-lg"
+                >
+                  Registrar interés
+                </a>
+              </div>
+            </article>
+          ) : (
+            <article class={`${zone.color === "cyan" ? "bg-brand-cyan/10" : "bg-brand-blue/10"} p-10 rounded-3xl border-2 border-brand-lime relative overflow-hidden group flex flex-col justify-between transition-all`}>
+              <div>
+                {zone.color === "cyan" && (
+                  <div class="absolute -right-8 -bottom-8 text-brand-cyan/10 group-hover:text-brand-cyan/20 transition-colors">
+                    <svg class="w-40 h-40" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 3L4 9V21H20V9L12 3M12 11C13.1 11 14 11.9 14 13C14 14.1 13.1 15 12 15C10.9 15 10 14.1 10 13C10 11.9 10.9 11 12 11Z" />
+                    </svg>
+                  </div>
+                )}
+                <h4 class="text-2xl font-black italic uppercase mb-2">{zone.name}</h4>
+                <p class={`${zone.color === "cyan" ? "text-brand-cyan" : "text-brand-lime"} font-bold mb-6 text-sm uppercase tracking-widest`}>
+                  {zone.subtitle}
+                </p>
+                <ul class="space-y-4 mb-10 relative z-10">
+                  {zone.items.map((item) => (
+                    <li class="flex items-center gap-2 text-sm text-gray-300 font-bold">
+                      <span class={zone.color === "cyan" ? "text-brand-cyan" : "text-brand-lime"}>✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a
+                href="#registro"
+                data-zone-select={zone.zoneValue}
+                class={`${zone.color === "cyan" ? "border-brand-cyan text-brand-cyan hover:bg-brand-cyan" : "border-brand-lime text-brand-lime hover:bg-brand-lime"} block w-full text-center py-4 rounded-xl border-2 hover:text-brand-dark transition-all font-black uppercase italic`}
+              >
+                Me interesa
+              </a>
+            </article>
+          )
+        )
+      }
+    </div>
+  </div>
+</section>

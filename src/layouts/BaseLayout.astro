@@ -1,0 +1,24 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "Bucara Mundial | Neomundo 2026",
+  description = "Landing page oficial de Bucara es Mundial en Neomundo Bucaramanga."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/assets/balon-verde.png" />
+  </head>
+  <body class="bg-brand-dark text-white antialiased">
+    <slot />
+    <script is:inline src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../scripts/site.js"></script>
+  </body>
+</html>

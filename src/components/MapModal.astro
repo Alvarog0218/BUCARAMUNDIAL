@@ -1,0 +1,18 @@
+<div id="map-modal" class="hidden fixed inset-0 z-[100] bg-brand-dark/95 backdrop-blur-xl items-center justify-center p-4 md:p-10 transition-all duration-300">
+  <button
+    type="button"
+    data-close-modal
+    class="absolute top-6 right-6 text-brand-lime hover:text-white transition-colors z-20"
+    aria-label="Cerrar mapa"
+  >
+    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+  <div class="relative w-full h-full flex items-center justify-center animate-in zoom-in-95 duration-300">
+    <img id="modal-img" src="" alt="Mapa Full Screen" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl border-2 border-brand-lime/20" />
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-brand-dark/80 backdrop-blur-md px-6 py-2 rounded-full border border-brand-lime/30 text-xs font-black text-brand-lime uppercase tracking-widest">
+      Mapa Oficial de Distribución
+    </div>
+  </div>
+</div>

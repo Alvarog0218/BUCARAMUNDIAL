@@ -1,0 +1,57 @@
+---
+const background = "/assets/hero-fondo.jpg";
+const features = [
+  {
+    title: "Más de 10 Pantallas",
+    description: "Tecnología 4K para no perderte ni un solo segundo de la acción mundialista.",
+    icon: "screen"
+  },
+  {
+    title: "Horario Extendido",
+    description: "Desde las 11:00 AM hasta las 02:00 AM. ¡La fiesta no para en Neomundo!",
+    icon: "clock"
+  },
+  {
+    title: "Sala Principal (VIP)",
+    description: "Experiencia exclusiva con atención a la mesa y el mejor ambiente de la ciudad.",
+    icon: "vip"
+  }
+];
+---
+
+<section class="py-24 relative z-20 overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src={background} alt="Fondo Features" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-brand-dark/85"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        features.map((feature) => (
+          <article class="bg-brand-dark/90 backdrop-blur-sm border-2 border-brand-lime/20 p-8 rounded-3xl hover:border-brand-lime transition-colors group">
+            <div class="text-brand-lime mb-4 group-hover:scale-110 transition-transform">
+              {feature.icon === "screen" && (
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 21h6l-.75-4M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              )}
+              {feature.icon === "clock" && (
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {feature.icon === "vip" && (
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c.533.479.827 1.13.827 1.805 0 1.657-2.367 3-5.287 3-2.92 0-5.287-1.343-5.287-3 0-.674.294-1.326.827-1.805a9.033 9.033 0 014.46-1.196c1.677 0 3.23.435 4.46 1.196zm-9.546-1.196a9.033 9.033 0 01-4.46 1.196c-1.677 0-3.23-.435-4.46-1.196C2.013 14.825 1.72 14.173 1.72 13.5c0-1.657 2.367-3 5.287-3 2.92 0 5.287 1.343 5.287 3 0 .674-.294 1.326-.827 1.805z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-2xl font-black italic uppercase mb-2">{feature.title}</h3>
+            <p class="text-gray-400 text-sm">{feature.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
