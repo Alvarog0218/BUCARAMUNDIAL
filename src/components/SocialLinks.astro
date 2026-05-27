@@ -1,0 +1,62 @@
+---
+const {
+  variant = "default",
+  className = ""
+} = Astro.props;
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/bucaramundial?igsh=MW5kZjl3NThoaWd6bw%3D%3D&utm_source=qr",
+    icon: "instagram"
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@bucaramundial?_r=1&_t=ZS-96HJVRP9DZy",
+    icon: "tiktok"
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/14bHrsVft96/?mibextid=wwXIfr",
+    icon: "facebook"
+  }
+];
+
+const isFooter = variant === "footer";
+---
+
+<nav class={`social-links ${className}`} aria-label="Redes sociales">
+  {
+    socialLinks.map((link) => (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={isFooter ? "social-link social-link-footer" : "social-link"}
+        aria-label={link.label}
+      >
+        {
+          link.icon === "instagram" && (
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+            </svg>
+          )
+        }
+        {
+          link.icon === "tiktok" && (
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M16.6 2c.35 2.25 1.58 3.6 3.8 3.74v3.14a7.08 7.08 0 0 1-3.74-1.1v6.84c0 4.34-3.14 6.83-6.95 6.2-5.44-.9-6.07-8.76-.94-10.56a6.7 6.7 0 0 1 2.66-.34v3.31c-.32-.05-.63-.06-.94-.02-2.42.32-2.94 3.7-.75 4.66 1.47.64 3.26-.11 3.26-2.25V2h3.6Z" />
+            </svg>
+          )
+        }
+        {
+          link.icon === "facebook" && (
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.5-3.91 3.8-3.91 1.1 0 2.25.2 2.25.2v2.47h-1.27c-1.24 0-1.63.77-1.63 1.56v1.9h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06Z" />
+            </svg>
+          )
+        }
+      </a>
+    ))
+  }
+</nav>

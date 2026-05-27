@@ -36,6 +36,10 @@ html {
   background: #0d1b3e;
 }
 
+:root {
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;
@@ -70,6 +74,11 @@ body > * {
 .site-header {
   position: absolute;
   z-index: 50;
+}
+
+.container {
+  padding-right: var(--page-gutter);
+  padding-left: var(--page-gutter);
 }
 
 .mobile-menu-button {
@@ -164,6 +173,51 @@ body > * {
   background: white;
 }
 
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-link {
+  display: inline-flex;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 5%);
+  color: white;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  border-color: #d4e157;
+  background: #d4e157;
+  color: #0d1b3e;
+  transform: translateY(-0.1rem);
+}
+
+.social-link svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
+}
+
+.social-link-footer {
+  min-width: 2.5rem;
+  min-height: 2.35rem;
+  padding: 0;
+  color: #d4e157;
+}
+
 @media (min-width: 1024px) {
   .mobile-menu-button,
   [data-mobile-menu] {
@@ -237,7 +291,7 @@ body > * {
 
 .ticket-field label {
   display: block;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.32rem;
   color: #d4e157;
   font-size: 0.62rem;
   font-weight: 900;
@@ -248,7 +302,7 @@ body > * {
 
 .ticket-control {
   width: 100%;
-  min-height: 3.25rem;
+  min-height: 2.75rem;
   border: 1px solid rgb(2 136 209 / 34%);
   border-radius: 0.9rem;
   background:
@@ -256,7 +310,7 @@ body > * {
     rgb(13 27 62 / 82%);
   color: white;
   outline: none;
-  padding: 0.95rem 1rem;
+  padding: 0.72rem 0.9rem;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.05em;
@@ -290,7 +344,7 @@ body > * {
 .ticket-select {
   appearance: none;
   cursor: pointer;
-  padding-right: 3.1rem;
+  padding-right: 2.8rem;
 }
 
 .ticket-select option {
@@ -302,7 +356,7 @@ body > * {
 .ticket-select-icon {
   position: absolute;
   top: 50%;
-  right: 1rem;
+  right: 0.9rem;
   display: flex;
   width: 1.15rem;
   height: 1.15rem;
@@ -319,13 +373,13 @@ body > * {
 }
 
 .ticket-field-message {
-  min-height: 1rem;
-  margin-top: 0.35rem;
+  min-height: 0.72rem;
+  margin-top: 0.18rem;
   color: #fca5a5;
   font-size: 0.67rem;
   font-weight: 900;
   letter-spacing: 0.08em;
-  line-height: 1.25;
+  line-height: 1.1;
   text-transform: uppercase;
   opacity: 0;
   transform: translateY(-0.15rem);

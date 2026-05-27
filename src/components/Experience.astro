@@ -1,83 +1,119 @@
 ---
-const experiences = [
-  {
-    title: "10 pantallas grandes",
-    color: "bg-brand-lime text-brand-dark rotate-3",
-    description:
-      "Cada jugada se vive en gran formato, con visuales pensadas para que no te pierdas ningún detalle del partido."
-  },
+const mainHighlights = [
   {
     title: "Sonido envolvente",
-    color: "bg-brand-cyan text-brand-dark -rotate-3",
-    description:
-      "Gritos, narración, música y celebración se sienten como en estadio, con una atmósfera diseñada para meterte en el juego."
-  },
-  {
-    title: "Comodidad para disfrutar",
-    color: "bg-brand-magenta text-white rotate-6",
-    description:
-      "Espacios organizados, zonas para compartir y opciones de asientos cómodos para vivir la fecha completa sin afán."
+    description: "Narración, música y celebración para sentir el partido como en estadio."
   },
   {
     title: "Ambiente futbolero",
-    color: "bg-brand-blue text-white border-2 border-brand-cyan -rotate-6",
-    description:
-      "Una casa llena de hinchas, activaciones, emoción colectiva y momentos para celebrar cada gol de la Selección."
+    description: "Hinchas, activaciones y emoción colectiva en cada jugada de la Selección."
   },
   {
-    title: "Zona de comidas",
-    color: "bg-brand-lime text-brand-dark -rotate-6",
-    description:
-      "Durante el evento habrá espacios para comprar comida, bebidas y snacks sin salir de la experiencia."
+    title: "Experiencias",
+    description: "Fotos, dinámicas de marca y momentos para compartir antes, durante y después."
+  }
+];
+
+const amenities = [
+  {
+    label: "Comodidad",
+    text: "Espacios organizados y opciones de asientos cómodos para disfrutar la jornada completa."
   },
   {
-    title: "Espacio para niños",
-    color: "bg-brand-cyan text-brand-dark rotate-6",
-    description:
-      "Los más pequeños también tienen su lugar, con actividades pensadas para que las familias vivan el Mundial juntas."
+    label: "Zona de comidas",
+    text: "Puntos para comprar comida, bebidas y snacks sin salir de la experiencia."
   },
   {
-    title: "Regalos y sorteos",
-    color: "bg-brand-magenta text-white -rotate-3",
-    description:
-      "Además del partido, habrá sorpresas, dinámicas, premios y oportunidades para llevarse recuerdos de la jornada."
+    label: "Espacio para niños",
+    text: "Actividades pensadas para que las familias vivan el Mundial juntas."
   },
   {
-    title: "Y mucho más",
-    color: "bg-brand-blue text-white border-2 border-brand-lime rotate-3",
-    description:
-      "Experiencias, puntos de encuentro, fotos, activaciones de marca y todo el ambiente de Bucara es Mundial."
+    label: "Regalos y sorteos",
+    text: "Sorpresas, premios y dinámicas para llevarte recuerdos de la jornada."
+  },
+  {
+    label: "Y mucho más",
+    text: "Puntos de encuentro, activaciones y toda la energía de Bucara es Mundial."
   }
 ];
 ---
 
-<section id="experiencia" class="py-24 bg-brand-dark/50 border-y border-brand-lime/10">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-16 max-w-4xl mx-auto">
-      <h2 class="text-4xl md:text-6xl font-black italic uppercase mb-4 tracking-tighter leading-none">
+<section id="experiencia" class="relative py-24 bg-brand-dark/50 border-y border-brand-lime/10 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none opacity-15">
+    <img
+      src="/assets/balon.png"
+      alt=""
+      aria-hidden="true"
+      class="absolute -right-28 top-10 w-[30rem] max-w-none md:right-6 md:w-[38rem] object-contain"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-14 max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-black italic uppercase mb-5 tracking-tighter leading-none">
         ¿Cómo se vive la experiencia?
       </h2>
-      <p class="text-brand-lime font-black uppercase tracking-widest text-xs md:text-sm leading-relaxed">
-        Pantallas grandes, sonido envolvente, comida, familia, premios y toda la emoción del fútbol en un solo lugar.
+      <p class="text-brand-lime font-black uppercase tracking-widest text-xs md:text-sm leading-relaxed max-w-3xl mx-auto">
+        Un ambiente de Mundial diseñado para ver, celebrar, comer, compartir y vivir cada partido con la ciudad.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-      {
-        experiences.map((experience, index) => (
-          <article class="bg-brand-blue/12 border border-white/10 rounded-3xl p-7 text-center backdrop-blur-sm hover:border-brand-lime/60 transition-colors">
-            <div class={`w-16 h-16 ${experience.color} rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 transform`}>
-              {String(index + 1).padStart(2, "0")}
-            </div>
-            <h3 class="text-lg md:text-xl font-black uppercase italic mb-3 leading-tight">
-              {experience.title}
-            </h3>
-            <p class="text-gray-400 text-sm leading-relaxed font-semibold">
-              {experience.description}
+    <div class="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+      <div>
+        <div class="flex items-end justify-center lg:justify-start gap-4 mb-6">
+          <span class="font-title text-[7rem] md:text-[10rem] leading-none text-brand-lime">10</span>
+          <div class="pb-5 text-left">
+            <p class="text-2xl md:text-4xl font-black italic uppercase leading-none text-white">
+              Pantallas
             </p>
-          </article>
-        ))
-      }
+            <p class="text-2xl md:text-4xl font-black italic uppercase leading-none text-white">
+              grandes
+            </p>
+          </div>
+        </div>
+
+        <p class="max-w-xl mx-auto lg:mx-0 text-center lg:text-left text-gray-300 text-base md:text-lg leading-relaxed font-semibold">
+          Cada jugada se vive en gran formato, con sonido envolvente, ambiente futbolero y la energía de cientos de hinchas reunidos para apoyar a Colombia.
+        </p>
+
+        <div class="mt-8 divide-y divide-white/10 border-y border-white/10">
+          {
+            mainHighlights.map((item) => (
+              <div class="py-5">
+                <h3 class="text-brand-cyan text-sm font-black uppercase tracking-widest mb-2">
+                  {item.title}
+                </h3>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed font-semibold">
+                  {item.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="bg-brand-blue/18 border-l-4 border-brand-lime px-5 py-2 md:px-8 backdrop-blur-sm">
+        <ul class="divide-y divide-white/12">
+          {
+            amenities.map((item, index) => (
+              <li class="grid grid-cols-[3rem_1fr] gap-4 py-5 md:py-6">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-lime text-brand-dark text-sm font-black">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 class="text-lg md:text-xl font-black uppercase italic leading-tight text-white">
+                    {item.label}
+                  </h3>
+                  <p class="mt-2 text-sm md:text-base text-gray-300 leading-relaxed font-semibold">
+                    {item.text}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </div>
 </section>

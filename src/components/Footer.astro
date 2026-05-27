@@ -1,27 +1,52 @@
 ---
-const logo = "/assets/logo.png";
-const sponsors = Array.from({ length: 10 }, (_, index) => index + 1);
+import SocialLinks from "./SocialLinks.astro";
+
+const logo = "/assets/logo-bucara.png";
+const sponsors = [
+  { src: "/assets/patrocinadores/1.png", alt: "Patrocinador 1" },
+  { src: "/assets/patrocinadores/2.png", alt: "Patrocinador 2" },
+  { src: "/assets/patrocinadores/3.png", alt: "Patrocinador 3", featured: true },
+  { src: "/assets/patrocinadores/sonotec.svg", alt: "Sonotec" },
+  { src: "/assets/patrocinadores/5.png", alt: "Patrocinador 5" },
+  { src: "/assets/patrocinadores/6.png", alt: "Patrocinador 6" },
+  { src: "/assets/patrocinadores/7.png", alt: "Patrocinador 7" },
+  { src: "/assets/patrocinadores/8.png", alt: "Patrocinador 8" },
+  { src: "/assets/patrocinadores/9.png", alt: "Patrocinador 9" },
+  { src: "/assets/patrocinadores/10.png", alt: "Patrocinador 10" }
+];
 const sponsorLoop = [...sponsors, ...sponsors];
+
+const legalLinks = [
+  { label: "Aviso de Privacidad", href: "/privacidad" },
+  { label: "Términos del Evento", href: "/terminos-evento" },
+  { label: "Tratamiento de Datos", href: "/tratamiento-datos" }
+];
 ---
 
-<footer id="aliados" class="py-16 bg-brand-dark border-t border-brand-lime/20">
-  <div class="container mx-auto px-6 text-center">
-    <div class="mb-16">
-      <h2 class="font-title text-2xl md:text-3xl font-black uppercase tracking-[0.2em] text-white mb-16 italic">
+<footer id="aliados" class="bg-[#071431] border-t border-brand-lime/20">
+  <div class="container mx-auto px-6 py-16 md:py-20">
+    <div class="text-center mb-14">
+      <p class="text-brand-lime font-black uppercase tracking-[0.3em] text-xs mb-3">
+        Aliados
+      </p>
+      <h2 class="font-title text-2xl md:text-3xl font-black uppercase tracking-[0.2em] text-white italic">
         Nuestros Aliados Estratégicos
       </h2>
-      <div class="relative w-full overflow-hidden">
-        <div class="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-brand-dark to-transparent z-10 pointer-events-none"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-brand-dark to-transparent z-10 pointer-events-none"></div>
+    </div>
 
-        <div class="animate-marquee gap-8 md:gap-12 pb-12 pt-4 items-center">
+    <div class="mb-16">
+      <div class="relative w-full overflow-hidden">
+        <div class="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-[#071431] to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-[#071431] to-transparent z-10 pointer-events-none"></div>
+
+        <div class="animate-marquee gap-8 md:gap-12 py-4 items-center">
           {
             sponsorLoop.map((sponsor) => (
               <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
                 <img
-                  src={`/assets/patrocinadores/${sponsor}.png`}
-                  alt={`Patrocinador ${sponsor}`}
-                  class={`${sponsor === 3 ? "h-48 md:h-64" : "h-40 md:h-48"} w-auto object-contain neon-filter`}
+                  src={sponsor.src}
+                  alt={sponsor.alt}
+                  class={`${sponsor.featured ? "h-48 md:h-64" : "h-40 md:h-48"} w-auto object-contain neon-filter`}
                 />
               </div>
             ))
@@ -30,21 +55,51 @@ const sponsorLoop = [...sponsors, ...sponsors];
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-center items-center gap-8 pt-8 border-t border-brand-cyan/20">
-      <div class="flex items-center gap-3">
-        <img src={logo} alt="Logo" class="h-10 opacity-80" />
-        <p class="text-[10px] font-bold text-gray-600 uppercase tracking-widest text-center md:text-left">
-          © 2026 BUCARA ES MUNDIAL<br />NEOMUNDO BUCARAMANGA
-        </p>
+    <div class="grid gap-10 border-t border-white/10 pt-10 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <img src={logo} alt="Bucara es Mundial 2026" class="w-48 md:w-56 h-auto object-contain mx-auto md:mx-0" />
+        <div class="text-center md:text-left">
+          <p class="text-white font-black uppercase italic tracking-tight text-xl">
+            Bucara es Mundial 2026
+          </p>
+          <p class="mt-2 text-brand-cyan text-xs font-black uppercase tracking-widest">
+            Neomundo Bucaramanga · 17 Jun - 19 Jul
+          </p>
+          <p class="mt-2 text-brand-lime text-xs font-black uppercase tracking-widest">
+            Código PULEP: HPT643
+          </p>
+          <p class="mt-4 max-w-xl text-sm text-gray-400 leading-relaxed font-semibold">
+            La casa del Mundial en Bucaramanga: pantallas grandes, ambiente futbolero,
+            zonas para compartir y experiencias para toda la familia.
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="bg-brand-lime mt-12 py-6">
-    <div class="container mx-auto px-6 flex flex-wrap justify-center gap-12 text-sm font-black text-brand-dark/60 uppercase tracking-widest">
-      <a href="#" class="hover:text-brand-dark transition-colors">Aviso de Privacidad</a>
-      <a href="#" class="hover:text-brand-dark transition-colors">Términos del Evento</a>
-      <a href="#" class="hover:text-brand-dark transition-colors">Tratamiento de Datos</a>
+      <a
+        href="#registro"
+        class="inline-flex justify-center rounded-full bg-brand-lime px-8 py-4 text-xs font-black uppercase tracking-widest text-brand-dark transition-all hover:bg-white"
+      >
+        Asegurar entrada
+      </a>
+    </div>
+
+    <div class="mt-10 flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+      <p class="text-center md:text-left text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+        © 2026 Bucara es Mundial. Todos los derechos reservados.
+      </p>
+
+      <div class="flex flex-col items-center gap-5 md:items-end">
+        <SocialLinks variant="footer" />
+        <nav class="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-3" aria-label="Enlaces legales">
+          {
+            legalLinks.map(({ label, href }) => (
+              <a href={href} class="text-[10px] font-black text-gray-400 hover:text-brand-lime uppercase tracking-widest transition-colors">
+                {label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
     </div>
   </div>
 </footer>

@@ -1,4 +1,6 @@
 ---
+import SocialLinks from "./SocialLinks.astro";
+
 const logo = "/assets/26-fifa.png";
 const navItems = [
   { label: "Inicio", href: "#inicio" },
@@ -28,12 +30,15 @@ const navItems = [
       }
     </div>
 
-    <a
-      href="#registro"
-      class="hidden lg:inline-flex bg-brand-lime hover:bg-white text-brand-dark font-black py-3 px-8 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(212,225,87,0.3)] uppercase text-xs tracking-widest shrink-0"
-    >
-      Entradas
-    </a>
+    <div class="hidden lg:flex items-center gap-4 shrink-0">
+      <SocialLinks />
+      <a
+        href="#registro"
+        class="inline-flex bg-brand-lime hover:bg-white text-brand-dark font-black py-3 px-8 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(212,225,87,0.3)] uppercase text-xs tracking-widest"
+      >
+        Entradas
+      </a>
+    </div>
 
     <button
       type="button"
@@ -58,6 +63,7 @@ const navItems = [
           </a>
         ))
       }
+      <SocialLinks className="justify-center py-2" />
       <a href="#registro" class="mobile-menu-cta" data-mobile-menu-link>
         Entradas
       </a>
