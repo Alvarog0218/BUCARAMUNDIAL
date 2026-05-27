@@ -1,48 +1,80 @@
 ---
-const steps = [
+const experiences = [
   {
-    number: "1",
-    title: "Entrar",
+    title: "10 pantallas grandes",
     color: "bg-brand-lime text-brand-dark rotate-3",
-    description: "Cruza el <strong>Túnel del Partido</strong>: un recorrido sensorial inmersivo."
+    description:
+      "Cada jugada se vive en gran formato, con visuales pensadas para que no te pierdas ningún detalle del partido."
   },
   {
-    number: "2",
-    title: "Explorar",
+    title: "Sonido envolvente",
     color: "bg-brand-cyan text-brand-dark -rotate-3",
-    description: "Recorre la casa: desde la <strong>Cocina</strong> hasta el <strong>Sofá del Gol</strong>."
+    description:
+      "Gritos, narración, música y celebración se sienten como en estadio, con una atmósfera diseñada para meterte en el juego."
   },
   {
-    number: "3",
-    title: "Ver el Partido",
+    title: "Comodidad para disfrutar",
     color: "bg-brand-magenta text-white rotate-6",
-    description: "Vive cada jugada desde el corazón de la casa: la <strong>Sala Principal</strong>."
+    description:
+      "Espacios organizados, zonas para compartir y opciones de asientos cómodos para vivir la fecha completa sin afán."
   },
   {
-    number: "4",
-    title: "Celebrar",
+    title: "Ambiente futbolero",
     color: "bg-brand-blue text-white border-2 border-brand-cyan -rotate-6",
-    description: "Brindar y compartir en la <strong>Nevera del Partido</strong> con sorpresas."
+    description:
+      "Una casa llena de hinchas, activaciones, emoción colectiva y momentos para celebrar cada gol de la Selección."
+  },
+  {
+    title: "Zona de comidas",
+    color: "bg-brand-lime text-brand-dark -rotate-6",
+    description:
+      "Durante el evento habrá espacios para comprar comida, bebidas y snacks sin salir de la experiencia."
+  },
+  {
+    title: "Espacio para niños",
+    color: "bg-brand-cyan text-brand-dark rotate-6",
+    description:
+      "Los más pequeños también tienen su lugar, con actividades pensadas para que las familias vivan el Mundial juntas."
+  },
+  {
+    title: "Regalos y sorteos",
+    color: "bg-brand-magenta text-white -rotate-3",
+    description:
+      "Además del partido, habrá sorpresas, dinámicas, premios y oportunidades para llevarse recuerdos de la jornada."
+  },
+  {
+    title: "Y mucho más",
+    color: "bg-brand-blue text-white border-2 border-brand-lime rotate-3",
+    description:
+      "Experiencias, puntos de encuentro, fotos, activaciones de marca y todo el ambiente de Bucara es Mundial."
   }
 ];
 ---
 
 <section id="experiencia" class="py-24 bg-brand-dark/50 border-y border-brand-lime/10">
   <div class="container mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-black italic uppercase mb-4 tracking-tighter">¿Cómo se vive la experiencia?</h2>
-      <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">Abre la puerta y empieza el mundial</p>
+    <div class="text-center mb-16 max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-black italic uppercase mb-4 tracking-tighter leading-none">
+        ¿Cómo se vive la experiencia?
+      </h2>
+      <p class="text-brand-lime font-black uppercase tracking-widest text-xs md:text-sm leading-relaxed">
+        Pantallas grandes, sonido envolvente, comida, familia, premios y toda la emoción del fútbol en un solo lugar.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
       {
-        steps.map((step) => (
-          <article class="text-center">
-            <div class={`w-16 h-16 ${step.color} rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 transform`}>
-              {step.number}
+        experiences.map((experience, index) => (
+          <article class="bg-brand-blue/12 border border-white/10 rounded-3xl p-7 text-center backdrop-blur-sm hover:border-brand-lime/60 transition-colors">
+            <div class={`w-16 h-16 ${experience.color} rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 transform`}>
+              {String(index + 1).padStart(2, "0")}
             </div>
-            <h3 class="text-xl font-black uppercase italic mb-2">{step.title}</h3>
-            <p class="text-gray-400 text-sm" set:html={step.description} />
+            <h3 class="text-lg md:text-xl font-black uppercase italic mb-3 leading-tight">
+              {experience.title}
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed font-semibold">
+              {experience.description}
+            </p>
           </article>
         ))
       }

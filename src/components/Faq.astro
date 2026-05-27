@@ -1,0 +1,123 @@
+---
+const shapes = {
+  lime: "/assets/amarillo.png",
+  cyan: "/assets/celeste.png",
+  magenta: "/assets/rosa.png",
+  green: "/assets/verde.png"
+};
+
+const faqs = [
+  {
+    question: "¿Dónde se realiza Bucara es Mundial?",
+    answer:
+      "La experiencia se vive en Neomundo, Bucaramanga. El espacio está diseñado como la Casa del Mundial, con zonas para ver los partidos, compartir y recorrer activaciones."
+  },
+  {
+    question: "¿Qué fechas cubre el evento?",
+    answer:
+      "La programación está prevista del 17 de junio al 19 de julio, durante el calendario del Mundial. Las jornadas específicas se confirmarán según los partidos y horarios oficiales."
+  },
+  {
+    question: "¿Qué diferencia hay entre Zona General, VIP e Infantil?",
+    answer:
+      "Zona General está pensada para vivir el ambiente colectivo, Zona VIP ofrece una experiencia más cómoda cerca del corazón del partido y Zona Infantil reúne actividades seguras para niños."
+  },
+  {
+    question: "¿Puedo comprar boleta individual o abono?",
+    answer:
+      "Sí. En el registro puedes elegir entre boleta individual o abono de evento. Según el tipo de compra, el formulario habilita las zonas disponibles."
+  },
+  {
+    question: "¿El mapa de distribución puede cambiar?",
+    answer:
+      "Sí. La ubicación de estaciones y zonas puede ajustarse por logística, aforo, operación o requerimientos del evento."
+  },
+  {
+    question: "¿Cómo continúo con la compra?",
+    answer:
+      "Completa tus datos en el formulario, selecciona tipo de entrada y zona, y el sitio te llevará al proceso de compra correspondiente."
+  }
+];
+---
+
+<section id="preguntas" class="relative overflow-hidden bg-[#061334] py-24 border-y border-brand-cyan/20">
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <img
+      src={shapes.cyan}
+      alt=""
+      aria-hidden="true"
+      class="faq-shape faq-shape-cyan"
+      loading="lazy"
+    />
+    <img
+      src={shapes.lime}
+      alt=""
+      aria-hidden="true"
+      class="faq-shape faq-shape-lime"
+      loading="lazy"
+    />
+    <img
+      src={shapes.magenta}
+      alt=""
+      aria-hidden="true"
+      class="faq-shape faq-shape-magenta"
+      loading="lazy"
+    />
+    <img
+      src={shapes.green}
+      alt=""
+      aria-hidden="true"
+      class="faq-shape faq-shape-green"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/55 to-brand-blue/70"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+      <div class="lg:sticky lg:top-24">
+        <p class="text-brand-cyan font-black uppercase tracking-[0.3em] mb-3 text-xs">
+          Antes de comprar
+        </p>
+        <h2 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none text-white">
+          Preguntas frecuentes
+        </h2>
+        <p class="mt-6 max-w-md text-sm md:text-base text-gray-300 font-bold uppercase tracking-widest leading-relaxed">
+          Resolvemos las dudas clave sobre fechas, zonas, entradas y acceso para que elijas tu lugar con claridad.
+        </p>
+        <a
+          href="#registro"
+          class="mt-8 inline-flex items-center justify-center rounded-full bg-brand-lime px-8 py-4 text-xs font-black uppercase tracking-widest text-brand-dark shadow-[0_0_28px_rgba(212,225,87,0.28)] transition-all hover:bg-white"
+        >
+          Ir a entradas
+        </a>
+      </div>
+
+      <div class="space-y-4">
+        {
+          faqs.map((faq, index) => (
+            <details
+              class="faq-item group rounded-2xl border border-white/10 bg-brand-dark/78 backdrop-blur-xl shadow-2xl transition-colors open:border-brand-lime/70"
+              open={index === 0}
+            >
+              <summary class="faq-summary flex min-h-20 cursor-pointer list-none items-center justify-between gap-5 px-5 py-5 md:px-7">
+                <span class="text-left text-base md:text-lg font-black uppercase italic tracking-tight text-white">
+                  {faq.question}
+                </span>
+                <span class="faq-toggle" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                </span>
+              </summary>
+              <div class="px-5 pb-6 md:px-7">
+                <p class="max-w-3xl text-sm md:text-base leading-relaxed text-gray-300 font-semibold">
+                  {faq.answer}
+                </p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

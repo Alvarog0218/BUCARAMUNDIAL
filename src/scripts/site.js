@@ -12,6 +12,34 @@ const purchaseButtonLabels = {
   abono: "Ir a comprar abono"
 };
 
+const eventStartDate = new Date("2026-06-18T02:00:00Z");
+
+const formatCountdownUnit = (value, singular, plural) =>
+  `${String(value).padStart(2, "0")} ${value === 1 ? singular : plural}`;
+
+const updateEventCountdown = () => {
+  const countdownElement = document.querySelector("[data-event-countdown]");
+
+  if (!countdownElement) {
+    return;
+  }
+
+  const diff = eventStartDate.getTime() - Date.now();
+
+  if (diff <= 0) {
+    countdownElement.innerText = "BUCARA ES MUNDIAL YA ESTA EN VIVO";
+    return;
+  }
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  countdownElement.innerText = `FALTAN ${formatCountdownUnit(days, "DIA", "DIAS")} ${formatCountdownUnit(hours, "HORA", "HORAS")} ${formatCountdownUnit(minutes, "MIN", "MIN")} ${formatCountdownUnit(seconds, "SEG", "SEG")}`;
+};
+
 const getSupabaseClient = () => {
   if (!window.supabase || SUPABASE_ANON_KEY === "TU_ANON_KEY_AQUI") {
     return null;
@@ -308,6 +336,9 @@ document.querySelectorAll("[data-ticket-form]").forEach((form) => {
 
   form.addEventListener("submit", handleTicketPurchase);
 });
+
+updateEventCountdown();
+window.setInterval(updateEventCountdown, 1000);
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {

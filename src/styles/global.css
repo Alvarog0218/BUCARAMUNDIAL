@@ -344,6 +344,87 @@ body > * {
   transform: translateY(0);
 }
 
+.faq-shape {
+  position: absolute;
+  width: clamp(15rem, 28vw, 30rem);
+  max-width: none;
+  object-fit: contain;
+  opacity: 0.72;
+  mix-blend-mode: screen;
+}
+
+.faq-shape-cyan {
+  top: -7rem;
+  right: -5rem;
+  transform: rotate(180deg);
+}
+
+.faq-shape-lime {
+  bottom: -10rem;
+  left: -8rem;
+  transform: rotate(270deg);
+}
+
+.faq-shape-magenta {
+  top: 43%;
+  left: 47%;
+  width: clamp(10rem, 18vw, 18rem);
+  opacity: 0.42;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-shape-green {
+  right: 8%;
+  bottom: -13rem;
+  width: clamp(13rem, 24vw, 25rem);
+  opacity: 0.38;
+  transform: rotate(180deg);
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-toggle {
+  position: relative;
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(212 225 87 / 42%);
+  border-radius: 999px;
+  background: rgb(212 225 87 / 10%);
+  color: #d4e157;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.faq-toggle span {
+  position: absolute;
+  width: 1rem;
+  height: 0.15rem;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 180ms ease;
+}
+
+.faq-toggle span:nth-child(2) {
+  transform: rotate(90deg);
+}
+
+.faq-item[open] .faq-toggle {
+  background: #d4e157;
+  color: #0d1b3e;
+  transform: rotate(180deg);
+}
+
+.faq-item[open] .faq-toggle span:nth-child(2) {
+  transform: rotate(0deg);
+}
+
 @media (max-width: 767px) {
   .registration-background-mark {
     width: 155vw;
@@ -351,6 +432,31 @@ body > * {
     object-fit: contain;
     object-position: center;
     opacity: 0.7;
+  }
+
+  .faq-shape {
+    width: 18rem;
+    opacity: 0.5;
+  }
+
+  .faq-shape-cyan {
+    top: -4rem;
+    right: -8rem;
+  }
+
+  .faq-shape-lime {
+    bottom: auto;
+    top: 18rem;
+    left: -10rem;
+  }
+
+  .faq-shape-magenta {
+    display: none;
+  }
+
+  .faq-shape-green {
+    right: -8rem;
+    bottom: -7rem;
   }
 }
 
