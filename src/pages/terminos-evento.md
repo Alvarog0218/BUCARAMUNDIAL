@@ -1,13 +1,8 @@
 ---
-import LegalLayout from "../layouts/LegalLayout.astro";
+layout: ../layouts/LegalLayout.astro
+title: "Términos del Evento | Bucara es Mundial 2026"
+description: "Términos y condiciones de participación en el evento Bucara es Mundial 2026 en Neomundo Bucaramanga."
 ---
-
-<LegalLayout
-  title="Términos del Evento | Bucara es Mundial 2026"
-  description="Términos y condiciones de participación en el evento Bucara es Mundial 2026 en Neomundo Bucaramanga."
->
-
-# Términos y Condiciones del Evento
 
 **Versión:** 1.0 · **Vigencia:** 27 de mayo de 2026
 
@@ -163,5 +158,3 @@ Para consultas, reclamaciones o peticiones relacionadas con el evento:
 ## 13. Aceptación
 
 Al adquirir una boleta o acceder al recinto del evento, el asistente declara haber leído y aceptado en su totalidad los presentes Términos y Condiciones.
-
-</LegalLayout>

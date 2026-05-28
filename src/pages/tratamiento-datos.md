@@ -1,13 +1,8 @@
 ---
-import LegalLayout from "../layouts/LegalLayout.astro";
+layout: ../layouts/LegalLayout.astro
+title: "Política de Tratamiento de Datos | Bucara es Mundial 2026"
+description: "Política de tratamiento de datos personales del evento Bucara es Mundial 2026, conforme a la Ley 1581 de 2012."
 ---
-
-<LegalLayout
-  title="Política de Tratamiento de Datos | Bucara es Mundial 2026"
-  description="Política de tratamiento de datos personales del evento Bucara es Mundial 2026, conforme a la Ley 1581 de 2012."
->
-
-# Política de Tratamiento de Datos Personales
 
 **Versión:** 1.0 · **Vigencia:** 27 de mayo de 2026
 
@@ -185,5 +180,3 @@ Si considera que el Organizador ha vulnerado su derecho a la protección de dato
 ## 15. Vigencia y Modificaciones
 
 Esta política rige a partir del **27 de mayo de 2026**. El Organizador puede modificarla en cualquier momento, notificando los cambios a través del sitio web con al menos **cinco (5) días hábiles** de anticipación a su entrada en vigor.
-
-</LegalLayout>

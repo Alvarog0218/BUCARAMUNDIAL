@@ -1,13 +1,8 @@
 ---
-import LegalLayout from "../layouts/LegalLayout.astro";
+layout: ../layouts/LegalLayout.astro
+title: "Aviso de Privacidad | Bucara es Mundial 2026"
+description: "Aviso de privacidad del evento Bucara es Mundial 2026 en Neomundo Bucaramanga."
 ---
-
-<LegalLayout
-  title="Aviso de Privacidad | Bucara es Mundial 2026"
-  description="Aviso de privacidad del evento Bucara es Mundial 2026 en Neomundo Bucaramanga."
->
-
-# Aviso de Privacidad
 
 **Última actualización:** 27 de mayo de 2026
 
@@ -97,5 +92,3 @@ Esta política entra en vigencia a partir del **27 de mayo de 2026** y se manten
 ## 9. Modificaciones
 
 El Organizador se reserva el derecho de actualizar este aviso. Cualquier cambio sustancial será comunicado a través del sitio web oficial con al menos **cinco (5) días hábiles** de anticipación.
-
-</LegalLayout>

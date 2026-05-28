@@ -1,50 +1,166 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
-const { title, description } = Astro.props;
+const { title: titleDirect, description: descDirect, frontmatter } = Astro.props;
+const title = titleDirect ?? frontmatter?.title ?? '';
+const description = descDirect ?? frontmatter?.description ?? '';
 const logo = "/assets/logo-bucara.png";
 ---
 
 <BaseLayout title={title} description={description}>
-  <header class="bg-[#071431] border-b border-brand-lime/20 py-5 px-6">
-    <div class="container mx-auto max-w-4xl flex items-center justify-between gap-4">
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#071431]/80 backdrop-blur-md border-b border-brand-lime/10 py-4 px-6">
+    <div class="container mx-auto flex items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-3 group">
-        <img src={logo} alt="Bucara es Mundial 2026" class="h-10 w-auto object-contain" />
+        <img src={logo} alt="Bucara es Mundial 2026" class="h-10 md:h-12 w-auto object-contain" />
       </a>
       <a
         href="/"
-        class="text-[10px] font-black uppercase tracking-widest text-brand-lime hover:text-white transition-colors"
+        class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-lime hover:text-white transition-all hover:-translate-x-1"
       >
-        ← Volver al inicio
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Volver al inicio
       </a>
     </div>
   </header>
 
-  <main class="bg-brand-dark min-h-screen py-16 px-6">
-    <div class="container mx-auto max-w-4xl">
-      <article class="prose prose-invert prose-sm md:prose-base max-w-none
-        prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight
-        prose-h1:text-brand-lime prose-h1:text-3xl md:prose-h1:text-4xl prose-h1:italic prose-h1:mb-2
-        prose-h2:text-white prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-brand-lime/20 prose-h2:pb-2
-        prose-h3:text-brand-cyan prose-h3:text-base prose-h3:mt-6
-        prose-p:text-gray-300 prose-p:leading-relaxed
-        prose-li:text-gray-300
-        prose-strong:text-white
-        prose-a:text-brand-lime prose-a:no-underline hover:prose-a:text-brand-cyan
-      ">
+  <main class="bg-brand-dark min-h-screen pt-32 pb-24 px-6 relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+      <div class="absolute top-[10%] -left-20 w-96 h-96 bg-brand-lime rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-[20%] -right-20 w-80 h-80 bg-brand-cyan rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="container mx-auto max-w-4xl relative z-10">
+      <div class="mb-16 border-b border-brand-lime/20 pb-10">
+        <p class="text-brand-lime font-black uppercase tracking-[0.3em] text-xs mb-4">Documento Legal</p>
+        <h1 class="text-4xl md:text-6xl font-black italic uppercase text-white tracking-tighter leading-none">
+          {title.split(' | ')[0]}
+        </h1>
+      </div>
+
+      <article class="legal-content">
         <slot />
       </article>
     </div>
   </main>
 
-  <footer class="bg-[#071431] border-t border-brand-lime/20 py-8 px-6 text-center">
-    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-      © 2026 Bucara es Mundial. Todos los derechos reservados. · Código PULEP: HPT643
-    </p>
-    <nav class="mt-4 flex flex-wrap justify-center gap-x-8 gap-y-3">
-      <a href="/privacidad" class="text-[10px] font-black text-gray-400 hover:text-brand-lime uppercase tracking-widest transition-colors">Aviso de Privacidad</a>
-      <a href="/terminos-evento" class="text-[10px] font-black text-gray-400 hover:text-brand-lime uppercase tracking-widest transition-colors">Términos del Evento</a>
-      <a href="/tratamiento-datos" class="text-[10px] font-black text-gray-400 hover:text-brand-lime uppercase tracking-widest transition-colors">Tratamiento de Datos</a>
-    </nav>
+  <footer class="bg-[#071431] border-t border-brand-lime/20 py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+        <div>
+          <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            © 2026 Bucara es Mundial. Todos los derechos reservados.
+          </p>
+          <p class="text-[10px] font-bold text-brand-lime/60 uppercase tracking-widest mt-1">
+            Código PULEP: HPT643 · Bucaramanga, Colombia
+          </p>
+        </div>
+        <nav class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-3">
+          <a href="/privacidad" class="text-[10px] font-black text-gray-400 hover:text-brand-lime uppercase tracking-widest transition-colors">Privacidad</a>
+          <a href="/terminos-evento" class="text-[10px] font-black text-gray-400 hover:text-brand-lime uppercase tracking-widest transition-colors">Términos</a>
+          <a href="/tratamiento-datos" class="text-[10px] font-black text-gray-400 hover:text-brand-lime uppercase tracking-widest transition-colors">Datos</a>
+        </nav>
+      </div>
+    </div>
   </footer>
 </BaseLayout>
+
+<style is:global>
+  .legal-content h2 {
+    color: #d4e157;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-top: 3.5rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+  }
+
+  .legal-content h3 {
+    color: #d4e157;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-content p {
+    color: rgb(209 213 219);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  .legal-content ul,
+  .legal-content ol {
+    color: rgb(209 213 219);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .legal-content ul { list-style-type: disc; }
+  .legal-content ol { list-style-type: decimal; }
+
+  .legal-content li {
+    margin-bottom: 0.4rem;
+  }
+
+  .legal-content ul > li::marker,
+  .legal-content ol > li::marker {
+    color: #d4e157;
+  }
+
+  .legal-content strong {
+    color: #d4e157;
+    font-weight: 900;
+  }
+
+  .legal-content a {
+    color: #0288d1;
+    text-decoration: none;
+    border-bottom: 1px solid rgb(2 136 209 / 40%);
+    transition: border-color 150ms ease;
+  }
+  .legal-content a:hover { border-color: #0288d1; }
+
+  .legal-content hr {
+    display: none;
+  }
+
+  .legal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.75rem 0;
+    font-size: 0.92rem;
+  }
+
+  .legal-content th {
+    background: rgb(26 35 126 / 40%);
+    color: #d4e157;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .legal-content td {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgb(255 255 255 / 10%);
+    color: rgb(156 163 175);
+    vertical-align: top;
+  }
+
+  .legal-content tr:nth-child(even) td {
+    background: rgb(255 255 255 / 3%);
+  }
+</style>

@@ -3,6 +3,7 @@
 @source "../components/**/*.astro";
 @source "../layouts/**/*.astro";
 @source "../pages/**/*.astro";
+@source "../pages/**/*.md";
 @source "../scripts/**/*.js";
 
 @font-face {
