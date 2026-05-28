@@ -14,8 +14,7 @@ const purchaseButtonLabels = {
 
 const eventStartDate = new Date("2026-06-18T02:00:00Z");
 
-const formatCountdownUnit = (value, singular, plural) =>
-  `${String(value).padStart(2, "0")} ${value === 1 ? singular : plural}`;
+const formatCountdownValue = (value) => String(value).padStart(2, "0");
 
 const updateEventCountdown = () => {
   const countdownElement = document.querySelector("[data-event-countdown]");
@@ -24,10 +23,18 @@ const updateEventCountdown = () => {
     return;
   }
 
+  const valueElements = {
+    days: countdownElement.querySelector("[data-countdown-value='days']"),
+    hours: countdownElement.querySelector("[data-countdown-value='hours']"),
+    minutes: countdownElement.querySelector("[data-countdown-value='minutes']"),
+    seconds: countdownElement.querySelector("[data-countdown-value='seconds']")
+  };
+
   const diff = eventStartDate.getTime() - Date.now();
 
   if (diff <= 0) {
-    countdownElement.innerText = "BUCARA ES MUNDIAL YA ESTA EN VIVO";
+    countdownElement.innerHTML =
+      '<p class="text-sm font-black uppercase tracking-[0.28em] text-brand-lime sm:text-base">BUCARA ES MUNDIAL YA ESTA EN VIVO</p>';
     return;
   }
 
@@ -37,7 +44,10 @@ const updateEventCountdown = () => {
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
 
-  countdownElement.innerText = `FALTAN ${formatCountdownUnit(days, "DIA", "DIAS")} ${formatCountdownUnit(hours, "HORA", "HORAS")} ${formatCountdownUnit(minutes, "MIN", "MIN")} ${formatCountdownUnit(seconds, "SEG", "SEG")}`;
+  valueElements.days.innerText = formatCountdownValue(days);
+  valueElements.hours.innerText = formatCountdownValue(hours);
+  valueElements.minutes.innerText = formatCountdownValue(minutes);
+  valueElements.seconds.innerText = formatCountdownValue(seconds);
 };
 
 const getSupabaseClient = () => {

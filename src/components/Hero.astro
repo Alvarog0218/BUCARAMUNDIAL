@@ -3,44 +3,52 @@ const background = "/assets/hero-fondo.jpg";
 const heroLogo = "/assets/logo-bucara.png";
 ---
 
-<section id="inicio" class="relative min-h-screen flex items-start justify-center pt-32 md:pt-36 pb-16 overflow-hidden diagonal-bg">
+<section id="inicio" class="relative flex min-h-screen items-start justify-center overflow-hidden pb-16 pt-28 md:pt-32 diagonal-bg">
   <div class="absolute inset-0 z-0">
     <img src={background} alt="Vista aérea de Neomundo Bucaramanga" class="w-full h-full object-cover" />
     <div class="absolute inset-0 bg-brand-dark/65 backdrop-blur-[1px]"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-blue/20 to-brand-dark/90"></div>
   </div>
 
-  <div class="container mx-auto px-6 relative z-10 text-center">
-    <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-brand-magenta text-white text-[10px] font-black mb-4 uppercase tracking-widest animate-pulse">
-      <span class="w-2 h-2 bg-brand-lime rounded-full"></span>
-      <span data-event-countdown>FALTAN POCOS DIAS PARA BUCARA ES MUNDIAL</span>
-    </div>
+  <div class="container relative z-10 mx-auto px-6">
+    <div class="text-center">
+      <img
+        src={heroLogo}
+        alt="Bucara es Mundial 2026"
+        class="mx-auto mb-5 w-full max-w-[min(84vw,500px)] object-contain lg:max-w-[560px]"
+        loading="eager"
+      />
 
-    <img
-      src={heroLogo}
-      alt="Bucara es Mundial 2026"
-      class="mx-auto mb-5 w-full max-w-[min(84vw,460px)] object-contain"
-      loading="eager"
-    />
-
-    <div class="flex flex-wrap justify-center gap-4 mb-6">
-      <div class="bg-brand-dark/80 backdrop-blur-md px-6 py-2 rounded-lg border border-brand-lime/30">
-        <p class="text-[10px] uppercase font-bold text-brand-cyan tracking-widest">Lugar</p>
-        <p class="font-black text-xl italic uppercase">NEOMUNDO</p>
+      <div class="mx-auto mb-6 w-full max-w-[min(92vw,620px)]" data-event-countdown aria-live="polite">
+        <p class="mb-3 text-[10px] font-black uppercase tracking-[0.34em] text-brand-lime">Faltan</p>
+        <div class="grid grid-cols-4 gap-2 sm:gap-4">
+          <div class="min-w-0 rounded-lg bg-brand-dark/80 px-2 py-2 backdrop-blur-md sm:px-5">
+            <p class="font-title text-xl leading-none text-white sm:text-2xl" data-countdown-value="days">00</p>
+            <p class="mt-1 text-[10px] font-bold uppercase tracking-widest text-brand-cyan">Dias</p>
+          </div>
+          <div class="min-w-0 rounded-lg bg-brand-dark/80 px-2 py-2 backdrop-blur-md sm:px-5">
+            <p class="font-title text-xl leading-none text-white sm:text-2xl" data-countdown-value="hours">00</p>
+            <p class="mt-1 text-[10px] font-bold uppercase tracking-widest text-brand-cyan">Horas</p>
+          </div>
+          <div class="min-w-0 rounded-lg bg-brand-dark/80 px-2 py-2 backdrop-blur-md sm:px-5">
+            <p class="font-title text-xl leading-none text-white sm:text-2xl" data-countdown-value="minutes">00</p>
+            <p class="mt-1 text-[10px] font-bold uppercase tracking-widest text-brand-cyan">Min</p>
+          </div>
+          <div class="min-w-0 rounded-lg bg-brand-dark/80 px-2 py-2 backdrop-blur-md sm:px-5">
+            <p class="font-title text-xl leading-none text-white sm:text-2xl" data-countdown-value="seconds">00</p>
+            <p class="mt-1 text-[10px] font-bold uppercase tracking-widest text-brand-cyan">Seg</p>
+          </div>
+        </div>
       </div>
-      <div class="bg-brand-dark/80 backdrop-blur-md px-6 py-2 rounded-lg border border-brand-lime/30">
-        <p class="text-[10px] uppercase font-bold text-brand-cyan tracking-widest">Fechas</p>
-        <p class="font-black text-xl italic uppercase">17 JUN - 19 JUL</p>
-      </div>
-    </div>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a
-        href="#registro"
-        class="bg-brand-lime hover:bg-brand-cyan text-brand-dark hover:text-white font-black py-5 px-12 rounded-2xl text-xl transition-all shadow-[0_10px_30px_rgba(190,253,0,0.4)] transform hover:-translate-y-1 uppercase italic tracking-tighter"
-      >
-        Asegurar mi entrada
-      </a>
+      <div class="flex justify-center">
+        <a
+          href="#registro"
+          class="bg-brand-lime hover:bg-brand-cyan text-brand-dark hover:text-white font-black py-5 px-12 rounded-2xl text-xl transition-all shadow-[0_10px_30px_rgba(190,253,0,0.4)] transform hover:-translate-y-1 uppercase italic tracking-tighter"
+        >
+          Asegurar mi entrada
+        </a>
+      </div>
     </div>
   </div>
 </section>
