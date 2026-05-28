@@ -86,6 +86,7 @@ body > * {
   border-radius: 999px;
   background: #d4e157;
   color: #0d1b3e;
+  cursor: pointer;
   box-shadow: 0 16px 36px rgb(0 0 0 / 34%);
   transition:
     background 180ms ease,
