@@ -6,7 +6,7 @@ const sponsors = [
   { src: "/assets/patrocinadores/1.png", alt: "Patrocinador 1" },
   { src: "/assets/patrocinadores/2.png", alt: "Patrocinador 2" },
   { src: "/assets/patrocinadores/3.png", alt: "Patrocinador 3", featured: true },
-  { src: "/assets/patrocinadores/sonotec.svg", alt: "Sonotec" },
+  { src: "/assets/patrocinadores/sonotec.svg", alt: "Sonotec", large: true },
   { src: "/assets/patrocinadores/5.png", alt: "Patrocinador 5" },
   { src: "/assets/patrocinadores/6.png", alt: "Patrocinador 6" },
   { src: "/assets/patrocinadores/7.png", alt: "Patrocinador 7" },
@@ -46,7 +46,7 @@ const legalLinks = [
                 <img
                   src={sponsor.src}
                   alt={sponsor.alt}
-                  class={`${sponsor.featured ? "h-48 md:h-64" : "h-40 md:h-48"} w-auto object-contain neon-filter`}
+                  class={`${sponsor.featured ? "h-48 md:h-64" : sponsor.large ? "h-60 md:h-72" : "h-40 md:h-48"} w-auto object-contain neon-filter`}
                 />
               </div>
             ))
