@@ -2,32 +2,12 @@
 const locationName = "Neomundo Bucaramanga";
 const address = "Calle 89 Transversal Oriental Metropolitana-69, Barrio Tejar, Bucaramanga, Santander";
 
-const maps = [
-  {
-    name: "Google Maps",
-    url: "https://www.google.com/maps/dir/?api=1&destination=Calle+89+Transversal+Oriental+Metropolitana-69+Barrio+Tejar+Bucaramanga+Santander",
-    icon: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z",
-    color: "bg-[#4285F4]"
-  },
-  {
-    name: "Waze",
-    url: "https://waze.com/ul?q=Calle+89+Transversal+Oriental+Metropolitana-69+Barrio+Tejar+Bucaramanga+Santander&navigate=yes",
-    icon: "M20.5 11c0-5.52-4.48-10-10-10S.5 5.48.5 11c0 4.14 2.52 7.68 6.1 9.17-.03.27-.1.55-.1.83 0 1.1.9 2 2 2s2-.9 2-2c0-.28-.07-.56-.1-.83 3.58-1.49 6.1-5.03 6.1-9.17zm-10 8c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z",
-    color: "bg-[#33CCFF]"
-  },
-  {
-    name: "Apple Maps",
-    url: "https://maps.apple.com/?daddr=Calle+89+Transversal+Oriental+Metropolitana-69+Barrio+Tejar+Bucaramanga+Santander",
-    icon: "M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z",
-    color: "bg-[#000000]"
-  }
-];
 ---
 
 <section id="ubicacion" class="py-24 bg-brand-dark/30 relative overflow-hidden">
   <div class="container mx-auto px-6 relative z-10">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div>
+      <div class="order-1 lg:order-1">
         <div class="mb-10">
           <p class="text-brand-lime font-black uppercase tracking-[0.3em] text-xs mb-3">
             ¿Cómo llegar?
@@ -43,43 +23,76 @@ const maps = [
           </p>
         </div>
 
-        <div class="space-y-4">
-          <p class="text-white font-black uppercase tracking-widest text-xs mb-4">
-            Abrir en tu app favorita:
-          </p>
-          <div class="flex flex-wrap gap-4">
-            {maps.map((map) => (
-              <a
-                href={map.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`flex items-center gap-3 px-6 py-4 rounded-2xl ${map.color} text-white font-black uppercase tracking-widest text-xs transition-all hover:scale-105 hover:shadow-lg active:scale-95`}
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d={map.icon} />
-                </svg>
-                {map.name}
-              </a>
-            ))}
-          </div>
+        <div class="hidden lg:block mt-8">
+          <button
+            class="how-to-btn inline-flex items-center gap-3 px-10 py-5 rounded-full bg-brand-lime text-brand-dark font-black uppercase tracking-widest text-sm transition-all hover:bg-white hover:scale-105 hover:shadow-[0_0_30px_rgba(212,225,87,0.4)] active:scale-95 group"
+          >
+            <svg class="w-6 h-6 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            ¿Cómo llegar?
+          </button>
         </div>
       </div>
 
-      <div class="relative group">
-        <div class="absolute -inset-4 bg-brand-lime/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        <div class="relative bg-brand-dark/50 border-2 border-brand-lime/20 rounded-[2.5rem] p-3 backdrop-blur-sm overflow-hidden shadow-2xl">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.270381617452!2d-73.10536492415124!3d7.100344516142371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683fba08827725%3A0x9599d14620f4f95e!2sNeomundo%20Centro%20de%20Eventos%20y%20Convenciones!5e0!3m2!1ses-419!2sco!4v1716912345678!5m2!1ses-419!2sco"
-            width="100%"
-            height="450"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            class="rounded-[2rem] grayscale hover:grayscale-0 transition-all duration-700"
-          ></iframe>
+      <div class="order-2 lg:order-2">
+        <div class="relative group mb-10 lg:mb-0">
+          <div class="absolute -inset-4 bg-brand-lime/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative bg-brand-dark/50 border-2 border-brand-lime/20 rounded-[2.5rem] p-3 backdrop-blur-sm overflow-hidden shadow-2xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.270381617452!2d-73.10536492415124!3d7.100344516142371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683fba08827725%3A0x9599d14620f4f95e!2sNeomundo%20Centro%20de%20Eventos%20y%20Convenciones!5e0!3m2!1ses-419!2sco!4v1716912345678!5m2!1ses-419!2sco"
+              width="100%"
+              height="450"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="rounded-[2rem] grayscale hover:grayscale-0 transition-all duration-700"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="lg:hidden flex justify-center mt-8">
+          <button
+            class="how-to-btn w-full inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-brand-lime text-brand-dark font-black uppercase tracking-widest text-sm transition-all hover:bg-white hover:scale-105 hover:shadow-[0_0_30px_rgba(212,225,87,0.4)] active:scale-95 group"
+          >
+            <svg class="w-6 h-6 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            ¿Cómo llegar?
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const btns = document.querySelectorAll('.how-to-btn');
+  const address = "Calle 89 Transversal Oriental Metropolitana-69, Barrio Tejar, Bucaramanga, Santander";
+  const coords = "7.100345,-73.102785";
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        const geoUrl = `geo:${coords}?q=${encodeURIComponent(address)}`;
+        const appleUrl = `maps://maps.apple.com/?daddr=${encodeURIComponent(address)}`;
+        
+        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+          window.location.href = appleUrl;
+        } else {
+          window.location.href = geoUrl;
+          setTimeout(() => {
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`, '_blank');
+          }, 500);
+        }
+      } else {
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`, '_blank');
+      }
+    });
+  });
+</script>
