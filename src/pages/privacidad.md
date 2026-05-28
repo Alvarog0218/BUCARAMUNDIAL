@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/LegalLayout.astro
-title: "Aviso de Privacidad | Bucara es Mundial 2026"
-description: "Aviso de privacidad del evento Bucara es Mundial 2026 en Neomundo Bucaramanga."
+title: "Aviso de Privacidad | Bucaramundial 2026"
+description: "Aviso de privacidad del evento Bucaramundial 2026 en Neomundo Bucaramanga."
 ---
 
 **Última actualización:** 27 de mayo de 2026
@@ -10,7 +10,7 @@ description: "Aviso de privacidad del evento Bucara es Mundial 2026 en Neomundo 
 
 ## 1. Responsable del Tratamiento
 
-**Bucara es Mundial 2026** (en adelante, el "Organizador"), con domicilio en la ciudad de **Bucaramanga, Santander, Colombia**, es el responsable del tratamiento de los datos personales que usted suministra a través del sitio web oficial del evento y sus formularios de registro.
+**Bucaramundial 2026** (en adelante, el "Organizador"), con domicilio en la ciudad de **Bucaramanga, Santander, Colombia**, es el responsable del tratamiento de los datos personales que usted suministra a través del sitio web oficial del evento y sus formularios de registro.
 
 Para consultas o solicitudes relacionadas con sus datos personales, puede contactarnos a través de:
 

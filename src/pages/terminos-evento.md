@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/LegalLayout.astro
-title: "Términos del Evento | Bucara es Mundial 2026"
-description: "Términos y condiciones de participación en el evento Bucara es Mundial 2026 en Neomundo Bucaramanga."
+title: "Términos del Evento | Bucaramundial 2026"
+description: "Términos y condiciones de participación en el evento Bucaramundial 2026 en Neomundo Bucaramanga."
 ---
 
 **Versión:** 1.0 · **Vigencia:** 27 de mayo de 2026
@@ -12,7 +12,7 @@ description: "Términos y condiciones de participación en el evento Bucara es M
 
 | Detalle | Información |
 |---|---|
-| **Nombre** | Bucara es Mundial 2026 |
+| **Nombre** | Bucaramundial 2026 |
 | **Lugar** | Neomundo Bucaramanga, Santander, Colombia |
 | **Fechas** | 17 de junio – 19 de julio de 2026 |
 | **Código PULEP** | HPT643 |
@@ -130,7 +130,7 @@ El Organizador no se responsabiliza por:
 
 ## 9. Propiedad Intelectual
 
-La denominación **"Bucara es Mundial"**, el logotipo del evento y todos los materiales visuales y audiovisuales producidos por el Organizador son propiedad intelectual exclusiva del Organizador. Está prohibida su reproducción, distribución o uso comercial sin autorización escrita previa.
+La denominación **"Bucaramundial"**, el logotipo del evento y todos los materiales visuales y audiovisuales producidos por el Organizador son propiedad intelectual exclusiva del Organizador. Está prohibida su reproducción, distribución o uso comercial sin autorización escrita previa.
 
 ---
 

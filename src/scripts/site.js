@@ -3,8 +3,8 @@ const SUPABASE_URL =
 const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || "TU_ANON_KEY_AQUI";
 
 const purchaseLinks = {
-  individual: "https://quickticket.co/event/5c21b87b-f95c-4b9b-b214-0f282c05e20d",
-  abono: "https://quickticket.co/event/9e5d27cf-c051-48eb-9f29-c6271ea23684"
+  individual: "https://quickticket.com.co/event/5c21b87b-f95c-4b9b-b214-0f282c05e20d",
+  abono: "https://quickticket.com.co/event/9e5d27cf-c051-48eb-9f29-c6271ea23684"
 };
 
 const purchaseButtonLabels = {
@@ -34,7 +34,7 @@ const updateEventCountdown = () => {
 
   if (diff <= 0) {
     countdownElement.innerHTML =
-      '<p class="text-sm font-black uppercase tracking-[0.28em] text-brand-lime sm:text-base">BUCARA ES MUNDIAL YA ESTA EN VIVO</p>';
+      '<p class="text-sm font-black uppercase tracking-[0.28em] text-brand-lime sm:text-base">BUCARAMUNDIAL YA ESTA EN VIVO</p>';
     return;
   }
 

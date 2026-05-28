@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/LegalLayout.astro
-title: "Política de Tratamiento de Datos | Bucara es Mundial 2026"
-description: "Política de tratamiento de datos personales del evento Bucara es Mundial 2026, conforme a la Ley 1581 de 2012."
+title: "Política de Tratamiento de Datos | Bucaramundial 2026"
+description: "Política de tratamiento de datos personales del evento Bucaramundial 2026, conforme a la Ley 1581 de 2012."
 ---
 
 **Versión:** 1.0 · **Vigencia:** 27 de mayo de 2026
@@ -10,7 +10,7 @@ description: "Política de tratamiento de datos personales del evento Bucara es 
 
 ## 1. Identificación del Responsable
 
-**Bucara es Mundial 2026**, organizador del espectáculo público con **Código PULEP HPT643**, con sede en Bucaramanga, Santander, Colombia.
+**Bucaramundial 2026**, organizador del espectáculo público con **Código PULEP HPT643**, con sede en Bucaramanga, Santander, Colombia.
 
 Contacto del área de protección de datos:
 - **Correo:** bucaramundial@gmail.com

@@ -1,6 +1,6 @@
-# Bucara Mundial
+# BUCARAMUNDIAL
 
-Landing page para el evento "Bucara es Mundial" en Neomundo Bucaramanga, reconstruida como proyecto Astro con npm.
+Landing page para el evento "Bucaramundial" en Neomundo Bucaramanga, reconstruida como proyecto Astro con npm.
 
 ## Stack
 
