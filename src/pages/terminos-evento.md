@@ -17,7 +17,7 @@ description: "Términos y condiciones de participación en el evento Bucaramundi
 | **Fechas** | 17 de junio – 19 de julio de 2026 |
 | **Código PULEP** | HPT643 |
 
-El evento consiste en la transmisión en pantalla gigante de los partidos del **Campeonato Mundial de Fútbol FIFA 2026**, con zonas de entretenimiento, activaciones, servicios de alimentos y bebidas para el público asistente.
+El evento consiste en la transmisión en pantallas gigantes de los partidos del **Campeonato Mundial de Fútbol FIFA 2026**, con zonas de entretenimiento, activaciones, servicios de alimentos y bebidas para el público asistente.
 
 ---
 
@@ -36,7 +36,7 @@ Las boletas y abonos se adquieren **exclusivamente** a través de la plataforma 
 
 | Zona | Descripción | Boleta individual | Abono |
 |---|---|---|---|
-| **General (BIO)** | Ambiente de estadio, pantallas grandes | ✓ | — |
+| **General (BIO)** | Ambiente de estadio, pantallas gigantes | ✓ | — |
 | **VIP** | Asientos cómodos, vista privilegiada | ✓ | ✓ |
 | **Infantil** | Actividades recreativas para familias | ✓ | ✓ |
 
