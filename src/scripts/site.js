@@ -99,7 +99,7 @@ const selectZone = (zone) => {
     return;
   }
 
-  if (!form.elements.tipo.value || zone === "General") {
+  if (!form.elements.tipo.value || zone === "General" || zone === "BIO") {
     form.elements.tipo.value = "individual";
   }
 
@@ -194,8 +194,12 @@ const getFieldErrorMessage = (field, form) => {
     return "Ingresa un telefono valido.";
   }
 
-  if (field.name === "zona" && form.elements.tipo.value === "abono" && field.value === "General") {
-    return "La zona BIO solo aplica para boleta individual.";
+  if (
+    field.name === "zona" &&
+    form.elements.tipo.value === "abono" &&
+    ["General", "BIO"].includes(field.value)
+  ) {
+    return "La zona seleccionada solo aplica para boleta individual.";
   }
 
   return "";

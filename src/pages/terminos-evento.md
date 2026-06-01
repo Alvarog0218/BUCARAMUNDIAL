@@ -36,9 +36,9 @@ Las boletas y abonos se adquieren **exclusivamente** a través de la plataforma 
 
 | Zona | Descripción | Boleta individual | Abono |
 |---|---|---|---|
-| **General (BIO)** | Ambiente de estadio, pantallas gigantes | ✓ | — |
+| **General** | Ambiente de estadio, pantallas gigantes | ✓ | — |
+| **BIO** | Condiciones de General en espacio al aire libre habilitado para fumadores | ✓ | — |
 | **VIP** | Asientos cómodos, vista privilegiada | ✓ | ✓ |
-| **Infantil** | Actividades recreativas para familias | ✓ | ✓ |
 
 ### 2.4 Proceso de compra
 
@@ -94,7 +94,7 @@ El Organizador se reserva el derecho de negar el acceso a personas que se encuen
 ### 5.3 Menores de edad
 
 - Menores de 14 años deben ingresar acompañados de un adulto responsable.
-- La **Zona Infantil** está diseñada para familias con niños y cuenta con supervisión.
+- La **Zona BIO** es un espacio al aire libre habilitado para fumadores; el ingreso y permanencia de menores en esta zona queda bajo responsabilidad del adulto acompañante.
 
 ---
 
@@ -105,6 +105,7 @@ Los asistentes se comprometen a:
 - Respetar las normas de convivencia y el personal de seguridad y logística.
 - Cuidar las instalaciones de Neomundo Bucaramanga.
 - No bloquear vías de evacuación ni zonas de emergencia.
+- Fumar únicamente en la **Zona BIO** o en las áreas expresamente autorizadas por la organización.
 - Seguir las instrucciones del personal autorizado en todo momento.
 
 El incumplimiento de estas normas podrá derivar en la expulsión del recinto sin derecho a reembolso.

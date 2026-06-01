@@ -33,7 +33,7 @@ Al completar el formulario de registro en nuestro sitio web, recolectamos los si
 - **Número de teléfono / WhatsApp**
 - **Correo electrónico**
 - **Tipo de compra seleccionado** (boleta individual o abono)
-- **Zona del evento seleccionada** (General, VIP o Infantil)
+- **Zona del evento seleccionada** (General, BIO o VIP)
 
 No recolectamos datos sensibles (datos de salud, origen étnico, afiliación política, datos biométricos, entre otros) a través de este sitio.
 
