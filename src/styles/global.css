@@ -297,15 +297,23 @@ body > * {
 }
 
 .neon-filter:hover {
-  background-color: #d4e157;
-  filter: grayscale(0%) invert(0);
+  filter: grayscale(100%) invert(1) brightness(1.5)
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 20%);
 }
 
 .filter-brand-lime {
   filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(25deg)
     brightness(1.2);
+}
+
+.filter-white {
+  filter: brightness(0) invert(1);
+}
+
+.filter-white:hover {
+  filter: brightness(0) invert(1) brightness(1.5)
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
 }
 
 .registration-background-mark {

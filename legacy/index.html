@@ -49,14 +49,18 @@
             object-fit: contain;
         }
         .neon-filter:hover {
-            background-color: #ffffff;
-            filter: grayscale(0%) invert(0);
+            filter: grayscale(100%) invert(1) brightness(1.5) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
         }
         /* Versión simplificada y más compatible para Tailwind */
         .filter-brand-lime {
             filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(25deg) brightness(1.2);
+        }
+        .filter-white {
+            filter: brightness(0) invert(1);
+        }
+        .filter-white:hover {
+            filter: brightness(0) invert(1) brightness(1.5) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
         }
         /* Ocultar scrollbar */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -325,7 +329,7 @@
                                 <input name="whatsapp" type="tel" required class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 focus:border-brand-lime outline-none transition-all font-bold placeholder:text-gray-500 uppercase text-xs italic text-white" placeholder="WhatsApp">
                                 <select name="zona" required class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 focus:border-brand-lime outline-none transition-all font-bold uppercase text-xs italic text-white cursor-pointer">
                                     <option value="" disabled selected class="bg-brand-dark text-gray-500">Seleccionar Zona</option>
-                                    <option value="General" class="bg-brand-dark text-white">Zona General (BIO)</option>
+                                    <option value="General" class="bg-brand-dark text-white">Zona General</option>
                                     <option value="VIP" class="bg-brand-dark text-white">Zona VIP</option>
                                     <option value="Infantil" class="bg-brand-dark text-white">Zona Infantil</option>
                                 </select>
@@ -410,6 +414,9 @@
                     <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
                         <img src="VS PUBLIC/Patrocinadores/10.png" alt="Patrocinador 10" class="h-40 md:h-48 w-auto object-contain neon-filter">
                     </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="public/assets/patrocinadores/RCN-LOGO.png" alt="RCN" class="h-48 md:h-64 w-auto object-contain neon-filter filter-white">
+                    </div>
                     
                     <!-- Duplicado para loop infinito -->
                     <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
@@ -441,6 +448,9 @@
                     </div>
                     <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
                         <img src="VS PUBLIC/Patrocinadores/10.png" alt="Patrocinador 10" class="h-40 md:h-48 w-auto object-contain neon-filter">
+                    </div>
+                    <div class="flex-shrink-0 flex items-center justify-center transform transition-transform duration-300">
+                        <img src="public/assets/patrocinadores/RCN-LOGO.png" alt="RCN" class="h-48 md:h-64 w-auto object-contain neon-filter filter-white">
                     </div>
                 </div>
             </div>
@@ -573,6 +583,12 @@
             <img id="modal-img" src="" alt="Mapa Full Screen" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl border-2 border-brand-lime/20">
             <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-brand-dark/80 backdrop-blur-md px-6 py-2 rounded-full border border-brand-lime/30 text-xs font-black text-brand-lime uppercase tracking-widest">
                 Mapa Oficial de Distribución
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+e Distribución
             </div>
         </div>
     </div>

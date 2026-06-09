@@ -99,7 +99,7 @@ const selectZone = (zone) => {
     return;
   }
 
-  if (!form.elements.tipo.value || zone === "General" || zone === "BIO") {
+  if (!form.elements.tipo.value || zone === "General") {
     form.elements.tipo.value = "individual";
   }
 
@@ -197,7 +197,7 @@ const getFieldErrorMessage = (field, form) => {
   if (
     field.name === "zona" &&
     form.elements.tipo.value === "abono" &&
-    ["General", "BIO"].includes(field.value)
+    field.value === "General"
   ) {
     return "La zona seleccionada solo aplica para boleta individual.";
   }

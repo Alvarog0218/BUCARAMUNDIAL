@@ -18,14 +18,19 @@ const faqs = [
       "La programación está prevista del 17 de junio al 19 de julio, durante el calendario del Mundial. Las jornadas específicas se confirmarán según los partidos y horarios oficiales."
   },
   {
-    question: "¿Qué diferencia hay entre Zona General, BIO y VIP?",
+    question: "¿Qué diferencia hay entre Zona General y VIP?",
     answer:
-      "Zona General está pensada para vivir el ambiente colectivo, Zona BIO ofrece condiciones similares a General en un espacio al aire libre habilitado para fumadores, y Zona VIP ofrece una experiencia más cómoda cerca del corazón del partido."
+      "Zona General está pensada para vivir el ambiente colectivo, mientras que Zona VIP ofrece una experiencia más cómoda con asientos y vista privilegiada cerca del corazón del partido."
+  },
+  {
+    question: "¿La entrada tiene algún costo?",
+    answer:
+      "La entrada es gratuita para ver todos los partidos del Mundial. Únicamente se cobrará boleta o abono para las jornadas en las que juegue la Selección Colombia."
   },
   {
     question: "¿Puedo comprar boleta individual o abono?",
     answer:
-      "Sí. En el registro puedes elegir entre boleta individual o abono de evento. Según el tipo de compra, el formulario habilita las zonas disponibles."
+      "Sí, para los partidos de la Selección Colombia puedes elegir entre boleta individual o abono. Completa el registro para habilitar el proceso de compra."
   },
   {
     question: "¿El mapa de distribución puede cambiar?",
@@ -99,6 +104,7 @@ const faqs = [
             <details
               class="faq-item group rounded-2xl border border-white/10 bg-brand-dark/78 backdrop-blur-xl shadow-2xl transition-colors open:border-brand-lime/70"
               open={index === 0}
+              name="faq-accordion"
             >
               <summary class="faq-summary flex min-h-20 cursor-pointer list-none items-center justify-between gap-5 px-5 py-5 md:px-7">
                 <span class="text-left text-base md:text-lg font-black uppercase italic tracking-tight text-white">

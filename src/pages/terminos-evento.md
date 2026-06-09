@@ -21,23 +21,26 @@ El evento consiste en la transmisión en pantallas gigantes de los partidos del 
 
 ---
 
-## 2. Adquisición de Boletas
+## 2. Acceso y Adquisición de Boletas
 
-### 2.1 Canales oficiales
+### 2.1 Política de ingreso
 
-Las boletas y abonos se adquieren **exclusivamente** a través de la plataforma oficial **QuickTicket** a la que se accede desde el sitio web del evento. El Organizador no se hace responsable por compras realizadas a través de revendedores no autorizados, grupos de WhatsApp o redes sociales de terceros.
+El ingreso a **Bucaramundial 2026** es **gratuito** para la transmisión de todos los partidos del Campeonato Mundial, con excepción de las jornadas en las que participe la **Selección Colombia**. Para dichos encuentros, se requerirá la compra de una entrada oficial.
 
-### 2.2 Tipos de boleta
+### 2.2 Canales oficiales de venta
 
-- **Boleta individual:** Acceso a un (1) partido o jornada específica en la zona seleccionada.
-- **Abono de evento:** Acceso a múltiples partidos o a la totalidad del evento según las condiciones indicadas en la plataforma al momento de la compra.
+Para los partidos de la Selección Colombia, las boletas y abonos se adquieren **exclusivamente** a través de la plataforma oficial **QuickTicket**. El Organizador no se hace responsable por compras realizadas a través de terceros no autorizados.
+
+### 2.3 Tipos de boleta (Partidos de Colombia)
+
+- **Boleta individual:** Acceso a una (1) jornada de la Selección Colombia en la zona seleccionada.
+- **Abono de evento:** Acceso a múltiples jornadas de la Selección Colombia según las condiciones indicadas en la plataforma al momento de la compra.
 
 ### 2.3 Zonas disponibles
 
 | Zona | Descripción | Boleta individual | Abono |
 |---|---|---|---|
 | **General** | Ambiente de estadio, pantallas gigantes | ✓ | — |
-| **BIO** | Condiciones de General en espacio al aire libre habilitado para fumadores | ✓ | — |
 | **VIP** | Asientos cómodos, vista privilegiada | ✓ | ✓ |
 
 ### 2.4 Proceso de compra
@@ -94,7 +97,7 @@ El Organizador se reserva el derecho de negar el acceso a personas que se encuen
 ### 5.3 Menores de edad
 
 - Menores de 14 años deben ingresar acompañados de un adulto responsable.
-- La **Zona BIO** es un espacio al aire libre habilitado para fumadores; el ingreso y permanencia de menores en esta zona queda bajo responsabilidad del adulto acompañante.
+- El ingreso y permanencia de menores en el recinto queda bajo responsabilidad del adulto acompañante.
 
 ---
 
@@ -105,7 +108,7 @@ Los asistentes se comprometen a:
 - Respetar las normas de convivencia y el personal de seguridad y logística.
 - Cuidar las instalaciones de Neomundo Bucaramanga.
 - No bloquear vías de evacuación ni zonas de emergencia.
-- Fumar únicamente en la **Zona BIO** o en las áreas expresamente autorizadas por la organización.
+- Fumar únicamente en las áreas expresamente autorizadas por la organización.
 - Seguir las instrucciones del personal autorizado en todo momento.
 
 El incumplimiento de estas normas podrá derivar en la expulsión del recinto sin derecho a reembolso.
