@@ -1,6 +1,10 @@
+import { createClient } from "@supabase/supabase-js";
+
 const SUPABASE_URL =
   import.meta.env.PUBLIC_SUPABASE_URL || "https://tkguainbzaqejvvveohf.supabase.co";
-const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || "TU_ANON_KEY_AQUI";
+const SUPABASE_ANON_KEY =
+  import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrZ3VhaW5iemFxZWp2dnZlb2hmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMTEyNjUsImV4cCI6MjA5NjU4NzI2NX0.KFbVfMOW_7CYk3h3d8GkJfHRhp84ozmfVbt9AaqF1NQ";
 
 const purchaseLinks = {
   individual: "https://quickticket.com.co/event/5c21b87b-f95c-4b9b-b214-0f282c05e20d",
@@ -15,7 +19,6 @@ const purchaseButtonLabels = {
 const eventStartDate = new Date("2026-06-18T02:00:00Z");
 
 const ticketFieldNames = ["nombre", "whatsapp", "email", "tipo", "zona", "acepta_tratamiento"];
-const formMinCompletionMs = 1500;
 const disposableEmailDomains = new Set([
   "10minutemail.com",
   "20minutemail.com",
@@ -91,11 +94,11 @@ const updateEventCountdown = () => {
 };
 
 const getSupabaseClient = () => {
-  if (!window.supabase || SUPABASE_ANON_KEY === "TU_ANON_KEY_AQUI") {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
     return null;
   }
 
-  return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  return createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 };
 
 const scrollToRegistration = () => {
@@ -318,10 +321,7 @@ const getTrackingData = () => {
 };
 
 const isLikelyBotSubmission = (form) => {
-  const startedAt = Number(form.dataset.startedAt || 0);
-  const elapsedMs = Date.now() - startedAt;
-
-  return Boolean(form.elements.website?.value.trim()) || elapsedMs < formMinCompletionMs;
+  return Boolean(form.elements.website?.value.trim());
 };
 
 const buildFormData = (form) => ({
@@ -350,6 +350,7 @@ const saveLead = async (lead) => {
 
   if (error) {
     console.error("Error al guardar en Supabase:", error.message);
+    throw error;
   }
 };
 
@@ -382,23 +383,16 @@ const handleTicketPurchase = async (event) => {
     await saveLead(lead);
   } catch (error) {
     console.error("Error de conexión con Supabase:", error);
+    button.innerText = "INTENTAR DE NUEVO";
+    button.disabled = false;
+    window.alert("No pudimos guardar tus datos. Revisa la informacion e intenta de nuevo.");
+    return;
   }
 
   button.innerText = "REDIRECCIONANDO...";
 
   window.setTimeout(() => {
-    window.open(purchaseUrl, "_blank", "noopener,noreferrer");
-    button.innerText = "¡GRACIAS!";
-
-    window.setTimeout(() => {
-      form.reset();
-      form.dataset.startedAt = String(Date.now());
-      button.disabled = false;
-      updateZoneOptions(form);
-      ticketFieldNames.forEach((name) => {
-        clearFieldError(form, form.elements[name]);
-      });
-    }, 2000);
+    window.location.href = purchaseUrl;
   }, 500);
 };
 
@@ -424,7 +418,6 @@ document.querySelectorAll("[data-zone-select]").forEach((link) => {
 });
 
 document.querySelectorAll("[data-ticket-form]").forEach((form) => {
-  form.dataset.startedAt = String(Date.now());
   updateZoneOptions(form);
 
   ticketFieldNames.forEach((name) => {
