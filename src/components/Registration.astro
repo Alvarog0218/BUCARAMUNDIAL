@@ -34,6 +34,18 @@ const zones = [
         </p>
 
         <form data-ticket-form novalidate class="bg-brand-blue/25 border border-brand-cyan/20 rounded-[1.5rem] p-5 md:p-6 shadow-xl max-w-lg mx-auto">
+          <div class="ticket-honeypot" aria-hidden="true" data-field-wrap="website">
+            <label for="ticket-website">Sitio web</label>
+            <input
+              id="ticket-website"
+              name="website"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+              class="ticket-control"
+            />
+          </div>
+
           <div class="flex items-center gap-3 mb-5">
             <div class="bg-brand-lime text-brand-dark w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-md">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,6 +113,17 @@ const zones = [
                 </span>
               </div>
               <p class="ticket-field-message" data-field-error="zona"></p>
+            </div>
+
+            <div class="ticket-field" data-field-wrap="acepta_tratamiento">
+              <label class="ticket-consent" for="ticket-acepta-tratamiento">
+                <input id="ticket-acepta-tratamiento" name="acepta_tratamiento" type="checkbox" required />
+                <span>
+                  Autorizo el tratamiento de mis datos personales y acepto la
+                  <a href="/tratamiento-datos" target="_blank" rel="noopener noreferrer">Politica de Tratamiento de Datos</a>.
+                </span>
+              </label>
+              <p class="ticket-field-message" data-field-error="acepta_tratamiento"></p>
             </div>
           </div>
 

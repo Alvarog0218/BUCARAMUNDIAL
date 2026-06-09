@@ -335,6 +335,16 @@ body > * {
   position: relative;
 }
 
+.ticket-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .ticket-field label {
   display: block;
   margin-bottom: 0.32rem;
@@ -434,9 +444,41 @@ body > * {
     transform 160ms ease;
 }
 
+.ticket-consent {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+  color: rgb(255 255 255 / 76%) !important;
+  font-size: 0.68rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.35 !important;
+  text-transform: none !important;
+}
+
+.ticket-consent input {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.05rem;
+  accent-color: #d4e157;
+  flex: 0 0 auto;
+}
+
+.ticket-consent a {
+  color: #d4e157;
+  text-decoration: underline;
+  text-underline-offset: 0.14rem;
+}
+
 .ticket-field.is-invalid .ticket-control {
   border-color: #ef4444;
   box-shadow: 0 0 0 3px rgb(239 68 68 / 16%);
+}
+
+.ticket-field.is-invalid .ticket-consent input {
+  outline: 2px solid #ef4444;
+  outline-offset: 2px;
 }
 
 .ticket-field.is-invalid .ticket-field-message {

@@ -1,5 +1,5 @@
 const SUPABASE_URL =
-  import.meta.env.PUBLIC_SUPABASE_URL || "https://wiyoiuijzpskryxmdqzo.supabase.co";
+  import.meta.env.PUBLIC_SUPABASE_URL || "https://tkguainbzaqejvvveohf.supabase.co";
 const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || "TU_ANON_KEY_AQUI";
 
 const purchaseLinks = {
@@ -13,6 +13,46 @@ const purchaseButtonLabels = {
 };
 
 const eventStartDate = new Date("2026-06-18T02:00:00Z");
+
+const ticketFieldNames = ["nombre", "whatsapp", "email", "tipo", "zona", "acepta_tratamiento"];
+const formMinCompletionMs = 1500;
+const disposableEmailDomains = new Set([
+  "10minutemail.com",
+  "20minutemail.com",
+  "33mail.com",
+  "dispostable.com",
+  "dropmail.me",
+  "emailondeck.com",
+  "fakeinbox.com",
+  "getnada.com",
+  "grr.la",
+  "guerrillamail.biz",
+  "guerrillamail.com",
+  "guerrillamail.de",
+  "guerrillamail.net",
+  "guerrillamail.org",
+  "inboxkitten.com",
+  "mail.gw",
+  "mail.tm",
+  "maildrop.cc",
+  "mailinator.com",
+  "mailnesia.com",
+  "mintemail.com",
+  "moakt.com",
+  "mytemp.email",
+  "sharklasers.com",
+  "temp-mail.io",
+  "temp-mail.org",
+  "tempmail.com",
+  "tempmail.net",
+  "tempr.email",
+  "throwawaymail.com",
+  "tmail.io",
+  "trashmail.com",
+  "yopmail.com",
+  "yopmail.fr",
+  "yopmail.net"
+]);
 
 const formatCountdownValue = (value) => String(value).padStart(2, "0");
 
@@ -177,7 +217,25 @@ const updateZoneOptions = (form) => {
   updatePurchaseButton(form);
 };
 
+const getEmailDomain = (email) => email.trim().toLowerCase().split("@").pop() || "";
+
+const isDisposableEmail = (email) => {
+  const domain = getEmailDomain(email);
+
+  if (!domain) {
+    return false;
+  }
+
+  return Array.from(disposableEmailDomains).some(
+    (blockedDomain) => domain === blockedDomain || domain.endsWith(`.${blockedDomain}`)
+  );
+};
+
 const getFieldErrorMessage = (field, form) => {
+  if (field.type === "checkbox" && !field.checked) {
+    return "Debes autorizar el tratamiento de datos.";
+  }
+
   if (field.name === "zona" && field.disabled) {
     return "Selecciona primero el tipo de compra.";
   }
@@ -188,6 +246,10 @@ const getFieldErrorMessage = (field, form) => {
 
   if (field.type === "email" && !field.validity.valid) {
     return "Ingresa un correo valido.";
+  }
+
+  if (field.type === "email" && isDisposableEmail(field.value)) {
+    return "Ingresa un correo personal o corporativo valido.";
   }
 
   if (field.name === "whatsapp" && field.value.trim().length < 7) {
@@ -218,7 +280,7 @@ const setFieldError = (form, field, message) => {
 };
 
 const validateTicketForm = (form) => {
-  const fields = ["nombre", "whatsapp", "email", "tipo", "zona"].map((name) => form.elements[name]);
+  const fields = ticketFieldNames.map((name) => form.elements[name]);
   let firstInvalidField = null;
 
   fields.forEach((field) => {
@@ -243,12 +305,37 @@ const clearFieldError = (form, field) => {
   setFieldError(form, field, "");
 };
 
+const getTrackingData = () => {
+  const params = new URLSearchParams(window.location.search);
+
+  return {
+    utm_source: params.get("utm_source"),
+    utm_medium: params.get("utm_medium"),
+    utm_campaign: params.get("utm_campaign"),
+    utm_content: params.get("utm_content"),
+    utm_term: params.get("utm_term")
+  };
+};
+
+const isLikelyBotSubmission = (form) => {
+  const startedAt = Number(form.dataset.startedAt || 0);
+  const elapsedMs = Date.now() - startedAt;
+
+  return Boolean(form.elements.website?.value.trim()) || elapsedMs < formMinCompletionMs;
+};
+
 const buildFormData = (form) => ({
-  nombre: form.elements.nombre.value,
-  whatsapp: form.elements.whatsapp.value,
+  nombre: form.elements.nombre.value.trim(),
+  whatsapp: form.elements.whatsapp.value.trim(),
   zona: form.elements.zona.value,
-  email: form.elements.email.value,
-  tipo: form.elements.tipo.value
+  email: form.elements.email.value.trim().toLowerCase(),
+  tipo: form.elements.tipo.value,
+  acepta_tratamiento: form.elements.acepta_tratamiento.checked,
+  politica_aceptada_en: new Date().toISOString(),
+  origen: "landing_bucaramundial",
+  page_url: window.location.href,
+  user_agent: navigator.userAgent,
+  ...getTrackingData()
 });
 
 const saveLead = async (lead) => {
@@ -270,6 +357,10 @@ const handleTicketPurchase = async (event) => {
   event.preventDefault();
 
   const form = event.currentTarget;
+
+  if (isLikelyBotSubmission(form)) {
+    return;
+  }
 
   if (!validateTicketForm(form)) {
     return;
@@ -301,9 +392,10 @@ const handleTicketPurchase = async (event) => {
 
     window.setTimeout(() => {
       form.reset();
+      form.dataset.startedAt = String(Date.now());
       button.disabled = false;
       updateZoneOptions(form);
-      ["nombre", "whatsapp", "email", "tipo", "zona"].forEach((name) => {
+      ticketFieldNames.forEach((name) => {
         clearFieldError(form, form.elements[name]);
       });
     }, 2000);
@@ -332,9 +424,10 @@ document.querySelectorAll("[data-zone-select]").forEach((link) => {
 });
 
 document.querySelectorAll("[data-ticket-form]").forEach((form) => {
+  form.dataset.startedAt = String(Date.now());
   updateZoneOptions(form);
 
-  ["nombre", "whatsapp", "email", "tipo", "zona"].forEach((name) => {
+  ticketFieldNames.forEach((name) => {
     const field = form.elements[name];
 
     field.addEventListener("input", () => clearFieldError(form, field));
