@@ -74,25 +74,57 @@ const startScanner = async () => {
 };
 
 const processScannedData = (data) => {
-  // Limpieza y extracción para formato de Cédula Colombiana (PDF417)
-  const cleanData = data.replace(/\0/g, '');
-  
-  // Normalmente la cédula es la primera secuencia de 8-10 dígitos (rellenada con ceros a la izquierda)
-  const matches = cleanData.match(/\d{6,10}/g);
-  
-  if (matches && matches.length > 0) {
-    // Tomamos el primer número largo y le quitamos los ceros a la izquierda
-    const cedula = matches[0].replace(/^0+/, '');
-    
-    if (cedula.length >= 5) {
-      // Evitar escanear el mismo código múltiples veces seguidas rápidamente
-      if (manualCedulaInput.value === cedula) return;
-      
-      manualCedulaInput.value = cedula;
-      searchWinnerById(cedula);
-      // Beep / Feedback
-      if (window.navigator.vibrate) window.navigator.vibrate(200);
+  let cedula = null;
+
+  // Método 1: Intentar extraer por posiciones fijas (Formato estándar Cédula Colombiana)
+  try {
+    // La cédula suele estar entre la posición 48 y 58
+    const fixedPos = data.substring(48, 58).replace(/\D/g, ''); // Solo números
+    const cleanFixed = fixedPos.replace(/^0+/, ''); // Quitar ceros a la izquierda
+    if (cleanFixed.length >= 5 && cleanFixed.length <= 11) {
+      cedula = cleanFixed;
     }
+  } catch (e) {
+    console.error("Error en extracción por posición", e);
+  }
+
+  // Método 2: Si el método 1 falla, buscar cualquier secuencia larga de números
+  if (!cedula) {
+    // Quitar todos los caracteres nulos o especiales raros y buscar números
+    const cleanData = data.replace(/\0/g, '').replace(/[^0-9A-Za-z]/g, ' ');
+    const matches = cleanData.match(/\d{5,11}/g);
+    
+    if (matches && matches.length > 0) {
+      // Tomar la primera secuencia que no sea solo ceros
+      for (const match of matches) {
+        const posible = match.replace(/^0+/, '');
+        if (posible.length >= 5) {
+          cedula = posible;
+          break;
+        }
+      }
+    }
+  }
+
+  if (cedula) {
+    // Evitar escaneos duplicados rápidos
+    if (manualCedulaInput.value === cedula) return;
+    
+    manualCedulaInput.value = cedula;
+    searchWinnerById(cedula);
+    // Feedback físico
+    if (window.navigator.vibrate) window.navigator.vibrate(200);
+  } else {
+    // Modo Debugging: Mostrar qué fue lo que leyó la cámara para ayudar a solucionar
+    scanResultDiv.innerHTML = `
+      <div class="py-6 px-4 bg-yellow-500/10 rounded-2xl border border-yellow-500/20 text-left">
+        <p class="text-yellow-400 font-black uppercase text-xs mb-2">Lectura no reconocida</p>
+        <p class="text-[9px] text-gray-400 mb-2">Se leyó un código pero no se detectó la cédula. Resultado crudo:</p>
+        <div class="bg-black/50 p-2 rounded-lg break-all font-mono text-[8px] text-gray-500 max-h-24 overflow-y-auto">
+          ${data.replace(/</g, '&lt;')}
+        </div>
+      </div>
+    `;
   }
 };
 
