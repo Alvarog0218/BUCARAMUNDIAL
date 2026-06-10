@@ -50,7 +50,14 @@ const startScanner = async () => {
   }
   
   html5QrCode = new Html5Qrcode("reader");
-  const config = { fps: 10, qrbox: { width: 250, height: 150 } };
+  const config = { 
+    fps: 10, 
+    qrbox: { width: 400, height: 200 },
+    formatsToSupport: [ Html5QrcodeSupportedFormats.PDF_417, Html5QrcodeSupportedFormats.QR_CODE ],
+    experimentalFeatures: {
+        useBarCodeDetectorIfSupported: true
+    }
+  };
 
   try {
     await html5QrCode.start(
@@ -67,14 +74,25 @@ const startScanner = async () => {
 };
 
 const processScannedData = (data) => {
-  // Extracción simple de cédula del PDF417
-  const match = data.match(/\d{5,10}/);
-  if (match) {
-    const cedula = match[0];
-    manualCedulaInput.value = cedula;
-    searchWinnerById(cedula);
-    // Beep / Feedback
-    if (window.navigator.vibrate) window.navigator.vibrate(200);
+  // Limpieza y extracción para formato de Cédula Colombiana (PDF417)
+  const cleanData = data.replace(/\0/g, '');
+  
+  // Normalmente la cédula es la primera secuencia de 8-10 dígitos (rellenada con ceros a la izquierda)
+  const matches = cleanData.match(/\d{6,10}/g);
+  
+  if (matches && matches.length > 0) {
+    // Tomamos el primer número largo y le quitamos los ceros a la izquierda
+    const cedula = matches[0].replace(/^0+/, '');
+    
+    if (cedula.length >= 5) {
+      // Evitar escanear el mismo código múltiples veces seguidas rápidamente
+      if (manualCedulaInput.value === cedula) return;
+      
+      manualCedulaInput.value = cedula;
+      searchWinnerById(cedula);
+      // Beep / Feedback
+      if (window.navigator.vibrate) window.navigator.vibrate(200);
+    }
   }
 };
 

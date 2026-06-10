@@ -29,7 +29,7 @@ const scanResultDiv = document.getElementById("scan-result");
 let html5QrCode = null;
 
 // --- SEGURIDAD SIMPLE ---
-const ADMIN_PASS = "Andydev23";
+const ADMIN_PASS = "AdminBucara2026";
 
 const checkAuth = () => {
   if (sessionStorage.getItem("is_admin") === "true") {
@@ -236,57 +236,65 @@ const renderAdminMatches = (data) => {
             const timeStr = new Date(match.match_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             
             return `
-              <div class="bg-brand-dark/60 border border-white/10 rounded-[2rem] p-6 md:p-8 flex flex-col lg:flex-row gap-8 items-center transition-all hover:border-brand-lime/20 shadow-xl text-center">
-                <!-- Info Partido -->
-                <div class="w-full lg:w-1/3">
-                  <div class="inline-block bg-brand-blue/30 text-brand-cyan text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-brand-cyan/20 mb-6">${timeStr}</div>
-                  
-                  <div class="flex items-center justify-center gap-6 md:gap-10 mb-6">
-                    <div class="flex flex-col items-center">
-                      <img src="${getFlagUrl(match.team_a)}" class="w-24 h-16 md:w-32 md:h-20 object-cover rounded-2xl shadow-2xl border border-white/10 mb-3 ring-4 ring-white/5">
-                      <p class="text-[11px] font-black uppercase text-white tracking-widest truncate w-24 md:w-32">${match.team_a}</p>
+              <div class="bg-brand-dark/40 border border-white/10 rounded-[2.5rem] p-6 md:p-8 transition-all hover:border-brand-lime/20 shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                  <!-- Columna 1: Equipos y Hora -->
+                  <div class="space-y-6">
+                    <div class="inline-block bg-brand-blue/30 text-brand-cyan text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-brand-cyan/20">
+                      ${timeStr}
                     </div>
                     
-                    <span class="text-brand-lime font-title text-2xl md:text-3xl italic mt-[-30px]">VS</span>
-                    
-                    <div class="flex flex-col items-center">
-                      <img src="${getFlagUrl(match.team_b)}" class="w-24 h-16 md:w-32 md:h-20 object-cover rounded-2xl shadow-2xl border border-white/10 mb-3 ring-4 ring-white/5">
-                      <p class="text-[11px] font-black uppercase text-white tracking-widest truncate w-24 md:w-32">${match.team_b}</p>
+                    <div class="flex items-center justify-around gap-4">
+                      <div class="flex flex-col items-center min-w-0">
+                        <img src="${getFlagUrl(match.team_a)}" class="w-20 h-14 md:w-24 md:h-16 object-cover rounded-xl shadow-lg border border-white/10 mb-2">
+                        <p class="text-[10px] font-black uppercase text-white tracking-widest truncate w-full text-center">${match.team_a}</p>
+                      </div>
+                      
+                      <span class="text-brand-lime font-title text-xl italic opacity-50">VS</span>
+                      
+                      <div class="flex flex-col items-center min-w-0">
+                        <img src="${getFlagUrl(match.team_b)}" class="w-20 h-14 md:w-24 md:h-16 object-cover rounded-xl shadow-lg border border-white/10 mb-2">
+                        <p class="text-[10px] font-black uppercase text-white tracking-widest truncate w-full text-center">${match.team_b}</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="space-y-2 max-w-xs mx-auto">
-                    <label class="block text-[8px] font-black uppercase text-gray-500 tracking-widest">Premio</label>
-                    <div class="flex gap-2">
-                      <input type="text" id="prize-${match.id}" value="${match.prize || ''}" class="flex-1 bg-brand-dark border border-white/10 rounded-xl px-4 py-2 text-white text-[11px] font-bold outline-none focus:border-brand-cyan transition-all">
-                      <button onclick="updateMatchPrize('${match.id}')" class="bg-brand-cyan hover:bg-white text-brand-dark px-3 py-2 rounded-xl transition-all">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      </button>
+                  <!-- Columna 2: Resultado y Premio -->
+                  <div class="lg:border-x lg:border-white/5 lg:px-8 flex flex-col items-center gap-6">
+                    <div class="w-full">
+                      <p class="text-[8px] font-black uppercase text-gray-500 tracking-widest text-center mb-3">Marcador Final</p>
+                      <div class="flex items-center justify-center gap-3">
+                        <input type="number" id="score-a-${match.id}" value="${match.final_score_a ?? ''}" class="w-14 bg-brand-dark border-2 border-brand-lime/20 rounded-xl py-2 text-center text-xl font-black text-brand-lime outline-none focus:border-brand-lime">
+                        <span class="text-white/20 font-black text-xl">-</span>
+                        <input type="number" id="score-b-${match.id}" value="${match.final_score_b ?? ''}" class="w-14 bg-brand-dark border-2 border-brand-lime/20 rounded-xl py-2 text-center text-xl font-black text-brand-lime outline-none focus:border-brand-lime">
+                      </div>
+                    </div>
+
+                    <div class="w-full max-w-[240px]">
+                      <p class="text-[8px] font-black uppercase text-gray-500 tracking-widest text-center mb-2">Premio del Partido</p>
+                      <div class="flex gap-2">
+                        <input type="text" id="prize-${match.id}" value="${match.prize || ''}" placeholder="Ej: Camiseta..." class="flex-1 bg-brand-dark border border-white/10 rounded-xl px-4 py-2 text-white text-[10px] font-bold outline-none focus:border-brand-cyan transition-all">
+                        <button onclick="updateMatchPrize('${match.id}')" class="bg-brand-cyan hover:bg-white text-brand-dark px-3 py-2 rounded-xl transition-all flex-shrink-0">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- Resultados -->
-                <div class="w-full lg:w-1/3 flex flex-col items-center gap-4 lg:border-x lg:border-white/5 lg:px-8">
-                  <p class="text-[9px] font-black uppercase text-gray-500 tracking-widest">Resultado Final</p>
-                  <div class="flex items-center gap-4">
-                    <input type="number" id="score-a-${match.id}" value="${match.final_score_a ?? ''}" class="w-16 bg-brand-dark border-2 border-brand-lime/20 rounded-xl py-3 text-center text-2xl font-black text-brand-lime outline-none focus:border-brand-lime">
-                    <span class="text-white font-black text-2xl">-</span>
-                    <input type="number" id="score-b-${match.id}" value="${match.final_score_b ?? ''}" class="w-16 bg-brand-dark border-2 border-brand-lime/20 rounded-xl py-3 text-center text-2xl font-black text-brand-lime outline-none focus:border-brand-lime">
+                  <!-- Columna 3: Acciones -->
+                  <div class="flex flex-col gap-3">
+                    <button onclick="saveMatchResult('${match.id}')" class="w-full bg-brand-lime hover:bg-white text-brand-dark font-black py-4 rounded-2xl text-[10px] uppercase tracking-widest transition-all shadow-lg italic">
+                      Actualizar Resultado
+                    </button>
+                    <button 
+                      onclick="calculateWinners('${match.id}')" 
+                      class="w-full inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-brand-cyan text-white hover:text-brand-dark font-black px-6 py-4 rounded-2xl text-[10px] uppercase italic transition-all border border-white/10 ${!isFinished ? 'opacity-30 grayscale cursor-not-allowed' : ''}"
+                      ${!isFinished ? 'disabled' : ''}
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      Ver Ganadores
+                    </button>
                   </div>
-                  <button onclick="saveMatchResult('${match.id}')" class="w-full max-w-[200px] bg-brand-lime hover:bg-white text-brand-dark font-black py-3 rounded-xl text-[10px] uppercase tracking-widest transition-all shadow-lg">Declarar Marcador</button>
-                </div>
-
-                <!-- Ganadores -->
-                <div class="w-full lg:w-1/3 text-center lg:text-right">
-                  <button 
-                    onclick="calculateWinners('${match.id}')" 
-                    class="w-full lg:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-brand-cyan text-brand-dark font-black px-6 py-4 rounded-xl text-xs uppercase italic transition-all shadow-xl transform hover:-translate-y-1 ${!isFinished ? 'opacity-30 grayscale cursor-not-allowed' : ''}"
-                    ${!isFinished ? 'disabled' : ''}
-                  >
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    Ver Ganadores
-                  </button>
                 </div>
               </div>
             `;
