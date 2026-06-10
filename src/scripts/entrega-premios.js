@@ -94,26 +94,26 @@ const searchWinnerById = async (cedula) => {
     `;
   } else {
     scanResultDiv.innerHTML = `
-      <div class="space-y-4 text-left">
+      <div class="min-w-0 space-y-4 text-left">
         <p class="text-brand-cyan text-[10px] font-black uppercase tracking-widest mb-2">Premios Encontrados</p>
         ${winningPredictions.map(p => `
-          <div class="p-4 rounded-2xl border-2 ${p.claimed_at ? 'bg-white/5 border-white/10 opacity-60' : 'bg-green-500/10 border-green-500/30'}">
-            <div class="flex justify-between items-start mb-2">
-              <div>
-                <p class="text-white font-black uppercase italic text-sm">${p.nombre}</p>
-                <p class="text-brand-lime text-[10px] font-bold uppercase">${p.mundial_matches.team_a} vs ${p.mundial_matches.team_b}</p>
+          <div class="min-w-0 p-4 rounded-2xl border-2 overflow-hidden ${p.claimed_at ? 'bg-white/5 border-white/10 opacity-60' : 'bg-green-500/10 border-green-500/30'}">
+            <div class="flex min-w-0 flex-col gap-2 mb-2 sm:flex-row sm:items-start sm:justify-between">
+              <div class="min-w-0">
+                <p class="break-words text-white font-black uppercase italic text-sm leading-tight">${p.nombre}</p>
+                <p class="break-words text-brand-lime text-[10px] font-bold uppercase leading-tight">${p.mundial_matches.team_a} vs ${p.mundial_matches.team_b}</p>
               </div>
-              <div class="text-right">
+              <div class="shrink-0 text-left sm:text-right">
                 <p class="text-white font-title text-sm italic">${p.score_a} - ${p.score_b}</p>
               </div>
             </div>
             
-            <div class="pt-3 border-t border-white/10 mt-3 flex items-center justify-between gap-4">
-              <p class="text-[10px] font-bold text-gray-400 uppercase truncate flex-1">Premio: ${p.mundial_matches.prize || 'Sorpresa'}</p>
+            <div class="pt-3 border-t border-white/10 mt-3 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p class="min-w-0 break-words text-[10px] font-bold text-gray-400 uppercase leading-tight sm:flex-1">Premio: ${p.mundial_matches.prize || 'Sorpresa'}</p>
               
               ${p.claimed_at 
-                ? `<span class="bg-white/20 text-white text-[9px] font-black px-3 py-1.5 rounded-lg uppercase">ENTREGADO</span>`
-                : `<button onclick="confirmDelivery('${p.id}', '${cedula}')" class="bg-brand-lime hover:bg-white text-brand-dark font-black px-4 py-2 rounded-lg text-[9px] uppercase tracking-widest transition-all">ENTREGAR</button>`
+                ? `<span class="w-full bg-white/20 text-center text-white text-[9px] font-black px-3 py-1.5 rounded-lg uppercase sm:w-auto">ENTREGADO</span>`
+                : `<button onclick="confirmDelivery('${p.id}', '${cedula}')" class="w-full bg-brand-lime hover:bg-white text-brand-dark font-black px-4 py-2 rounded-lg text-[9px] uppercase tracking-widest transition-all sm:w-auto">ENTREGAR</button>`
               }
             </div>
           </div>
