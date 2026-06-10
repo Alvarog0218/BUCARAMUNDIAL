@@ -79,7 +79,7 @@ import Footer from "../components/Footer.astro";
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
               <div>
                 <label class="block text-[9px] md:text-[10px] font-black uppercase tracking-widest text-brand-cyan mb-1.5">Cédula</label>
-                <input type="text" name="cedula" required placeholder="123456..." class="w-full bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 md:py-4 md:px-6 text-sm md:text-base text-white font-bold outline-none focus:border-brand-lime transition-all">
+                <input type="text" name="cedula" required inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="123456..." class="w-full bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 md:py-4 md:px-6 text-sm md:text-base text-white font-bold outline-none focus:border-brand-lime transition-all">
               </div>
               <div>
                 <label class="block text-[9px] md:text-[10px] font-black uppercase tracking-widest text-brand-cyan mb-1.5">WhatsApp</label>

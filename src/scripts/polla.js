@@ -9,6 +9,7 @@ const matchesContainer = document.getElementById("matches-container");
 const modal = document.getElementById("prediction-modal");
 const closeModalBtn = document.getElementById("close-modal");
 const pollaForm = document.getElementById("polla-form");
+const cedulaInput = pollaForm?.querySelector('input[name="cedula"]');
 
 let activeMatches = [];
 
@@ -226,6 +227,10 @@ const closeModal = () => {
 };
 
 closeModalBtn?.addEventListener("click", closeModal);
+
+cedulaInput?.addEventListener("input", () => {
+  cedulaInput.value = cedulaInput.value.replace(/\D/g, "");
+});
 
 pollaForm?.addEventListener("submit", async (e) => {
   e.preventDefault();

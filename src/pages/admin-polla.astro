@@ -35,44 +35,37 @@ import Footer from "../components/Footer.astro";
           <div class="flex gap-4">
             <button id="open-scanner-btn" class="bg-brand-cyan hover:bg-white text-brand-dark font-black px-6 py-3 rounded-full transition-all uppercase italic tracking-tighter text-sm shadow-lg flex items-center gap-2">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
-              Escanear Cédula
+              Validar Cédula
             </button>
             <button id="logout-btn" class="text-gray-400 hover:text-white uppercase font-bold text-[10px] tracking-widest border border-white/10 px-8 py-3 rounded-full transition-all hover:bg-white/5">Cerrar Sesión</button>
           </div>
         </div>
 
         <div class="max-w-5xl mx-auto">
-          <!-- Sección de Escaneo (Oculta por defecto) -->
+          <!-- Validador Manual de Ganadores (Oculto por defecto) -->
           <div id="scanner-section" class="hidden mb-12 bg-brand-blue/20 border-2 border-brand-cyan/30 rounded-[2.5rem] p-6 md:p-10 backdrop-blur-md shadow-2xl overflow-hidden">
             <div class="flex justify-between items-center mb-6">
-              <h2 class="text-2xl font-black uppercase italic text-brand-cyan tracking-tighter">Escáner de Premios</h2>
+              <h2 class="text-2xl font-black uppercase italic text-brand-cyan tracking-tighter">Validador de Premios</h2>
               <button id="close-scanner-btn" class="text-gray-400 hover:text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div class="bg-black/40 rounded-2xl overflow-hidden border border-white/10 relative">
-                <div id="reader" class="w-full"></div>
-                <div class="absolute inset-0 pointer-events-none border-[30px] border-brand-dark/40 flex items-center justify-center">
-                  <div class="w-full h-1 bg-brand-cyan/50 animate-pulse"></div>
-                </div>
-              </div>
-              
+            <div class="max-w-2xl mx-auto">
               <div class="space-y-6">
                 <div class="p-6 bg-brand-dark/60 rounded-2xl border border-white/10">
-                  <p class="text-[10px] font-black uppercase text-brand-cyan tracking-widest mb-4">Ingreso Manual / Resultado</p>
+                  <p class="text-[10px] font-black uppercase text-brand-cyan tracking-widest mb-4">Ingreso manual de cédula</p>
                   <div class="flex gap-2 mb-4">
-                    <input type="text" id="manual-cedula" placeholder="Número de Cédula" class="flex-1 bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 text-white font-bold outline-none focus:border-brand-lime transition-all">
+                    <input type="text" id="manual-cedula" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="Número de Cédula" class="flex-1 bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 text-white font-bold outline-none focus:border-brand-lime transition-all">
                     <button id="search-cedula-btn" class="bg-brand-lime text-brand-dark font-black px-6 rounded-xl uppercase italic text-sm">Buscar</button>
                   </div>
                   <div id="scan-result" class="hidden">
-                    <!-- Resultado de búsqueda/escaneo -->
+                    <!-- Resultado de búsqueda -->
                   </div>
                 </div>
                 <div class="text-xs text-gray-400 space-y-2 italic">
-                  <p>• Apunte al código de barras al respaldo de la cédula.</p>
-                  <p>• El sistema buscará automáticamente si la persona es ganadora en algún partido.</p>
+                  <p>• Digita el número de documento y presiona Buscar.</p>
+                  <p>• El sistema indicará si la persona tiene premios pendientes o ya entregados.</p>
                 </div>
               </div>
             </div>
@@ -124,6 +117,5 @@ import Footer from "../components/Footer.astro";
     </div>
   </main>
 
-  <script src="https://unpkg.com/html5-qrcode" is:inline></script>
   <script src="../scripts/admin-polla.js"></script>
 </BaseLayout>

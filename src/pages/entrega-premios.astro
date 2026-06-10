@@ -24,7 +24,7 @@ import Footer from "../components/Footer.astro";
         <h1 class="text-3xl font-black italic uppercase text-white mb-2 tracking-tighter">Panel de Entrega</h1>
         <p class="text-brand-cyan text-[10px] font-black uppercase tracking-widest mb-6">Acceso exclusivo para personal de logística</p>
         <input type="password" id="staff-pass" placeholder="Contraseña de Entrega" class="w-full bg-brand-dark border-2 border-white/10 rounded-xl py-4 px-6 text-white font-bold mb-4 focus:border-brand-lime outline-none transition-all">
-        <button id="login-btn" class="w-full bg-brand-lime hover:bg-white text-brand-dark font-black py-4 rounded-xl transition-all uppercase italic tracking-tighter text-lg shadow-lg">Entrar al Escáner</button>
+        <button id="login-btn" class="w-full bg-brand-lime hover:bg-white text-brand-dark font-black py-4 rounded-xl transition-all uppercase italic tracking-tighter text-lg shadow-lg">Entrar al Validador</button>
       </div>
 
       <!-- Contenido de Entrega (Oculto inicialmente) -->
@@ -32,45 +32,31 @@ import Footer from "../components/Footer.astro";
         <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
           <div class="text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter text-brand-lime">
-              Escanear Cédula
+              Validar Cédula
             </h1>
             <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">Validación de Ganadores y Entrega de Premios</p>
           </div>
           <button id="logout-btn" class="text-gray-400 hover:text-white uppercase font-bold text-[10px] tracking-widest border border-white/10 px-8 py-3 rounded-full transition-all hover:bg-white/5">Cerrar Sesión</button>
         </div>
 
-        <!-- Scanner Card -->
+        <!-- Manual Validator Card -->
         <div class="bg-brand-blue/20 border-2 border-brand-cyan/30 rounded-[2.5rem] p-6 md:p-10 backdrop-blur-md shadow-2xl overflow-hidden">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Camera Section -->
-            <div class="space-y-4">
-              <div class="bg-black/40 rounded-3xl overflow-hidden border-2 border-white/10 relative aspect-square md:aspect-auto md:h-80">
-                <div id="reader" class="w-full h-full"></div>
-                <div id="scanner-overlay" class="absolute inset-0 pointer-events-none border-[40px] border-brand-dark/60 flex items-center justify-center">
-                  <div class="w-full h-1 bg-brand-cyan/50 animate-pulse shadow-[0_0_15px_rgba(2,136,209,0.8)]"></div>
-                </div>
-              </div>
-              <div class="flex gap-3">
-                <button id="restart-camera" class="flex-1 bg-white/5 hover:bg-white/10 text-white text-[10px] font-black uppercase py-3 rounded-xl border border-white/10 transition-all">Reiniciar Cámara</button>
-              </div>
-            </div>
-            
-            <!-- Result Section -->
+          <div class="max-w-2xl mx-auto">
             <div class="flex flex-col h-full">
               <div class="flex-1 p-6 bg-brand-dark/60 rounded-3xl border border-white/10 flex flex-col">
                 <p class="text-[10px] font-black uppercase text-brand-cyan tracking-widest mb-4">Validación de Identidad</p>
                 
                 <div class="flex gap-2 mb-6">
-                  <input type="text" id="manual-cedula" placeholder="Número de Cédula" class="flex-1 bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 text-white font-bold outline-none focus:border-brand-lime transition-all text-sm">
+                  <input type="text" id="manual-cedula" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="Número de Cédula" class="flex-1 bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 text-white font-bold outline-none focus:border-brand-lime transition-all text-sm">
                   <button id="search-cedula-btn" class="bg-brand-lime hover:bg-white text-brand-dark font-black px-6 rounded-xl uppercase italic text-xs transition-all shadow-lg">Buscar</button>
                 </div>
 
                 <div id="scan-result" class="flex-1 flex flex-col justify-center text-center">
                   <div class="py-10">
                     <div class="w-16 h-16 border-4 border-dashed border-white/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <svg class="w-8 h-8 text-white/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
+                      <svg class="w-8 h-8 text-white/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                     </div>
-                    <p class="text-gray-500 font-bold uppercase italic text-sm">Esperando escaneo...</p>
+                    <p class="text-gray-500 font-bold uppercase italic text-sm">Digita una cédula para validar</p>
                   </div>
                 </div>
               </div>
@@ -79,7 +65,7 @@ import Footer from "../components/Footer.astro";
               <div class="mt-6 px-2 space-y-2">
                 <div class="flex items-start gap-3">
                   <span class="w-5 h-5 rounded-full bg-brand-cyan/20 text-brand-cyan flex-shrink-0 flex items-center justify-center text-[10px] font-bold">1</span>
-                  <p class="text-[10px] text-gray-400 font-medium leading-relaxed">Escanea el código de barras PDF417 al respaldo de la cédula colombiana.</p>
+                  <p class="text-[10px] text-gray-400 font-medium leading-relaxed">Digita el número de documento y presiona Buscar.</p>
                 </div>
                 <div class="flex items-start gap-3">
                   <span class="w-5 h-5 rounded-full bg-brand-cyan/20 text-brand-cyan flex-shrink-0 flex items-center justify-center text-[10px] font-bold">2</span>
@@ -93,7 +79,6 @@ import Footer from "../components/Footer.astro";
     </section>
   </main>
 
-  <script src="https://unpkg.com/html5-qrcode" is:inline></script>
   <script src="../scripts/entrega-premios.js"></script>
   <Footer />
 </BaseLayout>

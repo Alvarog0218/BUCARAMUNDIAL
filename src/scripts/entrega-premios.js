@@ -14,9 +14,6 @@ const staffPassInput = document.getElementById("staff-pass");
 const manualCedulaInput = document.getElementById("manual-cedula");
 const searchCedulaBtn = document.getElementById("search-cedula-btn");
 const scanResultDiv = document.getElementById("scan-result");
-const restartCameraBtn = document.getElementById("restart-camera");
-
-let html5QrCode = null;
 
 // --- SEGURIDAD SIMPLE PARA STAFF ---
 const STAFF_PASS = "StaffMundial2026";
@@ -25,7 +22,7 @@ const checkAuth = () => {
   if (sessionStorage.getItem("is_staff") === "true") {
     loginSection.classList.add("hidden");
     staffContent.classList.remove("hidden");
-    startScanner();
+    manualCedulaInput?.focus();
   }
 };
 
@@ -43,89 +40,23 @@ logoutBtn?.addEventListener("click", () => {
   window.location.reload();
 });
 
-// --- SCANNER LOGIC ---
-const startScanner = async () => {
-  if (html5QrCode) {
-    await html5QrCode.stop();
-  }
-  
-  html5QrCode = new Html5Qrcode("reader");
-  const config = { 
-    fps: 10, 
-    qrbox: { width: 400, height: 200 },
-    formatsToSupport: [ Html5QrcodeSupportedFormats.PDF_417, Html5QrcodeSupportedFormats.QR_CODE ],
-    experimentalFeatures: {
-        useBarCodeDetectorIfSupported: true
-    }
-  };
+// --- MANUAL VALIDATION LOGIC ---
+const normalizeCedula = (value) => value.replace(/\D/g, "");
 
-  try {
-    await html5QrCode.start(
-      { facingMode: "environment" }, 
-      config,
-      (decodedText) => {
-        processScannedData(decodedText);
-      }
-    );
-  } catch (err) {
-    console.error("Error starting scanner", err);
-    scanResultDiv.innerHTML = `<p class="text-red-400 font-bold text-xs mt-4">Error: No se pudo acceder a la cámara. Asegúrate de dar permisos.</p>`;
-  }
-};
+const runManualSearch = () => {
+  const cedula = normalizeCedula(manualCedulaInput.value);
+  manualCedulaInput.value = cedula;
 
-const processScannedData = (data) => {
-  let cedula = null;
-
-  // Método 1: Intentar extraer por posiciones fijas (Formato estándar Cédula Colombiana)
-  try {
-    // La cédula suele estar entre la posición 48 y 58
-    const fixedPos = data.substring(48, 58).replace(/\D/g, ''); // Solo números
-    const cleanFixed = fixedPos.replace(/^0+/, ''); // Quitar ceros a la izquierda
-    if (cleanFixed.length >= 5 && cleanFixed.length <= 11) {
-      cedula = cleanFixed;
-    }
-  } catch (e) {
-    console.error("Error en extracción por posición", e);
-  }
-
-  // Método 2: Si el método 1 falla, buscar cualquier secuencia larga de números
   if (!cedula) {
-    // Quitar todos los caracteres nulos o especiales raros y buscar números
-    const cleanData = data.replace(/\0/g, '').replace(/[^0-9A-Za-z]/g, ' ');
-    const matches = cleanData.match(/\d{5,11}/g);
-    
-    if (matches && matches.length > 0) {
-      // Tomar la primera secuencia que no sea solo ceros
-      for (const match of matches) {
-        const posible = match.replace(/^0+/, '');
-        if (posible.length >= 5) {
-          cedula = posible;
-          break;
-        }
-      }
-    }
-  }
-
-  if (cedula) {
-    // Evitar escaneos duplicados rápidos
-    if (manualCedulaInput.value === cedula) return;
-    
-    manualCedulaInput.value = cedula;
-    searchWinnerById(cedula);
-    // Feedback físico
-    if (window.navigator.vibrate) window.navigator.vibrate(200);
-  } else {
-    // Modo Debugging: Mostrar qué fue lo que leyó la cámara para ayudar a solucionar
     scanResultDiv.innerHTML = `
-      <div class="py-6 px-4 bg-yellow-500/10 rounded-2xl border border-yellow-500/20 text-left">
-        <p class="text-yellow-400 font-black uppercase text-xs mb-2">Lectura no reconocida</p>
-        <p class="text-[9px] text-gray-400 mb-2">Se leyó un código pero no se detectó la cédula. Resultado crudo:</p>
-        <div class="bg-black/50 p-2 rounded-lg break-all font-mono text-[8px] text-gray-500 max-h-24 overflow-y-auto">
-          ${data.replace(/</g, '&lt;')}
-        </div>
+      <div class="py-8 px-4 bg-red-500/10 rounded-2xl border border-red-500/20">
+        <p class="text-red-400 font-black uppercase text-sm">Ingresa una cédula</p>
       </div>
     `;
+    return;
   }
+
+  searchWinnerById(cedula);
 };
 
 const searchWinnerById = async (cedula) => {
@@ -209,7 +140,12 @@ window.confirmDelivery = async (predictionId, cedula) => {
   }
 };
 
-searchCedulaBtn?.addEventListener("click", () => searchWinnerById(manualCedulaInput.value));
-restartCameraBtn?.addEventListener("click", startScanner);
+searchCedulaBtn?.addEventListener("click", runManualSearch);
+manualCedulaInput?.addEventListener("input", () => {
+  manualCedulaInput.value = normalizeCedula(manualCedulaInput.value);
+});
+manualCedulaInput?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") runManualSearch();
+});
 
 checkAuth();

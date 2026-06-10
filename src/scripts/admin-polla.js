@@ -18,15 +18,13 @@ const winnersTbody = document.getElementById("winners-tbody");
 const winnersMatchName = document.getElementById("winners-match-name");
 const noWinnersMsg = document.getElementById("no-winners");
 
-// --- SCANNER ELEMENTS ---
+// --- MANUAL WINNER VALIDATOR ELEMENTS ---
 const openScannerBtn = document.getElementById("open-scanner-btn");
 const closeScannerBtn = document.getElementById("close-scanner-btn");
 const scannerSection = document.getElementById("scanner-section");
 const manualCedulaInput = document.getElementById("manual-cedula");
 const searchCedulaBtn = document.getElementById("search-cedula-btn");
 const scanResultDiv = document.getElementById("scan-result");
-
-let html5QrCode = null;
 
 // --- SEGURIDAD SIMPLE ---
 const ADMIN_PASS = "AdminBucara2026";
@@ -53,48 +51,29 @@ logoutBtn?.addEventListener("click", () => {
   window.location.reload();
 });
 
-// --- SCANNER LOGIC ---
-const startScanner = async () => {
+// --- MANUAL WINNER VALIDATOR LOGIC ---
+const openValidator = () => {
   scannerSection.classList.remove("hidden");
-  html5QrCode = new Html5Qrcode("reader");
-  
-  const config = { fps: 10, qrbox: { width: 250, height: 150 } };
-
-  try {
-    await html5QrCode.start(
-      { facingMode: "environment" }, 
-      config,
-      (decodedText) => {
-        // La cédula colombiana en PDF417 tiene un formato específico.
-        // Intentamos extraer el número de cédula.
-        processScannedData(decodedText);
-      }
-    );
-  } catch (err) {
-    console.error("Error starting scanner", err);
-    alert("No se pudo acceder a la cámara");
-  }
+  manualCedulaInput?.focus();
 };
 
-const stopScanner = async () => {
-  if (html5QrCode) {
-    await html5QrCode.stop();
-    html5QrCode = null;
-  }
+const closeValidator = () => {
   scannerSection.classList.add("hidden");
 };
 
-const processScannedData = (data) => {
-  // El PDF417 de la cédula colombiana suele tener el número de cédula 
-  // después de una cadena de bytes nulos o en posiciones fijas.
-  // Una forma simple de extraer números largos:
-  const match = data.match(/\d{5,10}/);
-  if (match) {
-    const cedula = match[0];
-    manualCedulaInput.value = cedula;
-    searchWinnerById(cedula);
-    // Beep or feedback could go here
+const normalizeCedula = (value) => value.replace(/\D/g, "");
+
+const runManualSearch = () => {
+  const cedula = normalizeCedula(manualCedulaInput.value);
+  manualCedulaInput.value = cedula;
+
+  if (!cedula) {
+    scanResultDiv.innerHTML = `<p class="text-red-400 font-bold text-xs">Ingresa una cédula para buscar.</p>`;
+    scanResultDiv.classList.remove("hidden");
+    return;
   }
+
+  searchWinnerById(cedula);
 };
 
 const searchWinnerById = async (cedula) => {
@@ -155,7 +134,7 @@ window.confirmClaim = async (predictionId, cedula) => {
     alert("Error al confirmar entrega");
   } else {
     alert("Entrega confirmada");
-    searchWinnerById(cedula); // Refrescar vista de escaneo
+    searchWinnerById(cedula); // Refrescar vista de validación
     if (!winnersModal.classList.contains("hidden")) {
       // Si el modal de ganadores está abierto, refrescarlo también
       // Necesitamos el matchId, pero confirmClaim solo tiene predictionId.
@@ -164,9 +143,15 @@ window.confirmClaim = async (predictionId, cedula) => {
   }
 };
 
-openScannerBtn?.addEventListener("click", startScanner);
-closeScannerBtn?.addEventListener("click", stopScanner);
-searchCedulaBtn?.addEventListener("click", () => searchWinnerById(manualCedulaInput.value));
+openScannerBtn?.addEventListener("click", openValidator);
+closeScannerBtn?.addEventListener("click", closeValidator);
+searchCedulaBtn?.addEventListener("click", runManualSearch);
+manualCedulaInput?.addEventListener("input", () => {
+  manualCedulaInput.value = normalizeCedula(manualCedulaInput.value);
+});
+manualCedulaInput?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") runManualSearch();
+});
 
 // --- GESTIÓN DE PARTIDOS ---
 let matches = [];
