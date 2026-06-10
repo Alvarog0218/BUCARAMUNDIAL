@@ -16,7 +16,7 @@ const purchaseButtonLabels = {
   abono: "Ir a comprar abono"
 };
 
-const eventStartDate = new Date("2026-06-17T12:00:00-05:00");
+const eventStartDate = new Date("2026-06-11T12:00:00-05:00");
 
 const ticketFieldNames = ["nombre", "whatsapp", "email", "tipo", "zona", "acepta_tratamiento"];
 const disposableEmailDomains = new Set([
@@ -76,8 +76,10 @@ const updateEventCountdown = () => {
   const diff = eventStartDate.getTime() - Date.now();
 
   if (diff <= 0) {
-    countdownElement.innerHTML =
-      '<p class="text-sm font-black uppercase tracking-[0.28em] text-brand-lime sm:text-base">BUCARAMUNDIAL YA ESTA EN VIVO</p>';
+    const countdownSection = countdownElement.closest("section");
+    if (countdownSection) {
+      countdownSection.classList.add("hidden");
+    }
     return;
   }
 

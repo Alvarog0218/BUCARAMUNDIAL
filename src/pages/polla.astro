@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Polla Mundialista | Bucaramundial" description="Participa en la polla mundialista de Bucaramundial y gana premios por acertar los marcadores.">
+  <Header />
+  
+  <main class="pt-24 md:pt-32 pb-20 relative min-h-screen">
+    <!-- Background Image -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <img 
+        src="/assets/balon.png" 
+        alt="" 
+        class="w-full h-full object-cover opacity-60"
+      />
+      <div class="absolute inset-0 bg-brand-dark/30"></div>
+    </div>
+
+    <section class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="text-center mb-10 md:mb-16">
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-black italic uppercase tracking-tighter text-brand-lime mb-4 md:mb-6">
+          Polla Mundialista
+        </h1>
+        <p class="max-w-2xl mx-auto text-gray-300 text-sm md:text-lg font-semibold px-2">
+          ¡Predice el marcador de los partidos y gana premios increíbles! 
+          Solo tienes un intento por partido y las predicciones cierran al iniciar el encuentro.
+        </p>
+      </div>
+
+      <!-- Contenedor de Partidos -->
+      <div id="matches-container" class="grid auto-rows-fr gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Loader / Mensaje de carga -->
+        <div class="col-span-full py-20 text-center">
+          <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand-lime border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+            <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Cargando...</span>
+          </div>
+          <p class="mt-4 text-brand-cyan font-bold uppercase tracking-widest text-xs md:text-sm">Cargando partidos próximos...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal de Predicción -->
+    <div id="prediction-modal" class="fixed inset-0 z-[100] hidden items-start justify-center p-3 md:p-4 bg-brand-dark/95 backdrop-blur-md overflow-y-auto pt-24 md:pt-40">
+      <div class="relative w-full max-w-lg bg-brand-blue/20 border-2 border-brand-lime/30 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 shadow-2xl mb-10">
+        <button id="close-modal" class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-white transition-colors">
+          <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div class="text-center mb-6 md:mb-8 mt-2 font-sans">
+          <h2 class="text-2xl md:text-3xl font-bold uppercase text-white mb-1 md:mb-2">Tu Predicción</h2>
+          <p id="modal-match-name" class="text-brand-lime font-bold uppercase tracking-wider text-[10px] md:text-sm">Colombia vs Brasil</p>
+        </div>
+
+        <form id="polla-form" class="space-y-4 md:space-y-6">
+          <input type="hidden" name="match_id" id="form-match-id">
+          
+        <div class="grid grid-cols-2 gap-4 md:gap-6 items-center bg-brand-dark/50 p-4 md:p-6 rounded-2xl border border-white/10">
+            <div class="text-center">
+              <img id="modal-flag-a" src="" alt="" class="w-20 h-12 md:w-28 md:h-16 object-cover mx-auto mb-2 md:mb-3 rounded-lg shadow-md border border-white/10 hidden">
+              <p id="team-a-label" class="text-white text-xs md:text-sm font-black uppercase mb-2 md:mb-3 truncate px-1">Colombia</p>
+              <input type="number" name="score_a" min="0" required class="w-full bg-brand-dark border-2 border-brand-lime/20 rounded-xl py-3 md:py-4 text-center text-2xl md:text-3xl font-black text-brand-lime focus:border-brand-lime outline-none transition-all">
+            </div>
+            <div class="text-center">
+              <img id="modal-flag-b" src="" alt="" class="w-20 h-12 md:w-28 md:h-16 object-cover mx-auto mb-2 md:mb-3 rounded-lg shadow-md border border-white/10 hidden">
+              <p id="team-b-label" class="text-white text-xs md:text-sm font-black uppercase mb-2 md:mb-3 truncate px-1">Brasil</p>
+              <input type="number" name="score_b" min="0" required class="w-full bg-brand-dark border-2 border-brand-lime/20 rounded-xl py-3 md:py-4 text-center text-2xl md:text-3xl font-black text-brand-lime focus:border-brand-lime outline-none transition-all">
+            </div>
+          </div>
+
+          <div class="space-y-3 md:space-y-4">
+            <div>
+              <label class="block text-[9px] md:text-[10px] font-black uppercase tracking-widest text-brand-cyan mb-1.5">Nombre Completo</label>
+              <input type="text" name="nombre" required placeholder="Ej: Juan Perez" class="w-full bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 md:py-4 md:px-6 text-sm md:text-base text-white font-bold outline-none focus:border-brand-lime transition-all">
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <div>
+                <label class="block text-[9px] md:text-[10px] font-black uppercase tracking-widest text-brand-cyan mb-1.5">Cédula</label>
+                <input type="text" name="cedula" required placeholder="123456..." class="w-full bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 md:py-4 md:px-6 text-sm md:text-base text-white font-bold outline-none focus:border-brand-lime transition-all">
+              </div>
+              <div>
+                <label class="block text-[9px] md:text-[10px] font-black uppercase tracking-widest text-brand-cyan mb-1.5">WhatsApp</label>
+                <input type="tel" name="whatsapp" required placeholder="310..." class="w-full bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 md:py-4 md:px-6 text-sm md:text-base text-white font-bold outline-none focus:border-brand-lime transition-all">
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn" class="w-full bg-brand-lime hover:bg-white text-brand-dark font-black py-4 md:py-5 rounded-2xl text-lg md:text-xl transition-all uppercase italic tracking-tighter shadow-lg">
+            Registrar Predicción
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script src="../scripts/polla.js"></script>
+</BaseLayout>

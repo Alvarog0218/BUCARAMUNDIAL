@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Admin Polla | Bucaramundial">
+  <Header />
+  
+  <main class="pt-32 pb-20 relative min-h-screen">
+    <!-- Background Image -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <img 
+        src="/assets/balon.png" 
+        alt="" 
+        class="w-full h-full object-cover opacity-60"
+      />
+      <div class="absolute inset-0 bg-brand-dark/30"></div>
+    </div>
+
+    <section class="container mx-auto px-4 md:px-6 relative z-10">
+      <!-- Pantalla de Login Simple -->
+      <div id="admin-login" class="max-w-md mx-auto bg-brand-blue/20 p-8 rounded-[2rem] border-2 border-brand-lime/30 text-center shadow-2xl">
+        <h1 class="text-3xl font-black italic uppercase text-white mb-6 tracking-tighter">Acceso Admin</h1>
+        <input type="password" id="admin-pass" placeholder="Contraseña" class="w-full bg-brand-dark border-2 border-white/10 rounded-xl py-4 px-6 text-white font-bold mb-4 focus:border-brand-lime outline-none transition-all">
+        <button id="login-btn" class="w-full bg-brand-lime hover:bg-white text-brand-dark font-black py-4 rounded-xl transition-all uppercase italic tracking-tighter text-lg shadow-lg">Entrar al Panel</button>
+      </div>
+
+      <!-- Contenido Admin (Oculto inicialmente) -->
+      <div id="admin-content" class="hidden">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-10 md:mb-16 gap-6">
+          <h1 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-brand-lime text-center md:text-left">
+            Gestión de Polla
+          </h1>
+          <div class="flex gap-4">
+            <button id="open-scanner-btn" class="bg-brand-cyan hover:bg-white text-brand-dark font-black px-6 py-3 rounded-full transition-all uppercase italic tracking-tighter text-sm shadow-lg flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
+              Escanear Cédula
+            </button>
+            <button id="logout-btn" class="text-gray-400 hover:text-white uppercase font-bold text-[10px] tracking-widest border border-white/10 px-8 py-3 rounded-full transition-all hover:bg-white/5">Cerrar Sesión</button>
+          </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+          <!-- Sección de Escaneo (Oculta por defecto) -->
+          <div id="scanner-section" class="hidden mb-12 bg-brand-blue/20 border-2 border-brand-cyan/30 rounded-[2.5rem] p-6 md:p-10 backdrop-blur-md shadow-2xl overflow-hidden">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-black uppercase italic text-brand-cyan tracking-tighter">Escáner de Premios</h2>
+              <button id="close-scanner-btn" class="text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="bg-black/40 rounded-2xl overflow-hidden border border-white/10 relative">
+                <div id="reader" class="w-full"></div>
+                <div class="absolute inset-0 pointer-events-none border-[30px] border-brand-dark/40 flex items-center justify-center">
+                  <div class="w-full h-1 bg-brand-cyan/50 animate-pulse"></div>
+                </div>
+              </div>
+              
+              <div class="space-y-6">
+                <div class="p-6 bg-brand-dark/60 rounded-2xl border border-white/10">
+                  <p class="text-[10px] font-black uppercase text-brand-cyan tracking-widest mb-4">Ingreso Manual / Resultado</p>
+                  <div class="flex gap-2 mb-4">
+                    <input type="text" id="manual-cedula" placeholder="Número de Cédula" class="flex-1 bg-brand-dark border-2 border-white/10 rounded-xl py-3 px-4 text-white font-bold outline-none focus:border-brand-lime transition-all">
+                    <button id="search-cedula-btn" class="bg-brand-lime text-brand-dark font-black px-6 rounded-xl uppercase italic text-sm">Buscar</button>
+                  </div>
+                  <div id="scan-result" class="hidden">
+                    <!-- Resultado de búsqueda/escaneo -->
+                  </div>
+                </div>
+                <div class="text-xs text-gray-400 space-y-2 italic">
+                  <p>• Apunte al código de barras al respaldo de la cédula.</p>
+                  <p>• El sistema buscará automáticamente si la persona es ganadora en algún partido.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-brand-blue/10 border border-white/10 rounded-[2.5rem] p-6 md:p-10 backdrop-blur-sm">
+            <h2 class="text-xl md:text-2xl font-black uppercase italic text-brand-cyan mb-8 border-b border-white/10 pb-4 tracking-tighter">Control de Partidos</h2>
+            <div id="admin-matches-list" class="space-y-8">
+               <!-- Lista de partidos cargada por JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal de Ganadores -->
+    <div id="winners-modal" class="fixed inset-0 z-[110] hidden items-center justify-center p-4 bg-brand-dark/98 backdrop-blur-xl">
+      <div class="relative w-full max-w-5xl bg-brand-blue/20 border-2 border-brand-lime/30 rounded-[2.5rem] p-8 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <button id="close-winners" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-black italic uppercase text-white mb-2">Listado de Ganadores</h2>
+          <p id="winners-match-name" class="text-brand-lime font-bold uppercase tracking-wider text-sm">Colombia vs Brasil</p>
+        </div>
+
+        <div class="flex-1 overflow-y-auto pr-2">
+          <table class="w-full text-left">
+            <thead class="sticky top-0 bg-brand-blue/30 backdrop-blur-md">
+              <tr class="text-brand-cyan font-black uppercase text-[10px] tracking-widest border-b border-white/10">
+                <th class="py-4 px-4 text-center">Nombre / Cédula</th>
+                <th class="py-4 px-4 text-center">WhatsApp</th>
+                <th class="py-4 px-4 text-center">Estado Premio</th>
+                <th class="py-4 px-4 text-center">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="winners-tbody" class="divide-y divide-white/5">
+              <!-- Filas de ganadores -->
+            </tbody>
+          </table>
+          <div id="no-winners" class="hidden py-20 text-center">
+             <p class="text-gray-500 font-bold uppercase italic">Nadie acertó el marcador de este partido.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/html5-qrcode" is:inline></script>
+  <script src="../scripts/admin-polla.js"></script>
+</BaseLayout>
