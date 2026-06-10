@@ -16,7 +16,7 @@ const purchaseButtonLabels = {
   abono: "Ir a comprar abono"
 };
 
-const eventStartDate = new Date("2026-06-18T02:00:00Z");
+const eventStartDate = new Date("2026-06-17T12:00:00-05:00");
 
 const ticketFieldNames = ["nombre", "whatsapp", "email", "tipo", "zona", "acepta_tratamiento"];
 const disposableEmailDomains = new Set([
