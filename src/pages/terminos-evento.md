@@ -4,7 +4,7 @@ title: "Términos del Evento | Bucaramundial 2026"
 description: "Términos y condiciones de participación en el evento Bucaramundial 2026 en Neomundo Bucaramanga."
 ---
 
-**Versión:** 1.0 · **Vigencia:** 27 de mayo de 2026
+**Versión:** 1.1 · **Vigencia:** 10 de junio de 2026
 
 ---
 
@@ -25,16 +25,16 @@ El evento consiste en la transmisión en pantallas gigantes de los partidos del 
 
 ### 2.1 Política de ingreso
 
-El ingreso a **Bucaramundial 2026** es **gratuito** para la transmisión de todos los partidos del Campeonato Mundial, con excepción de las jornadas en las que participe la **Selección Colombia**. Para dichos encuentros, se requerirá la compra de una entrada oficial.
+**Bucaramundial 2026** contará con la transmisión de los **104 partidos** del Campeonato Mundial. **Noventa y nueve (99) partidos serán gratuitos** para el público asistente. Habrá **cinco (5) fechas con cobro** mediante boleta oficial: los **tres (3) partidos de la Selección Colombia en fase de grupos**, **una (1) fecha por definir según los resultados de la Selección Colombia** y la **final de la Copa del Mundo**. Estas fechas se realizarán en un espacio de mayor formato, con mayor capacidad operativa y prestaciones adicionales para la experiencia del público.
 
 ### 2.2 Canales oficiales de venta
 
-Para los partidos de la Selección Colombia, las boletas y abonos se adquieren **exclusivamente** a través de la plataforma oficial **QuickTicket**. El Organizador no se hace responsable por compras realizadas a través de terceros no autorizados.
+Para las fechas con cobro, las boletas y abonos se adquieren **exclusivamente** a través de la plataforma oficial **QuickTicket**. El Organizador no se hace responsable por compras realizadas a través de terceros no autorizados.
 
-### 2.3 Tipos de boleta (Partidos de Colombia)
+### 2.3 Tipos de boleta (Fechas con cobro)
 
-- **Boleta individual:** Acceso a una (1) jornada de la Selección Colombia en la zona seleccionada.
-- **Abono de evento:** Acceso a múltiples jornadas de la Selección Colombia según las condiciones indicadas en la plataforma al momento de la compra.
+- **Boleta individual:** Acceso a una (1) fecha con cobro en la zona seleccionada.
+- **Abono de evento:** Acceso a múltiples fechas con cobro según las condiciones indicadas en la plataforma al momento de la compra.
 
 ### 2.3 Zonas disponibles
 
@@ -54,6 +54,8 @@ Para los partidos de la Selección Colombia, las boletas y abonos se adquieren *
 ## 3. Precios y Pagos
 
 Los precios de las boletas y abonos son los publicados en la plataforma QuickTicket al momento de la compra. El Organizador se reserva el derecho de modificar precios con previo aviso. La compra completada y pagada no está sujeta a modificaciones de precio posteriores.
+
+El **cincuenta por ciento (50%) del valor pagado por la boleta** será consumible dentro del evento, de acuerdo con la disponibilidad, productos, puntos de venta, horarios y condiciones operativas definidos por el Organizador. El porcentaje consumible no será canjeable por dinero en efectivo ni será reembolsable.
 
 ---
 
