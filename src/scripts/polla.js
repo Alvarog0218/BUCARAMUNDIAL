@@ -107,8 +107,8 @@ const fetchMatches = async () => {
     return;
   }
 
-  activeMatches = data;
-  renderMatches(data);
+  activeMatches = [...data];
+  renderMatches(activeMatches);
 };
 
 const renderMatches = (matches) => {

@@ -77,8 +77,10 @@ const searchWinnerById = async (cedula) => {
     return;
   }
 
+  const allPredictions = data;
+
   // Ganadores = marcador acertado
-  const winningPredictions = data.filter(p => 
+  const winningPredictions = allPredictions.filter(p => 
     p.mundial_matches.final_score_a !== null && 
     p.score_a === p.mundial_matches.final_score_a && 
     p.score_b === p.mundial_matches.final_score_b

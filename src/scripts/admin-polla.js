@@ -90,8 +90,10 @@ const searchWinnerById = async (cedula) => {
     return;
   }
 
+  const allPredictions = data;
+
   // Filtrar solo las que coinciden con el marcador final (ganadores)
-  const winningPredictions = data.filter(p => 
+  const winningPredictions = allPredictions.filter(p => 
     p.mundial_matches.final_score_a !== null && 
     p.score_a === p.mundial_matches.final_score_a && 
     p.score_b === p.mundial_matches.final_score_b
@@ -169,7 +171,7 @@ const fetchAdminMatches = async () => {
   }
 
   matches = data;
-  renderAdminMatches(data);
+  renderAdminMatches(matches);
 };
 
 const countryCodes = {
@@ -302,6 +304,7 @@ window.toggleGroup = (id) => {
 // --- ACCIONES ADMIN ---
 window.updateMatchPrize = async (id) => {
   const prize = document.getElementById(`prize-${id}`).value;
+
   const { error } = await supabase
     .from("mundial_matches")
     .update({ prize })
