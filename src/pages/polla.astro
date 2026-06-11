@@ -11,11 +11,11 @@ import Footer from "../components/Footer.astro";
     <!-- Background Image -->
     <div class="fixed inset-0 z-0 pointer-events-none">
       <img 
-        src="/assets/balon.png" 
+        src="/assets/balon-azul.png" 
         alt="" 
-        class="w-full h-full object-cover opacity-60"
+        class="w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-brand-dark/30"></div>
+      <div class="absolute inset-0 bg-brand-dark/70"></div>
     </div>
 
     <section class="container mx-auto px-4 md:px-6 relative z-10">
@@ -26,6 +26,21 @@ import Footer from "../components/Footer.astro";
         <p class="max-w-2xl mx-auto text-gray-300 text-sm md:text-lg font-semibold px-2">
           ¡Predice el marcador de los partidos y gana premios increíbles! 
           Solo tienes un intento por partido y las predicciones cierran al iniciar el encuentro.
+        </p>
+      </div>
+
+      <div class="mx-auto mb-10 max-w-5xl rounded-[2rem] border-2 border-brand-lime/25 bg-brand-dark/72 p-5 shadow-2xl backdrop-blur-md md:mb-14 md:p-7">
+        <h2 class="mb-6 text-center text-2xl font-black uppercase italic tracking-tighter text-white md:text-3xl">
+          Reglas de juego
+        </h2>
+        <div class="grid gap-4 text-xs font-bold leading-relaxed text-gray-200 md:grid-cols-2 md:text-sm">
+          <p><strong class="text-brand-lime">Un solo intento:</strong> cada persona puede enviar una única predicción por partido.</p>
+          <p><strong class="text-brand-lime">Datos correctos:</strong> revisa nombre, cédula y WhatsApp antes de registrar tu predicción.</p>
+          <p><strong class="text-brand-lime">Marcador válido:</strong> gana quien acierte el resultado del tiempo reglamentario, es decir, los 90 minutos. No aplica prórroga ni penales.</p>
+          <p><strong class="text-brand-lime">Reclamo del premio:</strong> el ganador debe presentar su cédula física para reclamar.</p>
+        </div>
+        <p class="mt-5 rounded-xl border border-brand-lime/25 bg-brand-lime/10 px-4 py-3 text-center text-[11px] font-black uppercase tracking-wider text-white md:text-xs">
+          Importante: cualquier error en la digitación de los datos puede generar la pérdida del premio.
         </p>
       </div>
 
