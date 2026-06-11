@@ -76,10 +76,7 @@ const updateEventCountdown = () => {
   const diff = eventStartDate.getTime() - Date.now();
 
   if (diff <= 0) {
-    const countdownSection = countdownElement.closest("section");
-    if (countdownSection) {
-      countdownSection.classList.add("hidden");
-    }
+    countdownElement.classList.add("hidden");
     return;
   }
 
