@@ -2,8 +2,9 @@
 import "../styles/global.css";
 
 const {
-  title = "Bucaramundial",
-  description = "Vive el Mundial 2026 en Neomundo Bucaramanga. Pantallas gigantes, ambiente de estadio, zona VIP y toda la emoción del fútbol en un solo lugar. ¡Asegura tu entrada!"
+  title = "Bucaramundial 2026: Vive el Mundial en Pantalla Gigante en Bucaramanga - Neomundo",
+  description = "Vive el Mundial 2026 en Neomundo Bucaramanga. Pantallas gigantes, ambiente de estadio, zona VIP y toda la emoción del fútbol. ¡Asegura tu entrada!",
+  noindex = false
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://bucaramundial.com");
@@ -21,6 +22,7 @@ const socialImageURL = new URL("/assets/hero-background.png", canonicalURL);
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
@@ -94,3 +96,4 @@ const socialImageURL = new URL("/assets/hero-background.png", canonicalURL);
     <script src="../scripts/site.js"></script>
   </body>
 </html>
+>
