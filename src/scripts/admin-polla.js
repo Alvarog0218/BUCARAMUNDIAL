@@ -1,4 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
 
 const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || "https://tkguainbzaqejvvveohf.supabase.co";
 const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrZ3VhaW5iemFxZWp2dnZlb2hmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMTEyNjUsImV4cCI6MjA5NjU4NzI2NX0.KFbVfMOW_7CYk3h3d8GkJfHRhp84ozmfVbt9AaqF1NQ";
@@ -333,9 +335,59 @@ window.saveMatchResult = async (id) => {
 
   if (error) alert("Error guardando resultado");
   else {
-    alert("Resultado guardado. Ahora puedes ver los ganadores.");
-    fetchAdminMatches();
+    alert("Resultado guardado. Se verificará si hay ganadores.");
+    await fetchAdminMatches();
+    
+    // Auto-generate PDF if there are winners
+    const updatedMatch = matches.find(m => m.id === id);
+    if (updatedMatch) {
+      const { data: predictions, err } = await supabase
+        .from("mundial_predictions")
+        .select("*")
+        .eq("match_id", id)
+        .eq("score_a", parseInt(scoreA))
+        .eq("score_b", parseInt(scoreB));
+        
+      if (!err && predictions && predictions.length > 0) {
+        generateWinnersPDF(updatedMatch, predictions);
+      }
+    }
   }
+};
+
+const generateWinnersPDF = (match, predictions) => {
+  if (!predictions || predictions.length === 0) return;
+
+  const doc = new jsPDF();
+  
+  // Título
+  doc.setFontSize(18);
+  doc.text("Listado de Ganadores Polla Bucaramundial", 14, 20);
+  
+  // Subtítulo (Partido)
+  doc.setFontSize(12);
+  doc.setTextColor(100);
+  const matchStr = `${match.team_a} (${match.final_score_a}) vs ${match.team_b} (${match.final_score_b})`;
+  doc.text(`Partido: ${matchStr}`, 14, 30);
+  doc.text(`Premio: ${match.prize || 'No especificado'}`, 14, 38);
+  
+  // Tabla
+  const tableData = predictions.map(p => [
+    p.nombre,
+    p.cedula,
+    p.whatsapp,
+    p.claimed_at ? new Date(p.claimed_at).toLocaleDateString() : 'Pendiente'
+  ]);
+
+  autoTable(doc, {
+    startY: 45,
+    head: [['Nombre', 'Cédula', 'WhatsApp', 'Estado']],
+    body: tableData,
+    theme: 'grid',
+    headStyles: { fillColor: [41, 128, 185] }
+  });
+
+  doc.save(`Ganadores_${match.team_a}_vs_${match.team_b}.pdf`);
 };
 
 window.calculateWinners = async (matchId) => {
@@ -389,6 +441,16 @@ const renderWinnersInModal = (predictions, match) => {
   noWinnersMsg.classList.toggle("hidden", predictions.length > 0);
   winnersModal.classList.remove("hidden");
   winnersModal.classList.add("flex");
+  
+  const downloadPdfBtn = document.getElementById("download-pdf-btn");
+  if (downloadPdfBtn) {
+    if (predictions.length > 0) {
+      downloadPdfBtn.classList.remove("hidden");
+      downloadPdfBtn.onclick = () => generateWinnersPDF(match, predictions);
+    } else {
+      downloadPdfBtn.classList.add("hidden");
+    }
+  }
 };
 
 window.confirmClaimFromList = async (predictionId, matchId, cedula) => {
