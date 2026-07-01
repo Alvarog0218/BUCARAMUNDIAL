@@ -7,8 +7,8 @@ const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrZ3VhaW5iemFxZWp2dnZlb2hmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMTEyNjUsImV4cCI6MjA5NjU4NzI2NX0.KFbVfMOW_7CYk3h3d8GkJfHRhp84ozmfVbt9AaqF1NQ";
 
 const purchaseLinks = {
-  individual: "https://quickticket.com.co/event/5c21b87b-f95c-4b9b-b214-0f282c05e20d",
-  abono: "https://quickticket.com.co/event/9e5d27cf-c051-48eb-9f29-c6271ea23684"
+  individual: "https://quickticket.co/event/fc4abdc9-8820-46ce-b280-1e649c65cc4c",
+  abono: "https://quickticket.co/event/fc4abdc9-8820-46ce-b280-1e649c65cc4c"
 };
 
 const purchaseButtonLabels = {
